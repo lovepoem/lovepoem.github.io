@@ -43,38 +43,11 @@
   </entry>
   
   <entry>
-    <title>谈谈各种流程引擎、规则引擎</title>
-    <link href="https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/"/>
-    <id>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</id>
+    <title>从netty组件的传输讲讲io</title>
+    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
+    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T15:01:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>开源：<br>  jbpm activiti drools QLexpress<br>  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？<br>  工作流</p><p>商业产品：<br>   普元：bps eos</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;开源：&lt;br&gt;  jbpm activiti drools QLexpress&lt;br&gt;  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？&lt;br&gt;  工作流&lt;/p&gt;
-&lt;p&gt;商业产品：&lt;br&gt;   普元：bps eos&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
-    
-    
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Seata 基本原理和源码分析</title>
-    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
-    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T15:08:46.000Z</updated>
+    <updated>2019-10-31T14:30:31.000Z</updated>
     
     <summary type="html">
     
@@ -106,11 +79,11 @@
   </entry>
   
   <entry>
-    <title>从netty组件的传输讲讲io</title>
-    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
-    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
+    <title>怎么定位线上的内存溢出？</title>
+    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
+    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:30:31.000Z</updated>
+    <updated>2019-10-31T14:42:30.000Z</updated>
     
     <summary type="html">
     
@@ -124,13 +97,22 @@
   </entry>
   
   <entry>
-    <title>怎么定位线上的内存溢出？</title>
-    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
-    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
+    <title>谈谈各种流程引擎、规则引擎</title>
+    <link href="https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/"/>
+    <id>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:42:30.000Z</updated>
+    <updated>2019-10-31T15:01:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>开源：<br>  jbpm activiti drools QLexpress<br>  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？<br>  工作流</p><p>商业产品：<br>   普元：bps eos</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;开源：&lt;br&gt;  jbpm activiti drools QLexpress&lt;br&gt;  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？&lt;br&gt;  工作流&lt;/p&gt;
+&lt;p&gt;商业产品：&lt;br&gt;   普元：bps eos&lt;/p&gt;
+
+      
     
     </summary>
     
@@ -159,6 +141,24 @@
 &lt;p&gt;在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。&lt;/p&gt;
 &lt;p&gt;　
       
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Seata 基本原理和源码分析</title>
+    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
+    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
+    <published>2019-10-31T01:01:02.000Z</published>
+    <updated>2019-10-31T15:08:46.000Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
@@ -279,16 +279,16 @@
     <link href="https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/"/>
     <id>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</id>
     <published>2019-02-11T10:01:02.000Z</published>
-    <updated>2019-12-05T08:03:50.211Z</updated>
+    <updated>2019-12-05T08:06:55.735Z</updated>
     
-    <content type="html"><![CDATA[<p>​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。</p><p>​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing55333</p><p>​</p>]]></content>
+    <content type="html"><![CDATA[<p>​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。</p><p>​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing553335555</p><p>​</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。&lt;/p&gt;
-&lt;p&gt;​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing55333&lt;/p&gt;
+&lt;p&gt;​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing553335555&lt;/p&gt;
 &lt;p&gt;​&lt;/p&gt;
 
       
