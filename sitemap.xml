@@ -30,14 +30,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
+    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
     
     <lastmod>2019-11-27T00:50:27.758Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
+    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
     
     <lastmod>2019-11-27T00:50:27.758Z</lastmod>
     
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
+    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -149,7 +149,28 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -170,35 +191,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/404.html</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/google327b939e5efe3f3f.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -212,7 +205,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/categories/index.html</loc>
+    <loc>https://wangxin.io/google327b939e5efe3f3f.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -220,6 +213,13 @@
   
   <url>
     <loc>https://wangxin.io/about/index.html</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/categories/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -240,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/search/index.html</loc>
+    <loc>https://wangxin.io/tags/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/tags/index.html</loc>
+    <loc>https://wangxin.io/search/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
