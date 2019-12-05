@@ -135,20 +135,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
@@ -156,7 +142,21 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -233,14 +233,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/search/index.html</loc>
+    <loc>https://wangxin.io/linkedfriend/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/linkedfriend/index.html</loc>
+    <loc>https://wangxin.io/search/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
