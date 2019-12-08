@@ -101,7 +101,7 @@
     <link href="https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/"/>
     <id>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-11-27T00:50:27.758Z</updated>
+    <updated>2019-12-08T13:04:00.760Z</updated>
     
     <content type="html"><![CDATA[<p>从JDK1.6到1.8, 运行时内存分配简图分别如下:</p><p><img src="/images/java1.6.png" alt="Mechanism"></p><p>在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。</p><p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img src="/images/java1.7.png" alt="Mechanism"></p><p>随着JDK8的到来:</p><pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img src="/images/java8.png" alt="Mechanism"></p><h3><span id="一-java7到java8的第一部分变化元空间"><strong>一、java7到java8的第一部分变化：元空间</strong></span></h3><p>下面来一张图看一下java7到8的内存模型吧（这个是在网上找的图，如有侵权问题请联系我删除。）</p><p><img src="https://pic1.zhimg.com/80/v2-d928d79855d4448af061752168967d04_hd.jpg" alt="img"></p><h3><span id="二-java7到"><strong>二、java7到</strong></span></h3><h3><span id="二-java7到java8的第二部分变化运行时常量池"><strong>二、java7到java8的第二部分变化：运行时常量池</strong></span></h3><p>运行时常量池（Runtime Constant Pool）的所处区域一直在不断的变化，在java6时它是方法区的一部分；1.7又把他放到了堆内存中；1.8之后出现了元空间，它又回到了方法区。</p><p>Metaspace 结构是怎么样的？</p><p><img src="/images/java8struct.jpeg" alt="Mechanism"></p><p>参考:<br>————————————————<br>版权声明：本文为CSDN博主「划船一哥」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/weixin_42711325/article/details/86533192">https://blog.csdn.net/weixin_42711325/article/details/86533192</a></p>]]></content>
     
@@ -117,10 +117,10 @@
     
     </summary>
     
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+      <category term="jvm" scheme="https://wangxin.io/categories/jvm/"/>
     
     
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+      <category term="jvm" scheme="https://wangxin.io/tags/jvm/"/>
     
   </entry>
   

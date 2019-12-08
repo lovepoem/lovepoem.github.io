@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
+    <lastmod>2019-12-08</lastmod>
+  </url>  <url>
     <loc>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</loc>
     <lastmod>2019-12-08</lastmod>
   </url>  <url>
@@ -17,9 +20,6 @@
     <lastmod>2019-11-27</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
-    <lastmod>2019-11-27</lastmod>
-  </url>  <url>
-    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
     <lastmod>2019-11-27</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
