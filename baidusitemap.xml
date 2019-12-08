@@ -52,16 +52,13 @@
     <loc>https://wangxin.io/2018/05/12/dubbo/speech-in-dubbo-meetup-beijing/</loc>
     <lastmod>2019-10-31</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
     <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
+    <lastmod>2019-10-22</lastmod>
+  </url>  <url>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
@@ -70,19 +67,22 @@
     <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/02/12/java/java_lambda_implement/</loc>
+    <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
+    <loc>https://wangxin.io/2018/02/12/java/java_lambda_implement/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <lastmod>2019-10-22</lastmod>
+  </url>  <url>
     <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
+    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>
 </urlset>
