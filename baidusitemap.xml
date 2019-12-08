@@ -16,10 +16,10 @@
     <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
     <lastmod>2019-11-27</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
+    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
     <lastmod>2019-11-27</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
+    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
     <lastmod>2019-11-27</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
@@ -58,13 +58,13 @@
     <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <lastmod>2019-10-22</lastmod>
+  </url>  <url>
+    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
     <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
@@ -79,10 +79,10 @@
     <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
+    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>  <url>
-    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
     <lastmod>2019-10-22</lastmod>
   </url>
 </urlset>

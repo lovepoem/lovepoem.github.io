@@ -4,7 +4,7 @@
   <url>
     <loc>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</loc>
     
-    <lastmod>2019-12-08T12:46:08.034Z</lastmod>
+    <lastmod>2019-12-08T12:48:27.219Z</lastmod>
     
   </url>
   
@@ -37,14 +37,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
+    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
     
     <lastmod>2019-11-27T00:50:27.758Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
+    <loc>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</loc>
     
     <lastmod>2019-11-27T00:50:27.758Z</lastmod>
     
@@ -135,7 +135,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -143,13 +150,6 @@
   
   <url>
     <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
+    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
@@ -233,6 +233,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/linkedfriend/index.html</loc>
+    
+    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/github/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
@@ -248,13 +255,6 @@
   
   <url>
     <loc>https://wangxin.io/tags/index.html</loc>
-    
-    <lastmod>2019-10-22T00:22:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/linkedfriend/index.html</loc>
     
     <lastmod>2019-10-22T00:22:02.000Z</lastmod>
     
