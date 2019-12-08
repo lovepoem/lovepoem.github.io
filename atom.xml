@@ -43,22 +43,13 @@
   </entry>
   
   <entry>
-    <title>谈谈各种流程引擎、规则引擎</title>
-    <link href="https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/"/>
-    <id>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</id>
+    <title>Seata 基本原理和源码分析</title>
+    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
+    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T15:01:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>开源：<br>  jbpm activiti drools QLexpress<br>  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？<br>  工作流</p><p>商业产品：<br>   普元：bps eos</p>]]></content>
+    <updated>2019-10-31T15:08:46.000Z</updated>
     
     <summary type="html">
-    
-      
-      
-        &lt;p&gt;开源：&lt;br&gt;  jbpm activiti drools QLexpress&lt;br&gt;  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？&lt;br&gt;  工作流&lt;/p&gt;
-&lt;p&gt;商业产品：&lt;br&gt;   普元：bps eos&lt;/p&gt;
-
-      
     
     </summary>
     
@@ -88,11 +79,11 @@
   </entry>
   
   <entry>
-    <title>从netty组件的传输讲讲io</title>
-    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
-    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
+    <title>怎么定位线上的内存溢出？</title>
+    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
+    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:30:31.000Z</updated>
+    <updated>2019-10-31T14:42:30.000Z</updated>
     
     <summary type="html">
     
@@ -134,11 +125,11 @@
   </entry>
   
   <entry>
-    <title>怎么定位线上的内存溢出？</title>
-    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
-    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
+    <title>从netty组件的传输讲讲io</title>
+    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
+    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:42:30.000Z</updated>
+    <updated>2019-10-31T14:30:31.000Z</updated>
     
     <summary type="html">
     
@@ -152,11 +143,38 @@
   </entry>
   
   <entry>
-    <title>Seata 基本原理和源码分析</title>
-    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
-    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
+    <title>谈谈各种流程引擎、规则引擎</title>
+    <link href="https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/"/>
+    <id>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T15:08:46.000Z</updated>
+    <updated>2019-10-31T15:01:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>开源：<br>  jbpm activiti drools QLexpress<br>  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？<br>  工作流</p><p>商业产品：<br>   普元：bps eos</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;开源：&lt;br&gt;  jbpm activiti drools QLexpress&lt;br&gt;  流程引擎 规则引擎 脚本引擎 区别  分别用在什么业务上？&lt;br&gt;  工作流&lt;/p&gt;
+&lt;p&gt;商业产品：&lt;br&gt;   普元：bps eos&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RocketMQ的死信队列你了解多少？怎么实现的？</title>
+    <link href="https://wangxin.io/2019/10/31/mq/rocketmq-dead-message/"/>
+    <id>https://wangxin.io/2019/10/31/mq/rocketmq-dead-message/</id>
+    <published>2019-10-30T18:01:02.000Z</published>
+    <updated>2019-12-07T14:04:46.375Z</updated>
     
     <summary type="html">
     
@@ -279,18 +297,16 @@
     <link href="https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/"/>
     <id>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</id>
     <published>2019-02-11T10:01:02.000Z</published>
-    <updated>2019-12-05T08:13:49.259Z</updated>
+    <updated>2019-12-08T12:42:50.723Z</updated>
     
-    <content type="html"><![CDATA[<p>​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。</p><p>​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing5533312344565</p><p>​</p>]]></content>
+    <content type="html"><![CDATA[<p>dubbo提供在provider和consumer端，都提供了超时(timeout)和重试(retries)的参数配置。</p><h2><span id="一-dubbo协议中的超时机制">一、Dubbo协议中的超时机制</span></h2><p>​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。</p><p>​      我们先看一下Dubbo协议中的超时机制是怎么实现的。</p><p>​      超时的实现原理是什么？<br><img src="/images/dubbo-architecture.png"><br>我们先回顾一下dubbo的大致流程图。</p><p>在生产过程中都是客户端向服务端发送请求，在流程4。</p><p>​        我们可以看到：4的流程是： 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p><p>​      超时是针对消费端还是服务端？</p><ul><li>如果是争对消费端，那么当消费端发起一次请求后，如果在规定时间内未得到服务端的响应则直接返回超时异常，但服务端的代码依然在执行。</li><li>如果是争取服务端，那么当消费端发起一次请求后，一直等待服务端的响应，服务端在方法执行到指定时间后如果未执行完，此时返回一个超时异常给到消费端。</li></ul><p>dubbo的超时是争对客户端的，由于是一种NIO模式，消费端发起请求后得到一个ResponseFuture，然后消费端一直轮询这个ResponseFuture直至超时或者收到服务端的返回结果。虽然超时了，但仅仅是消费端不再等待服务端的反馈并不代表此时服务端也停止了执行。</p><p>​       超时的实现原理是什么？</p><p>之前有简单提到过, dubbo默认采用了netty做为网络组件，它属于一种NIO的模式。消费端发起远程请求后，线程不会阻塞等待服务端的返回，而是马上得到一个ResponseFuture，消费端通过不断的轮询机制判断结果是否有返回。因为是通过轮询，轮询有个需要特别注要的就是避免死循环，所以为了解决这个问题就引入了超时机制，只在一定时间范围内做轮询，如果超时时间就返回超时异常。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">ResponseFuture接口定义</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ResponseFuture</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get result.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> result.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Object <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> RemotingException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get result with the specified timeout.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> timeoutInMillis timeout.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> result.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> timeoutInMillis)</span> <span class="keyword">throws</span> RemotingException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * set callback.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> callback</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setCallback</span><span class="params">(ResponseCallback callback)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * check is done.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> done or not.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ReponseFuture的实现类：DefaultFuture</span><br><span class="line">只看它的get方法，可以清楚看到轮询的机制。</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> timeout)</span> <span class="keyword">throws</span> RemotingException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timeout &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            timeout = Constants.DEFAULT_TIMEOUT;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (! isDone()) &#123;</span><br><span class="line">            <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (! isDone()) &#123;</span><br><span class="line">                    done.await(timeout, TimeUnit.MILLISECONDS);</span><br><span class="line">                    <span class="keyword">if</span> (isDone() || System.currentTimeMillis() - start &gt; timeout) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (! isDone()) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> TimeoutException(sent &gt; <span class="number">0</span>, channel, getTimeoutMessage(<span class="keyword">false</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> returnFromResponse();</span><br><span class="line">    &#125;</span><br><span class="line">超时解</span><br></pre></td></tr></table></figure><p>超时的实现原理是什么？<br>之前有简单提到过, dubbo默认采用了netty做为网络组件，它属于一种NIO的模式。消费端发起远程请求后，线程不会阻塞等待服务端的返回，而是马上得到一个ResponseFuture，消费端通过不断的轮询机制判断结果是否有返回。因为是通过轮询，轮询有个需要特别注要的就是避免死循环，所以为了解决这个问题就引入了超时机制，只在一定时间范围内做轮询，如果超时时间就返回超时异常。</p><h2><span id="二-dubbo协议中的重试机制">二、Dubbo协议中的重试机制</span></h2><p>在客户端 </p><figure class="highlight plain"><figcaption><span>DEFAULT_RETRIES </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">重试策略在集群的失败重试  ```FailoverClusterInvoker``` 的策略中：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">    public Result doInvoke(Invocation invocation, final List&lt;Invoker&lt;T&gt;&gt; invokers, LoadBalance loadbalance) throws RpcException &#123;</span><br><span class="line">        List&lt;Invoker&lt;T&gt;&gt; copyInvokers = invokers;</span><br><span class="line">        checkInvokers(copyInvokers, invocation);</span><br><span class="line">        String methodName = RpcUtils.getMethodName(invocation);</span><br><span class="line">        int len = getUrl().getMethodParameter(methodName, RETRIES_KEY, DEFAULT_RETRIES) + 1;</span><br><span class="line">        if (len &lt;= 0) &#123;</span><br><span class="line">            len = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        // retry loop.</span><br><span class="line">        RpcException le = null; // last exception.</span><br><span class="line">        List&lt;Invoker&lt;T&gt;&gt; invoked = new ArrayList&lt;Invoker&lt;T&gt;&gt;(copyInvokers.size()); // invoked invokers.</span><br><span class="line">        Set&lt;String&gt; providers = new HashSet&lt;String&gt;(len);</span><br><span class="line">        for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">            //Reselect before retry to avoid a change of candidate `invokers`.</span><br><span class="line">            //NOTE: if `invokers` changed, then `invoked` also lose accuracy.</span><br><span class="line">            if (i &gt; 0) &#123;</span><br><span class="line">                checkWhetherDestroyed();</span><br><span class="line">                copyInvokers = list(invocation);</span><br><span class="line">                // check again</span><br><span class="line">                checkInvokers(copyInvokers, invocation);</span><br><span class="line">            &#125;</span><br><span class="line">            Invoker&lt;T&gt; invoker = select(loadbalance, invocation, copyInvokers, invoked);</span><br><span class="line">            invoked.add(invoker);</span><br><span class="line">            RpcContext.getContext().setInvokers((List) invoked);</span><br><span class="line">            try &#123;</span><br><span class="line">                Result result = invoker.invoke(invocation);</span><br><span class="line">         ......</span><br></pre></td></tr></table></figure><p>可以看到使用的是for循环做的失败重试的。当有异常发生时候，就重试一次访问，直到达到最大重试次数为止。</p><p>参考：<a href="https://www.cnblogs.com/xuwc/p/8974709.html">https://www.cnblogs.com/xuwc/p/8974709.html</a>   </p><p>重试在此时是怎么处理的？</p><p>​</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;​      超时机制是dubbo中的一个很重要的机制。在“快速失败”设计中，能将客户端断掉，防止服务端资源耗尽而被压挂。&lt;/p&gt;
-&lt;p&gt;​      我们先看一下Dubbo协议中的超时机制是怎么实现的。qing5533312344565&lt;/p&gt;
-&lt;p&gt;​&lt;/p&gt;
-
+        &lt;p&gt;dubbo提供在provider和consumer端，都提供了超时(timeout)和重试(retries)的参数配置。&lt;/p&gt;
+&lt;h2&gt;&lt;span id=&quot;一-dubbo协议中的超时机制&quot;&gt;一、Dubbo协议中的超时机制&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;​      超时机制
       
     
     </summary>
@@ -480,31 +496,6 @@
     
     
       <category term="多线程" scheme="https://wangxin.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>升级到Spring Framework 5.x.须知</title>
-    <link href="https://wangxin.io/2018/09/05/framework/spring5_new_features/"/>
-    <id>https://wangxin.io/2018/09/05/framework/spring5_new_features/</id>
-    <published>2018-09-04T18:01:02.000Z</published>
-    <updated>2019-10-22T00:22:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2><span id="一-spring50-做了哪些改变">一、spring5.0 做了哪些改变</span></h2><p>首先我们先看一下官网文档<a href="https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-5.x">《升级到Spring Framework 5.x.》</a>.细节已经讲的很清楚，我们再做一些分析。</p><h3><span id="spring50-新的改变">spring5.0 新的改变</span></h3><ul><li><p>Spring Framework 5.0需要JDK 8（Java SE 8）或更高版本，因为它的整个代码库现在基于Java 8源代码级别    </p></li><li><p>为Spring WebFlux添加了Netty 4.1和Undertow 1.4</p></li></ul><h3><span id="用spring5-以后哪些不兼容的组件">用spring5 以后哪些不兼容的组件</span></h3><h4><span id="删除了的包类和方法">删除了的包，类和方法</span></h4><ul><li><p>包beans.factory.access（BeanFactoryLocator机制）。</p><ul><li>包括<code>SpringBeanAutowiringInterceptor</code>基于这种静态共享上下文的EJB3。最好通过CDI集成Spring后端。</li></ul></li><li><p>包jdbc.support.nativejdbc（NativeJdbcExtractor机制）。</p><ul><li>被<code>Connection.unwrap</code>JDBC中的本机机制所取代。目前，即使针对Oracle JDBC驱动程序，也几乎不需要解包。</li></ul></li><li><p>包<code>mock.staticmock</code>从spring-aspects`模块中删除。</p><ul><li>不再支持<code>AnnotationDrivenStaticEntityMockingControl</code>了。</li></ul></li><li><p>包<code>web.view.tiles2</code>和<code>orm.hibernate3/hibernate4</code>丢弃。</p><ul><li>最低要求：现在为Tiles 3和Hibernate 5。</li></ul></li></ul><h4><span id="放弃了支持的三方包">放弃了支持的三方包</span></h4><p>Spring Framework不再支持：Portlet，Velocity，JasperReports，XMLBeans，JDO，Guava（由Caffeine支持取代）。如果这些对您的项目至关重要，那么您应该继续使用Spring Framework 4.3.x（支持到2020年）。或者，您可以在自己的项目中创建自定义适配器类（可能从Spring Framework 4.x派生）</p><h2><span id="二-spring51-做了哪些改变">二、spring5.1 做了哪些改变</span></h2><p>对于JDK 11的支持 ，ASM和CGLIB做了以及的升级，以支持最新的这些jdk</p><h2><span id="三-我们该怎么办">三、我们该怎么办？</span></h2><p>   我的一个观点是积极拥抱新的spring5包，尤其是新项目。</p><ul><li><p>首先新的特性是一个框架资源投入的方向</p></li><li><p>你会使用到webflux等一些等的异步特性；</p></li><li><p>强制使用用java8以上，可以体验一些lamba表达式语法糖等功能。理解在java一直被吐槽代码太多的情况下，jdk对于动态语言的一些学习吸收。</p><p>反过来思考，一些老项目升级成新版本以后，会发现有一些jdk删除的包和不支持的包。这个比较麻烦，一个老的项目可以需要业务全面回归来应对框架的升级。</p></li></ul><p>​        对于<a href="https://github.com/apache/incubator-dubbo">dubbo</a>项目来说，我的观点是在一个比较激进的新的分支上升级到spring5,比如正在开发的异步版本<a href="https://github.com/apache/incubator-dubbo/tree/3.x-dev">3.0</a>开始使用，这样可以充分测试一些新的feature，早点发现问题。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2&gt;&lt;span id=&quot;一-spring50-做了哪些改变&quot;&gt;一、spring5.0 做了哪些改变&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;首先我们先看一下官网文档&lt;a href=&quot;https://github.com/spring-projects/spring-framework/w
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://wangxin.io/categories/spring/"/>
-    
-    
-      <category term="spring5" scheme="https://wangxin.io/tags/spring5/"/>
     
   </entry>
   
