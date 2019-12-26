@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangxin.io/"/>
-  <updated>2019-12-04T13:55:41.867Z</updated>
+  <updated>2019-12-17T14:13:05.105Z</updated>
   <id>https://wangxin.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RocketMQ的死信队列你了解多少？怎么实现的？</title>
+    <link href="https://wangxin.io/2019/12/08/mq/rocketmq-dead-message/"/>
+    <id>https://wangxin.io/2019/12/08/mq/rocketmq-dead-message/</id>
+    <published>2019-12-08T13:01:02.000Z</published>
+    <updated>2019-12-17T14:13:05.105Z</updated>
+    
+    <content type="html"><![CDATA[<p>​     在使用MQ的过程中，常常有这种情形：生产者向一个topic发送消息后，如果消费者一直消费失败。要确保消息不被丢弃，直到消费者服务正常消费这个条消息为止。这个在<code>RocketMQ</code> 中的实现正是<strong>死信队列</strong>。</p><p>​</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​     在使用MQ的过程中，常常有这种情形：生产者向一个topic发送消息后，如果消费者一直消费失败。要确保消息不被丢弃，直到消费者服务正常消费这个条消息为止。这个在&lt;code&gt;RocketMQ&lt;/code&gt; 中的实现正是&lt;strong&gt;死信队列&lt;/strong&gt;。&lt;/
+      
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
   
   <entry>
     <title>Dubbo服务间的连接是怎么控制处理的？</title>
@@ -43,38 +68,30 @@
   </entry>
   
   <entry>
-    <title>怎么定位线上的内存溢出？</title>
-    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
-    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
+    <title>JVM内存结构的历史 （从Jdk1.6、1.7、8）</title>
+    <link href="https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/"/>
+    <id>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:42:30.000Z</updated>
+    <updated>2019-12-08T13:07:47.018Z</updated>
+    
+    <content type="html"><![CDATA[<p>从JDK1.6到1.8, 运行时内存分配简图分别如下:</p><p><img src="/images/java1.6.png" alt="Mechanism"></p><p>在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。</p><p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img src="/images/java1.7.png" alt="Mechanism"></p><p>随着JDK8的到来:</p><pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img src="/images/java8.png" alt="Mechanism"></p><h3><span id="一-java7到java8的第一部分变化元空间"><strong>一、java7到java8的第一部分变化：元空间</strong></span></h3><p>下面来一张图看一下java7到8的内存模型吧（这个是在网上找的图，如有侵权问题请联系我删除。）</p><p><img src="https://pic1.zhimg.com/80/v2-d928d79855d4448af061752168967d04_hd.jpg" alt="img"></p><h3><span id="二-java7到java8的第二部分变化运行时常量池"><strong>二、java7到java8的第二部分变化：运行时常量池</strong></span></h3><p>运行时常量池（Runtime Constant Pool）的所处区域一直在不断的变化，在java6时它是方法区的一部分；1.7又把他放到了堆内存中；1.8之后出现了元空间，它又回到了方法区。</p><p>Metaspace 结构是怎么样的？</p><p><img src="/images/java8struct.jpg" alt="Mechanism"></p><p>参考：<a href="https://blog.csdn.net/weixin_42711325/article/details/86533192">https://blog.csdn.net/weixin_42711325/article/details/86533192</a></p>]]></content>
     
     <summary type="html">
     
-    </summary>
-    
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
-    
-    
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从netty组件的传输讲讲io</title>
-    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
-    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T14:30:31.000Z</updated>
-    
-    <summary type="html">
+      
+      
+        &lt;p&gt;从JDK1.6到1.8, 运行时内存分配简图分别如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/java1.6.png&quot; alt=&quot;Mechanism&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。&lt;/p&gt;
+&lt;p&gt;　
+      
     
     </summary>
     
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+      <category term="jvm" scheme="https://wangxin.io/categories/jvm/"/>
     
     
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+      <category term="jvm" scheme="https://wangxin.io/tags/jvm/"/>
     
   </entry>
   
@@ -84,6 +101,42 @@
     <id>https://wangxin.io/2019/10/31/distributed/distributed_transaction_seata/</id>
     <published>2019-10-31T01:01:02.000Z</published>
     <updated>2019-10-31T15:07:52.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Seata 基本原理和源码分析</title>
+    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
+    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
+    <published>2019-10-31T01:01:02.000Z</published>
+    <updated>2019-10-31T15:08:46.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎么定位线上的内存溢出？</title>
+    <link href="https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/"/>
+    <id>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</id>
+    <published>2019-10-31T01:01:02.000Z</published>
+    <updated>2019-10-31T14:42:30.000Z</updated>
     
     <summary type="html">
     
@@ -124,11 +177,11 @@
   </entry>
   
   <entry>
-    <title>Seata 基本原理和源码分析</title>
-    <link href="https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/"/>
-    <id>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</id>
+    <title>从netty组件的传输讲讲io</title>
+    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
+    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
     <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-10-31T15:08:46.000Z</updated>
+    <updated>2019-10-31T14:30:31.000Z</updated>
     
     <summary type="html">
     
@@ -138,34 +191,6 @@
     
     
       <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM内存结构的历史 （从Jdk1.6、1.7、8）</title>
-    <link href="https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/"/>
-    <id>https://wangxin.io/2019/10/31/jvm/jvm_memory_change_history/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2019-12-08T13:07:47.018Z</updated>
-    
-    <content type="html"><![CDATA[<p>从JDK1.6到1.8, 运行时内存分配简图分别如下:</p><p><img src="/images/java1.6.png" alt="Mechanism"></p><p>在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。</p><p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img src="/images/java1.7.png" alt="Mechanism"></p><p>随着JDK8的到来:</p><pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img src="/images/java8.png" alt="Mechanism"></p><h3><span id="一-java7到java8的第一部分变化元空间"><strong>一、java7到java8的第一部分变化：元空间</strong></span></h3><p>下面来一张图看一下java7到8的内存模型吧（这个是在网上找的图，如有侵权问题请联系我删除。）</p><p><img src="https://pic1.zhimg.com/80/v2-d928d79855d4448af061752168967d04_hd.jpg" alt="img"></p><h3><span id="二-java7到java8的第二部分变化运行时常量池"><strong>二、java7到java8的第二部分变化：运行时常量池</strong></span></h3><p>运行时常量池（Runtime Constant Pool）的所处区域一直在不断的变化，在java6时它是方法区的一部分；1.7又把他放到了堆内存中；1.8之后出现了元空间，它又回到了方法区。</p><p>Metaspace 结构是怎么样的？</p><p><img src="/images/java8struct.jpg" alt="Mechanism"></p><p>参考：<a href="https://blog.csdn.net/weixin_42711325/article/details/86533192">https://blog.csdn.net/weixin_42711325/article/details/86533192</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;从JDK1.6到1.8, 运行时内存分配简图分别如下:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/java1.6.png&quot; alt=&quot;Mechanism&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。&lt;/p&gt;
-&lt;p&gt;　
-      
-    
-    </summary>
-    
-      <category term="jvm" scheme="https://wangxin.io/categories/jvm/"/>
-    
-    
-      <category term="jvm" scheme="https://wangxin.io/tags/jvm/"/>
     
   </entry>
   
@@ -195,31 +220,13 @@
   </entry>
   
   <entry>
-    <title>RocketMQ的死信队列你了解多少？怎么实现的？</title>
-    <link href="https://wangxin.io/2019/10/31/mq/rocketmq-dead-message/"/>
-    <id>https://wangxin.io/2019/10/31/mq/rocketmq-dead-message/</id>
-    <published>2019-10-30T18:01:02.000Z</published>
-    <updated>2019-12-07T14:04:46.375Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
-    
-    
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一些有用的github配置</title>
     <link href="https://wangxin.io/2019/07/23/git/some_github_config/"/>
     <id>https://wangxin.io/2019/07/23/git/some_github_config/</id>
     <published>2019-07-23T11:40:02.000Z</published>
-    <updated>2019-11-27T00:55:49.989Z</updated>
+    <updated>2019-12-26T12:29:17.364Z</updated>
     
-    <content type="html"><![CDATA[<p>Github是Git的一个商业化平台，git对应的一些功能在Github上都有体现。 在github的使用过程中，一些有用的github配置，明显改进了流程，方便了开发，随手记录了下来。</p><h3><span id="1-pr完毕联动直接关闭issue">1、pr完毕联动直接关闭issue ：</span></h3><p><strong>功能：</strong> 当committer合并别人提交的<code>pull request</code>的时候，同时联动关闭问题issue<br><strong>配置：</strong> <a href="https://help.github.com/cn/articles/closing-issues-using-keywords">https://help.github.com/cn/articles/closing-issues-using-keywords</a></p><h3><span id="2-设置成sqash-合并提交点">2、设置成sqash 合并提交点：</span></h3><p><strong>功能：</strong> 当committer合并别人提交的选择将提交点进行合并,类似于指令<code>git squash</code><br><strong>配置：</strong> <a href="https://help.github.com/cn/articles/about-merge-methods-on-github">https://help.github.com/cn/articles/about-merge-methods-on-github</a></p><h3><span id="3-更新其他人的分支代码">3、更新其他人的分支代码：</span></h3><p><strong>功能：</strong>在合作开发中，一些分支的提交者好久没有活动了，远程分支已经修改了很多东西。 committer或者pr的提交可以在github界面手动同步主分支的最新代码.<br>类似于指令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote update -p</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><p>配置方法如下：</p><p><img src="/images/enforce-update.png" alt></p><p>效果： </p><p><img src="/images/update-branch.png" alt></p><p><strong>配置：</strong> <a href="https://help.github.com/cn/articles/enabling-required-status-checks">https://help.github.com/cn/articles/enabling-required-status-checks</a></p><h3><span id="4-添加测试覆盖率travis-ci-和codecov">4、添加测试覆盖率travis-ci 和codecov</span></h3><p><strong>功能：</strong> 用junit、travis-ci 和codecov等采集项目的测试覆盖率，从而进行持续集成<br><strong>配置：</strong> </p><ul><li><p>Travis CI + Codecov + Junit5 + jacoco + Maven + java8 above Java Example<br><a href="https://github.com/lovepoem/codecov-travis-maven-junit5-example">https://github.com/lovepoem/codecov-travis-maven-junit5-example</a></p></li><li><p>Travis CI + Codecov + Junit4 + cobertura + java1.7 + Maven Java Example<br><a href="https://github.com/lovepoem/codecov-travis-maven-junit4-example">https://github.com/lovepoem/codecov-travis-maven-junit4-example</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>Github是Git的一个商业化平台，git对应的一些功能在Github上都有体现。 在github的使用过程中，一些有用的github配置，明显改进了流程，方便了开发，随手记录了下来。</p><h3><span id="1-pr完毕联动直接关闭issue">1、pr完毕联动直接关闭issue ：</span></h3><p><strong>功能：</strong> 当committer合并别人提交的<code>pull request</code>的时候，同时联动关闭问题issue<br><strong>配置：</strong> <a href="https://help.github.com/cn/articles/closing-issues-using-keywords">https://help.github.com/cn/articles/closing-issues-using-keywords</a></p><h3><span id="2-设置成sqash-合并提交点">2、设置成sqash 合并提交点：</span></h3><p><strong>功能：</strong> 当committer合并别人提交的选择将提交点进行合并,类似于指令<code>git squash</code><br><strong>配置：</strong> <a href="https://help.github.com/cn/articles/about-merge-methods-on-github">https://help.github.com/cn/articles/about-merge-methods-on-github</a></p><h3><span id="3-更新其他人的分支代码">3、更新其他人的分支代码：</span></h3><p><strong>功能：</strong>在合作开发中，一些分支的提交者好久没有活动了，远程分支已经修改了很多东西。 committer或者pr的提交可以在github界面手动同步主分支的最新代码.<br>类似于指令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote update -p</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure><p>配置方法如下：</p><p><img src="/images/enforce-update.png" alt></p><p>效果： </p><p><img src="/images/update-branch.png" alt></p><p><strong>配置：</strong> <a href="https://help.github.com/cn/articles/enabling-required-status-checks">https://help.github.com/cn/articles/enabling-required-status-checks</a></p><h3><span id="4-添加测试覆盖率travis-ci-和codecov">4、添加测试覆盖率travis-ci 和codecov</span></h3><p><strong>功能：</strong> 用junit、travis-ci 和codecov等采集项目的测试覆盖率，从而进行持续集成<br><strong>配置：</strong> </p><ul><li><p>Travis CI + Codecov + Junit5 + jacoco + Maven + java8 above Java Example<br><a href="https://github.com/lovepoem/codecov-travis-maven-junit5-example">https://github.com/lovepoem/codecov-travis-maven-junit5-example</a></p></li><li><p>Travis CI + Codecov + Junit4 + cobertura + java1.7 + Maven Java Example<br><a href="https://github.com/lovepoem/codecov-travis-maven-junit4-example">https://github.com/lovepoem/codecov-travis-maven-junit4-example</a></p></li></ul><h3><span id="5-将issue指派给项目的contributor">5、将issue指派给项目的contributor</span></h3><p>最早时候github不支持将一个issue指派给对项目没有写权限的用户。在2019年下半年开始，github增加了“Triage”角色：没有项目的直接写权限，却能review pr的人。首先issue可以指派给“Triage”角色；一般用户只要在issue上加评论，就可以将issue指派给她。</p>]]></content>
     
     <summary type="html">
     
@@ -449,6 +456,31 @@
   </entry>
   
   <entry>
+    <title>血的教训：线程池定义一定要全局化，共享使用</title>
+    <link href="https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/"/>
+    <id>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</id>
+    <published>2018-10-04T18:01:02.000Z</published>
+    <updated>2019-10-22T00:22:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3><span id="一-发现问题">一、发现问题</span></h3><p>​    最近我们上线了一个比较底层的业务服务，上线后研发也去盯着服务器看了日志，没有发现有啥问题，就将服务全量上线了。谁知道过了15分钟左右，上游业务方打电话过来了，说报调用我们的业务服务出现超时。<br>这时候研发赶紧登上相关的机器去看，发现日志量很少，机器很卡。再有人去登入这台机器的时候就登入不了。研发初步考虑是网络问题或者宿主机问题，于是找来运维。</p><p>   运维登入进去机器通过</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef  | wc -l</span><br></pre></td></tr></table></figure><p>查看运行的进程数,结果为60000多。通过脚本查看linux进程的进程限制：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/security/limits.conf</span><br></pre></td></tr></table></figure><p>，结果是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root soft nofile 65535</span><br><span class="line">root hard nofile 65535</span><br></pre></td></tr></table></figure><p>​    进程总数差不多进程总数的限制。考虑到半小时前更新了新服务，去服务的日志看了看，原来tomcat有jvm内存溢出的日志:</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java 进程out of memeory</span><br><span class="line">Java HotSpot(TM) <span class="number">64</span>-Bit Server VM warning: Exception java<span class="variable">.lang</span><span class="variable">.OutOfMemoryError</span> occurred dispatching signal SIGTERM to handler- the VM may need to be forcibly terminatedy</span><br></pre></td></tr></table></figure><h3><span id="二-查找和解决问题">二、查找和解决问题</span></h3><p>​    通过上面的一些现象，赶紧将刚才的发布的机器回滚了，避免更大的问题。观察了半个小时，上游再也没有发现我们的服务报错的问题了。于是我们终端review了刚刚上线的一个pr，<br>​      发现线程池的代码竟然定义在方法体里面：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BizService</span></span>&#123;</span><br><span class="line">    ...... </span><br><span class="line">    <span class="function">pulic <span class="title">processBiz</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">8</span>);</span><br><span class="line">    ......</span><br><span class="line">   &#125; </span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样每次调用这个方法，就构建一个新的线程池，开启了新的8个线程。又查找了<a href="http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html">《Java线程与Linux内核线程的映射关系》[1]</a> , 发现：JVM线程跟内核轻量级进程有一一对应的关系。线程数达到60000多，处级进程上限65535。    每开启一个进程。<br>​        对于应用进程发生：out of memory，是因为多线程的开销内存超过jvm的最大堆内存限制。 没开启一个进程，都有内存开销，内存超过linux内存的上限了，怪不得机器快僵死。<br>​        为了验证这个猜想，于是将有错误的代码进行压测，果然问题复现，出OutOfMemoryError和机器被拖挂。然后将代码修改为:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BizService</span></span>&#123;</span><br><span class="line">    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">8</span>);</span><br><span class="line">    ...... </span><br><span class="line">    <span class="function">pulic <span class="title">processBiz</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ......</span><br><span class="line">   &#125; </span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后进行了压测，问题没有复现，问题解决。</p><h3><span id="三-事后review和处理方案">三、事后review和处理方案：</span></h3><p>​       复盘会议上，qa和相关人一起提出了如下方案来避免类似问题：</p><h4><span id="1-完善监控指标">1、完善监控指标</span></h4><p>​      本次线程池超限，java进程也有报错，就是报<code>OutOfMemoryError</code>,可是报警系统竟然没有第一时间收到。查了监控系统，在前一段项目进程了重构，日志路径修改了，原来的采集配置竟然没有同时修改。导致造成损失却没有收到警报。</p><h4><span id="2-代码review一定要做并且认真做">2、代码review一定要做，并且认真做</span></h4><p>​      本次程序员的线程池代码为低级失误，review认真是可以看出来的。</p><h4><span id="3-有大的优化要进行压测">3、有大的优化要进行压测</span></h4><p>​      本次pr，有线程池的使用，所以要进行压测</p><h4><span id="4-添加平台监控">4、添加平台监控</span></h4><p>​     添加平台监控，当linux进程大于20000个时候就就对进程数进行报警<br><strong>参考：</strong><br>[1] <a href="http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html">http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html</a></p><p><strong>修改记录：</strong></p><p>2019-07-18 丰富了案例的描述</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;&lt;span id=&quot;一-发现问题&quot;&gt;一、发现问题&lt;/span&gt;&lt;/h3&gt;&lt;p&gt;​    最近我们上线了一个比较底层的业务服务，上线后研发也去盯着服务器看了日志，没有发现有啥问题，就将服务全量上线了。谁知道过了15分钟左右，上游业务方打电话过来了，说报调用我们的业务服务出现
+      
+    
+    </summary>
+    
+      <category term="多线程" scheme="https://wangxin.io/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+      <category term="多线程" scheme="https://wangxin.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>谈谈并发包的工具都是用在什么地方，底层是怎么实现的？</title>
     <link href="https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/"/>
     <id>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</id>
@@ -471,31 +503,6 @@
     
     
       <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>血的教训：线程池定义一定要全局化，共享使用</title>
-    <link href="https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/"/>
-    <id>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</id>
-    <published>2018-10-04T18:01:02.000Z</published>
-    <updated>2019-10-22T00:22:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3><span id="一-发现问题">一、发现问题</span></h3><p>​    最近我们上线了一个比较底层的业务服务，上线后研发也去盯着服务器看了日志，没有发现有啥问题，就将服务全量上线了。谁知道过了15分钟左右，上游业务方打电话过来了，说报调用我们的业务服务出现超时。<br>这时候研发赶紧登上相关的机器去看，发现日志量很少，机器很卡。再有人去登入这台机器的时候就登入不了。研发初步考虑是网络问题或者宿主机问题，于是找来运维。</p><p>   运维登入进去机器通过</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef  | wc -l</span><br></pre></td></tr></table></figure><p>查看运行的进程数,结果为60000多。通过脚本查看linux进程的进程限制：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/security/limits.conf</span><br></pre></td></tr></table></figure><p>，结果是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root soft nofile 65535</span><br><span class="line">root hard nofile 65535</span><br></pre></td></tr></table></figure><p>​    进程总数差不多进程总数的限制。考虑到半小时前更新了新服务，去服务的日志看了看，原来tomcat有jvm内存溢出的日志:</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java 进程out of memeory</span><br><span class="line">Java HotSpot(TM) <span class="number">64</span>-Bit Server VM warning: Exception java<span class="variable">.lang</span><span class="variable">.OutOfMemoryError</span> occurred dispatching signal SIGTERM to handler- the VM may need to be forcibly terminatedy</span><br></pre></td></tr></table></figure><h3><span id="二-查找和解决问题">二、查找和解决问题</span></h3><p>​    通过上面的一些现象，赶紧将刚才的发布的机器回滚了，避免更大的问题。观察了半个小时，上游再也没有发现我们的服务报错的问题了。于是我们终端review了刚刚上线的一个pr，<br>​      发现线程池的代码竟然定义在方法体里面：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BizService</span></span>&#123;</span><br><span class="line">    ...... </span><br><span class="line">    <span class="function">pulic <span class="title">processBiz</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">8</span>);</span><br><span class="line">    ......</span><br><span class="line">   &#125; </span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样每次调用这个方法，就构建一个新的线程池，开启了新的8个线程。又查找了<a href="http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html">《Java线程与Linux内核线程的映射关系》[1]</a> , 发现：JVM线程跟内核轻量级进程有一一对应的关系。线程数达到60000多，处级进程上限65535。    每开启一个进程。<br>​        对于应用进程发生：out of memory，是因为多线程的开销内存超过jvm的最大堆内存限制。 没开启一个进程，都有内存开销，内存超过linux内存的上限了，怪不得机器快僵死。<br>​        为了验证这个猜想，于是将有错误的代码进行压测，果然问题复现，出OutOfMemoryError和机器被拖挂。然后将代码修改为:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BizService</span></span>&#123;</span><br><span class="line">    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">8</span>);</span><br><span class="line">    ...... </span><br><span class="line">    <span class="function">pulic <span class="title">processBiz</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ......</span><br><span class="line">   &#125; </span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后进行了压测，问题没有复现，问题解决。</p><h3><span id="三-事后review和处理方案">三、事后review和处理方案：</span></h3><p>​       复盘会议上，qa和相关人一起提出了如下方案来避免类似问题：</p><h4><span id="1-完善监控指标">1、完善监控指标</span></h4><p>​      本次线程池超限，java进程也有报错，就是报<code>OutOfMemoryError</code>,可是报警系统竟然没有第一时间收到。查了监控系统，在前一段项目进程了重构，日志路径修改了，原来的采集配置竟然没有同时修改。导致造成损失却没有收到警报。</p><h4><span id="2-代码review一定要做并且认真做">2、代码review一定要做，并且认真做</span></h4><p>​      本次程序员的线程池代码为低级失误，review认真是可以看出来的。</p><h4><span id="3-有大的优化要进行压测">3、有大的优化要进行压测</span></h4><p>​      本次pr，有线程池的使用，所以要进行压测</p><h4><span id="4-添加平台监控">4、添加平台监控</span></h4><p>​     添加平台监控，当linux进程大于20000个时候就就对进程数进行报警<br><strong>参考：</strong><br>[1] <a href="http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html">http://blog.sina.com.cn/s/blog_605f5b4f010198b5.html</a></p><p><strong>修改记录：</strong></p><p>2019-07-18 丰富了案例的描述</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3&gt;&lt;span id=&quot;一-发现问题&quot;&gt;一、发现问题&lt;/span&gt;&lt;/h3&gt;&lt;p&gt;​    最近我们上线了一个比较底层的业务服务，上线后研发也去盯着服务器看了日志，没有发现有啥问题，就将服务全量上线了。谁知道过了15分钟左右，上游业务方打电话过来了，说报调用我们的业务服务出现
-      
-    
-    </summary>
-    
-      <category term="多线程" scheme="https://wangxin.io/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-    
-      <category term="多线程" scheme="https://wangxin.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
