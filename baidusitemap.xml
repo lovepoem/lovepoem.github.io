@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
     <loc>https://wangxin.io/2019/02/13/storage/why_redis_read_write_fast/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -21,6 +21,10 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
+    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/2019/12/08/mq/rocketmq-dead-message/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
@@ -29,7 +33,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -37,15 +41,11 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
     <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
+    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -53,7 +53,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
+    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -61,7 +61,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
+    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -69,15 +69,11 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
+    <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/2019/07/22/iread/read_subscribed/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -89,11 +85,23 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</loc>
+    <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
     <loc>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -102,14 +110,6 @@
   </url>
   <url>
     <loc>https://wangxin.io/2019/10/31/distributed/distributed_transaction_seata/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
 </urlset> 
