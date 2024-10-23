@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangxin.io/linkedfriend/index.html</loc>
+    
+    <lastmod>2024-10-23T11:40:01.535Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/search/index.html</loc>
     
     <lastmod>2024-10-10T01:18:36.466Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://wangxin.io/tags/index.html</loc>
     
     <lastmod>2024-10-10T01:18:36.466Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/linkedfriend/index.html</loc>
-    
-    <lastmod>2024-10-10T01:18:36.465Z</lastmod>
     
   </url>
   
@@ -37,14 +37,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
+    <loc>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</loc>
     
     <lastmod>2024-10-10T01:18:36.450Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/performance/how_to_location_outof_memory/</loc>
+    <loc>https://wangxin.io/2019/02/04/opensource/apache-roles/</loc>
     
     <lastmod>2024-10-10T01:18:36.450Z</lastmod>
     
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
+    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/02/12/java/java_lambda_implement/</loc>
+    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/07/08/java/java_lambda_syntax/</loc>
+    <loc>https://wangxin.io/2018/02/12/java/java_lambda_implement/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
@@ -156,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
@@ -170,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
+    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -191,6 +184,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2019/12/03/dubbo/dubbo-service-connection-count-control/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
@@ -199,13 +199,6 @@
   
   <url>
     <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2018/05/12/dubbo/speech-in-dubbo-meetup-beijing/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
     
@@ -226,6 +219,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/2018/05/12/dubbo/speech-in-dubbo-meetup-beijing/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
@@ -233,14 +233,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
+    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
