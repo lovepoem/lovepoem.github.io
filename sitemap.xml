@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wangxin.io/2024/11/08/oa/docker_chatgrp_claude_apen_api_macos_config/</loc>
+    <loc>https://wangxin.io/2024/11/08/aigc/docker_chatgrp_claude_apen_api_macos_config/</loc>
     
-    <lastmod>2024-11-08T02:10:45.432Z</lastmod>
+    <lastmod>2024-11-08T02:37:24.307Z</lastmod>
     
   </url>
   
@@ -93,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/12/08/mq/rocketmq-dead-message/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.449Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/2018/12/31/linux/some_shell_script/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
@@ -108,6 +101,13 @@
   
   <url>
     <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.449Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2019/12/08/mq/rocketmq-dead-message/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
+    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/08/08/java/parallel_operation_by_completable_future/</loc>
+    <loc>https://wangxin.io/2018/10/08/jvm/jvm_basic_structure/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
@@ -156,6 +156,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2018/09/05/framework/spring5_new_features/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
@@ -163,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
+    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2014/07/05/framework/mybatis-process/</loc>
+    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -191,13 +198,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2014/06/05/framework/workflow/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/2019/01/01/dubbo/dubbo_server_side_thread_pool/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
@@ -212,7 +212,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/12/03/dubbo/dubbo-service-connection-count-control/</loc>
+    <loc>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/02/11/dubbo/dubbo_timeout_design_and_principle/</loc>
+    <loc>https://wangxin.io/2019/12/03/dubbo/dubbo-service-connection-count-control/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
@@ -254,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
