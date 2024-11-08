@@ -130,6 +130,24 @@
   </entry>
   
   <entry>
+    <title>从netty组件的传输讲讲io</title>
+    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
+    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
+    <published>2019-10-31T01:01:02.000Z</published>
+    <updated>2024-10-10T01:18:36.447Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
+    
+    
+      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
+    
+  </entry>
+  
+  <entry>
     <title>谈谈各种流程引擎、规则引擎</title>
     <link href="https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/"/>
     <id>https://wangxin.io/2019/10/31/framework/flow_engine_rule_engine/</id>
@@ -146,24 +164,6 @@
 &lt;p&gt;商业产品：&lt;br&gt;   普元：bps eos&lt;/p&gt;
 
       
-    
-    </summary>
-    
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
-    
-    
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从netty组件的传输讲讲io</title>
-    <link href="https://wangxin.io/2019/10/31/io/netty_data_transport/"/>
-    <id>https://wangxin.io/2019/10/31/io/netty_data_transport/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2024-10-10T01:18:36.447Z</updated>
-    
-    <summary type="html">
     
     </summary>
     

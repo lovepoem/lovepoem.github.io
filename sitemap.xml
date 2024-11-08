@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangxin.io/ByteDanceVerify.html</loc>
+    
+    <lastmod>2024-11-08T05:17:17.127Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2024/11/08/aigc/docker_chatgrp_claude_apen_api_macos_config/</loc>
     
     <lastmod>2024-11-08T02:39:51.846Z</lastmod>
@@ -107,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
+    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/2018/06/05/opensource/apache-committer/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
@@ -170,6 +177,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/2019/10/31/io/netty_data_transport/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
@@ -178,13 +192,6 @@
   
   <url>
     <loc>https://wangxin.io/2019/07/22/iread/read_subscribed/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/2019/07/23/git/some_github_config/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -233,13 +240,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.445Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/2019/10/31/distributed/distributed_transaction_seata/</loc>
+    <loc>https://wangxin.io/2019/10/31/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
@@ -255,6 +255,13 @@
   
   <url>
     <loc>https://wangxin.io/2018/10/05/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.445Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/2019/10/31/distributed/distributed_transaction_seata/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
