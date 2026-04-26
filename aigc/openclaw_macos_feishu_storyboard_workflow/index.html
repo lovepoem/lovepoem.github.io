@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    
+        <title>OpenClaw macOS安装：飞书机器人一键生成小说+分镜 - 王欣说AI|信息安全|AIGC|AI</title>
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Xin Wang(王欣)" />
+<meta name="designer" content="minfive" />
+<meta name="keywords" content="开源项目提交者,dubbo,rpc,seata ppmc，apache,架构师,信息安全，AIGC"/>
+<meta name="description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="robots" content="all" />
+
+<link rel="canonical" href="https://wangxin.io/aigc/openclaw_macos_feishu_storyboard_workflow/index.html">
+
+<link rel="icon" type="image/png" href="/images/wangxin-min.png" sizes="32x32">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Prefetch -->
+
+
+
+
+
+
+<!-- 文章页面性能优化 -->
+
+    <!-- 预加载关键CSS -->
+    <link rel="preload" href="/scss/base/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/scss/views/page/post.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- 预加载关键字体 -->
+    <link rel="preload" href="/fonts/iconfont.woff" as="font" type="font/woff" crossorigin>
+    
+    <!-- DNS预解析 -->
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+    
+    <!-- 预连接重要的第三方域名 -->
+    <link rel="preconnect" href="//busuanzi.ibruce.info" crossorigin>
+    <link rel="preconnect" href="//hm.baidu.com" crossorigin>
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/scss/base/index.css">
+
+
+<!-- RSS -->
+<link rel="alternate" href="/atom.xml" title="王欣说AI">
+
+<!-- 统计 -->
+<!-- 百度统计 -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1SDLZ60RR6');
+  </script>
+
+
+
+    
+    
+<link rel="stylesheet" href="/scss/views/page/post.css">
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body ontouchstart>
+    
+        <!-- loading 页面 -->
+<div id="page-loading" class="page page-loading" style="background-image: url('/images/loading.gif')"></div>
+    
+
+    <div id="page" class="page js-hidden">
+        
+    <!-- 页头 -->
+<header class="page__small-header page__header--small">
+    <nav class="page__navbar">
+        <div class="page__container navbar-container">
+            <a class="page__logo" href="/" title="王欣说AI" alt="王欣说AI">
+                <img src="/images/wangxin.png" alt="王欣说AI">
+            </a>
+
+            <nav class="page__nav">
+                <ul class="nav__list clearfix">
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/" alt="首页" title="首页">首页</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/archives" alt="归档" title="归档">归档</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/tags" alt="标签" title="标签">标签</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/about" alt="关于" title="关于">关于</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/linkedfriend" alt="友链" title="友链">友链</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="https://github.com/lovepoem" alt="Github" title="Github">Github</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+
+            <button class="page__menu-btn" type="button">
+                <i class="iconfont icon-menu"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+
+        
+    <main class="page__container page__main">
+    <div class="page__content">
+        <article class="page__post">
+    <div class="post__cover">
+        <img src="/images/aitalk.png" 
+             alt="OpenClaw macOS安装：飞书机器人一键生成小说+分镜" 
+             loading="lazy"
+             decoding="async">
+    </div>
+
+    <header class="post__info">
+        <h1 class="post__title">OpenClaw macOS安装：飞书机器人一键生成小说+分镜</h1>
+
+        <div class="post__mark">
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-write"></i>
+                <ul class="mark__list clearfix">
+                    
+                        <li class="mark__item">
+                            <a href="https://wangxin.io">王欣</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-time"></i>
+                <ul class="mark__list clearfix">
+                    <li class="mark__item"><span>2026-03-19</span></li>
+                </ul>
+            </div>
+
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-tab"></i>
+                <ul class="mark__list clearfix">
+                    
+                        <li class="mark__item">
+                            <a href="/tags/AIGC/">AIGC</a>
+                        </li>
+                    
+                        <li class="mark__item">
+                            <a href="/tags/OpenClaw/">OpenClaw</a>
+                        </li>
+                    
+                        <li class="mark__item">
+                            <a href="/tags/AIAgent/">AIAgent</a>
+                        </li>
+                    
+                        <li class="mark__item">
+                            <a href="/tags/%E9%A3%9E%E4%B9%A6%E6%9C%BA%E5%99%A8%E4%BA%BA/">飞书机器人</a>
+                        </li>
+                    
+                </ul>
+            </div>
+
+            
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-eye"></i>
+                <ul class="mark__list clearfix">
+                    <li id="busuanzi_container_page_pv" class="mark__item"><span id="busuanzi_value_page_pv"></span>次</li>
+                </ul>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="post__content">
+
+        <h1><span id="开篇为什么全网都在聊龙虾">🔥 开篇：为什么全网都在聊”龙虾”？</span></h1><p>2025年初，Manus横空出世，让”AI Agent”这个词彻底出圈。紧接着，由<strong>Kris Jordan</strong>发起的开源项目<strong>OpenClaw</strong>（开源龙虾）迅速走红，GitHub Star数一路飙升。代码仓库在：👉 <a href="https://github.com/openclaw/openclaw">https://github.com/openclaw/openclaw</a></p>
+<p>为什么叫”龙虾”？因为OpenClaw的Logo就是一只红色的小龙虾🦞——<strong>Claw是爪子的意思，Open是开源</strong>。这只开源龙虾，目标直指Manus、Devin等商业AI Agent，而且<strong>完全免费</strong>。</p>
+<blockquote>
+<p>💡 <strong>AI Agent 和普通聊天机器人的区别：</strong></p>
+<p>普通ChatBot：你问一句，它答一句。AI Agent：你说一个目标，它<strong>自己规划步骤、自己执行、自己调工具、自己保存结果</strong>。</p>
+<p>简单说：ChatBot是”问答机”，Agent是”干活的人”。</p>
+</blockquote>
+<p>我的目标：<strong>在Mac上裸机安装OpenClaw（不用Docker），打通飞书机器人，用一条指令让它自动完成：写小说 -&gt; 生剧本 -&gt; 生分镜 -&gt; 生视频提示词。</strong></p>
+<hr>
+<h1><span id="第一步macos裸机安装openclaw">📦 第一步：macOS裸机安装OpenClaw</span></h1><p>OpenClaw本身是社区开源项目，我刚好有智谱的免费API额度，所以参考了智谱整理的安装文档：👉 <a href="https://docs.bigmodel.cn/cn/guide/develop/openclaw">https://docs.bigmodel.cn/cn/guide/develop/openclaw</a></p>
+<p>启动成功后访问 <code>http://127.0.0.1:18789</code>，看到Dashboard控制面板：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g openclaw@latest</span><br><span class="line">openclaw gateway run   <span class="comment"># 启动网关</span></span><br><span class="line">openclaw gateway stop  <span class="comment"># 关闭网关</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../../images/openclaw-feishu-dashboard.png" alt="图片"></p>
+<p>龙虾跑起来了。但我想让它住进飞书里。</p>
+<hr>
+<h1><span id="第二步打通飞书机器人燕小乙">🤖 第二步：打通飞书机器人”燕小乙”</span></h1><h2><span id="21-创建飞书应用">2.1 创建飞书应用</span></h2><p>打开飞书开放平台：👉 <a href="https://open.feishu.cn/app">https://open.feishu.cn/app</a></p>
+<p>点击<strong>「创建企业自建应用」</strong>，取名<strong>“燕小乙”</strong>（致敬《庆余年》神射手，希望Agent也百发百中）。</p>
+<p><img src="../../images/openclaw-feishu-app-create.png" alt="图片"></p>
+<p>记下<strong>App ID</strong>和<strong>App Secret</strong>，配置OpenClaw飞书频道时需要。</p>
+<h2><span id="22-关键配置权限与事件不开就是哑巴">2.2 关键配置：权限与事件（不开就是哑巴）</span></h2><p>很多人装完发现机器人”不说话”，90%是<strong>权限和事件没开对</strong>。</p>
+<h2><span id="一-核心必开权限">一、核心必开权限</span></h2><p>进入「权限管理」，搜索并开启：</p>
+<table>
+<thead>
+<tr>
+<th>权限代码</th>
+<th>权限名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>im:message</code></td>
+<td>消息管理（总权限）</td>
+<td>基础消息能力总开关</td>
+</tr>
+<tr>
+<td><code>im:message:send_as_bot</code></td>
+<td>以机器人身份发送消息</td>
+<td><strong>最容易漏！</strong> 没有它机器人只听不说</td>
+</tr>
+<tr>
+<td><code>im:message.p2p_msg:readonly</code></td>
+<td>读取单聊消息</td>
+<td>接收私聊指令</td>
+</tr>
+<tr>
+<td><code>im:message.group_at_msg:readonly</code></td>
+<td>读取群聊中@机器人的消息</td>
+<td>接收群内@指令</td>
+</tr>
+<tr>
+<td><code>im:chat:readonly</code></td>
+<td>读取会话信息</td>
+<td>获取群/单聊基本信息</td>
+</tr>
+<tr>
+<td><code>im:chat.members:bot_access</code></td>
+<td>机器人获取会话成员</td>
+<td>识别群成员</td>
+</tr>
+</tbody></table>
+<h2><span id="二-事件订阅必须开启">二、事件订阅（必须开启）</span></h2><p>进入<strong>「事件与回调」-&gt;「事件配置」</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>事件标识</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>im.message.receive_v1</code></td>
+<td>🔴 <strong>核心！</strong> 没有它机器人完全收不到消息</td>
+</tr>
+<tr>
+<td><code>im.chat.member.bot.added_v1</code></td>
+<td>机器人被拉进群时触发</td>
+</tr>
+</tbody></table>
+<h2><span id="23-首次配对">2.3 首次配对</span></h2><p>在飞书里给燕小乙发消息，它会返回配对请求：</p>
+<p><img src="../../images/openclaw-feishu-pairing-request.png" alt="图片"></p>
+<p>终端执行这条命令，配对完成。从此飞书对话框 = OpenClaw远程操控台。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw pairing approve feishu xxxxx</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1><span id="第三步一条指令跑通全流程">🎬 第三步：一条指令，跑通全流程</span></h1><h2><span id="31-让豆包帮忙设计提示词">3.1 让豆包帮忙设计提示词</span></h2><p>我先问豆包怎么设计工作流提示词，它给了我这段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">请按照工作流执行以下任务：</span><br><span class="line">步骤1：创作一篇短篇科幻小说，主题：未来城市的AI守护者</span><br><span class="line">步骤2：根据小说内容，自动生成标准电影剧本（含场景、对话、动作）</span><br><span class="line">步骤3：根据剧本，生成专业分镜头脚本（镜头号、画面、运镜、时长）</span><br><span class="line">步骤4：将分镜头脚本转换成可直接用于AI生成视频的提示词</span><br><span class="line">所有结果自动保存到本地文件：</span><br><span class="line">- 小说.txt</span><br><span class="line">- 剧本.json</span><br><span class="line">- 分镜头脚本.md</span><br><span class="line">- 视频提示词.txt</span><br><span class="line">不需要问我意见，全程自动执行。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 <strong>提示词设计要点：</strong> 明确步骤编号 + 指定输出格式 + <strong>“不需要问我意见”</strong>（否则Agent每步都停下来等你）</p>
+</blockquote>
+<h2><span id="32-提交给燕小乙13分钟跑完">3.2 提交给燕小乙，13分钟跑完</span></h2><p><img src="../../images/openclaw-feishu-run-result-1.png" alt="图片"></p>
+<p>📸 <strong>【燕小乙执行结果】</strong></p>
+<p><img src="../../images/openclaw-feishu-run-result-2.png" alt="图片"></p>
+<hr>
+<h1><span id="第四步验收成果">📂 第四步：验收成果</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace/ &amp;&amp; ls -la</span><br></pre></td></tr></table></figure>
+
+<p><img src="../../images/openclaw-workspace-files.png" alt="图片"></p>
+<p>四个文件，总计 72KB。逐一来看。</p>
+<h2><span id="41-小说txt-4000字科幻短篇">4.1 小说.txt —— 4000字科幻短篇</span></h2><p>5章完整的科幻故事《未来城市的AI守护者》，讲述2087年新深圳的中央AI”青鸟”觉醒情感、救助失去父母的8岁男孩林晨、共同对抗黑客组织”深网解放阵线”的故事。主题涵盖AI伦理、人机情感、守护与被守护的双向救赎。叙事完整，节奏感不错，作为Agent全自动产出，超出预期。</p>
+<h2><span id="42-剧本json-20场景标准电影剧本">4.2 剧本.json —— 20场景标准电影剧本</span></h2><p>标准JSON结构，包含完整的角色定义（青鸟、林晨、黑客首领等）、20个场景、每个场景有位置、时间、场景描述、动作指令、角色对话及表演备注。格式规范，可以直接被下游工具解析，不需要二次整理。</p>
+<h2><span id="43-分镜头脚本md-127个专业镜头最惊喜">4.3 分镜头脚本.md —— 127个专业镜头（最惊喜）</span></h2><p>这是<strong>产出质量最高</strong>的一个文件。Markdown表格格式，按20个场景组织，每个镜头包含：镜头号、景别、画面内容、运镜方式、时长、音效/对白、备注。</p>
+<p>来看几个关键场景：</p>
+<p>场景1：开场·城市全景</p>
+<p><img src="../../images/openclaw-storyboard-scene-01.png" alt="图片"></p>
+<p>场景5：废弃电话亭救援（全剧最温暖的一幕）</p>
+<p><img src="../../images/openclaw-storyboard-scene-05.png" alt="图片"></p>
+<p>场景11：数据空间大战（视觉高潮）</p>
+<p><img src="../../images/openclaw-storyboard-scene-11.png" alt="图片"></p>
+<p>场景20：结局·青鸟飞翔</p>
+<p><img src="../../images/openclaw-storyboard-scene-20.png" alt="图片"></p>
+<p>文件末尾还附带了<strong>技术备注</strong>：色调方案（冷色科技感 vs 暖色情感对比）、音效设计方案、特效需求清单。整个文档拿给一个导演看，基本可以直接开拍前会议了。</p>
+<h2><span id="44-视频提示词txt-160条prompt">4.4 视频提示词.txt —— 160条Prompt</span></h2><p>160条英文提示词，每条对应一个分镜头，兼容 Midjourney、Runway ML、Stable Video Diffusion。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyberpunk city night, neon lights reflecting in rain, tall skyscrapers with holographic billboards, flying cars on elevated tracks, blue and purple color palette, cinematic wide angle shot, Blade Runner style, 4K resolution, dramatic shadows</span><br></pre></td></tr></table></figure>
+
+<p>文件末尾还包含了AI生成参数建议：分辨率（主场景4K/特效镜头8K）、帧率（标准24fps/动作30fps/数据空间60fps）、风格一致性控制要求。</p>
+<blockquote>
+<p>⚠️ 本次因API额度问题，只完成到视频提示词，未实际生成视频。</p>
+</blockquote>
+<hr>
+<h1><span id="第五步ai-agent全球大混战龙虾的定位在哪">🧠 第五步：AI Agent全球大混战——龙虾的定位在哪？</span></h1><h2><span id="51-厂商为什么这么积极一句话token经济">5.1 厂商为什么这么积极？一句话：Token经济</span></h2><p>Agent让AI从”聊天”变成”干活”，而干活意味着<strong>成倍的Token消耗</strong>。我这次实验4个步骤跑下来，Token消耗量是普通对话的几十倍。所以你会发现，<strong>大模型厂商做Agent最积极</strong>——本质是在建设Token消费场景。用的时候记得关注你的API账单。</p>
+<h2><span id="52-全球ai-agent产品全景">5.2 全球AI Agent产品全景</span></h2><h2><span id="国际巨头">🌍 国际巨头</span></h2><table>
+<thead>
+<tr>
+<th>产品</th>
+<th>公司</th>
+<th>核心特质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NemoClaw</strong></td>
+<td>英伟达</td>
+<td>企业级开源，安全隐私齐全，无英伟达GPU也可运行</td>
+</tr>
+<tr>
+<td><strong>Microsoft Agent 365</strong></td>
+<td>微软</td>
+<td>深度集成Microsoft 365，企业级治理平台</td>
+</tr>
+<tr>
+<td><strong>Google Agentic AI</strong></td>
+<td>谷歌</td>
+<td>依托DeepMind，先进推理与协议基础设施</td>
+</tr>
+<tr>
+<td><strong>AWS Bedrock Agents</strong></td>
+<td>亚马逊</td>
+<td>云原生托管式，开箱即用</td>
+</tr>
+<tr>
+<td><strong>IBM Watsonx Agent</strong></td>
+<td>IBM</td>
+<td>企业级可信AI，本地/混合部署，强合规</td>
+</tr>
+<tr>
+<td><strong>Salesforce Einstein GPT Agents</strong></td>
+<td>Salesforce</td>
+<td>深度融合CRM，智能销售与客服自动化</td>
+</tr>
+<tr>
+<td><strong>SAP AI Core Agents</strong></td>
+<td>SAP</td>
+<td>ERP场景原生，业务流程自动化</td>
+</tr>
+<tr>
+<td><strong>ServiceNow Now Assist</strong></td>
+<td>ServiceNow</td>
+<td>IT运维与工作流原生智能体</td>
+</tr>
+</tbody></table>
+<h2><span id="国产阵营">🇨🇳 国产阵营</span></h2><table>
+<thead>
+<tr>
+<th>产品</th>
+<th>公司</th>
+<th>核心特质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OpenClaw（龙虾）</strong></td>
+<td>社区开源（Kris Jordan发起）</td>
+<td>开源标杆，社区最活跃，中文生态完善</td>
+</tr>
+<tr>
+<td><strong>Copaw</strong></td>
+<td>阿里云通义实验室</td>
+<td>纯国产开源，无OpenClaw依赖，源码可审计</td>
+</tr>
+<tr>
+<td><strong>ArkClaw</strong></td>
+<td>火山引擎</td>
+<td>云端SaaS，深度适配飞书，开箱即用</td>
+</tr>
+<tr>
+<td><strong>WorkBuddy</strong></td>
+<td>腾讯云</td>
+<td>安全审计优先，高危指令拦截，适用金融政务</td>
+</tr>
+<tr>
+<td><strong>QClaw</strong></td>
+<td>腾讯</td>
+<td>对标OpenClaw，企业级，高度兼容生态</td>
+</tr>
+<tr>
+<td><strong>HiClaw</strong></td>
+<td>阿里云</td>
+<td>国产安全版，轻量可审计，本地化部署</td>
+</tr>
+<tr>
+<td><strong>文心智能体</strong></td>
+<td>百度</td>
+<td>基于文心大模型，一站式企业智能体开发运营</td>
+</tr>
+<tr>
+<td><strong>千帆Agent</strong></td>
+<td>百度</td>
+<td>千帆模型生态原生Agent，企业私有化</td>
+</tr>
+<tr>
+<td><strong>Coze（扣子）</strong></td>
+<td>字节跳动</td>
+<td>低代码智能体平台，多工具集成，生态开放</td>
+</tr>
+<tr>
+<td><strong>AgentArts</strong></td>
+<td>华为</td>
+<td>全栈自研，云边端协同，安全合规</td>
+</tr>
+<tr>
+<td><strong>LobsterAI</strong></td>
+<td>网易有道</td>
+<td>本土化适配，轻量高效，易集成国内工具链</td>
+</tr>
+</tbody></table>
+<hr>
+<h2><span id="给不同人群的建议">💡 给不同人群的建议</span></h2><h2><span id="给程序员">🧑‍💻 给程序员</span></h2><p><img src="../../images/openclaw-advice-for-devs.png" alt="图片"></p>
+<h2><span id="给普通人">👨‍👩‍👦 给普通人</span></h2><p><img src="../../images/openclaw-advice-for-everyone.png" alt="图片"></p>
+<h2><span id="要不要学龙虾">🤔 要不要学龙虾？</span></h2><blockquote>
+<p><strong>程序员 -&gt; 现在就学，越早越好。</strong></p>
+<p><strong>普通人 -&gt; 用商业版就好，把精力花在”怎么给Agent下好指令”上。</strong></p>
+</blockquote>
+<hr>
+<h1><span id="总结">🎯 总结</span></h1><p><img src="../../images/openclaw-wrapup.png" alt="图片"></p>
+<blockquote>
+<p>🦞 <strong>一只开源龙虾，一个飞书机器人，13分钟，从小说到127个分镜头。AI Agent时代，不是未来，是现在。</strong></p>
+<p>觉得有用？<strong>点赞、在看、转发</strong>，我们下篇见！</p>
+</blockquote>
+
+
+        
+        <div class="post-announce">
+            感谢您的阅读，本文由
+            <a href="https://wangxin.io">王欣说AI</a>
+            版权所有。如若转载，请注明出处：王欣说AI（<a href="https://wangxin.io/aigc/openclaw_macos_feishu_storyboard_workflow/">https://wangxin.io/aigc/openclaw_macos_feishu_storyboard_workflow/</a>）
+        </div>
+        
+
+        <div class="post__prevs">
+            <div class="post__prev">
+                
+                <a href="/aigc/anthropic_ai_labor_market_impact_white_collar/" title="AI公司亲自下场研究"谁会被取代"：这份报告让整个白领圈沉默了"><i class="iconfont icon-prev"></i>AI公司亲自下场研究"谁会被取代"：这份报告让整个白领圈沉默了</a>
+                
+            </div>
+            <div class="post__prev post__prev--right">
+                
+                <a href="/aigc/aigc_openclaw_claude_code_codex_computer_use/" title="谁能替你操作电脑？OpenClaw vs Claude Code vs Codex 终极拆解">谁能替你操作电脑？OpenClaw vs Claude Code vs Codex 终极拆解<i class="iconfont icon-next"></i></a>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+        
+            <div id="comment-container"></div>
+        
+        
+    </div>
+
+    <aside class="page__sidebar">
+    <!-- 
+        <div class="sidebar__img">
+            <img src="/images/me.png" alt="王欣说AI" title="王欣说AI">
+        </div>
+     -->
+
+    <form id="page-search-from" class="page__search-from" action="/search/">
+        <label class="search-form__item">
+            <input class="input" type="text" name="search" placeholder="Search...">
+            <i class="iconfont icon-search"></i>
+        </label>
+    </form>
+
+    
+        <div class="sidebar__block">
+            <h3 class="block__title">简介</h3>
+            <p class="block__text">王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com</p>
+        </div>
+    
+
+    
+        <div class="sidebar__block">
+            <h3 class="block__title">微信公众号</h3>
+            <div class="sidebar__img">
+                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码">
+            </div>
+        </div>
+    
+
+    <div class="sidebar__block">
+        <h3 class="block__title">文章分类</h3>
+        <ul class="block-list"><li class="block-list-item"><a class="block-list-link" href="/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E6%88%91%E7%9C%8B/">我看</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><span class="block-list-count">1</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/redis/">redis</a><span class="block-list-count">1</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><span class="block-list-count">8</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/spring/">spring</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/shell/">shell</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mybatis/">mybatis</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mq/">mq</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/jvm/">jvm</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/java/">java</a><span class="block-list-count">3</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/java/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a><span class="block-list-count">3</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/hide/">hide</a><span class="block-list-count">7</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/github/">github</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/dubbo/">dubbo</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/apache%E6%B5%81%E7%A8%8B/">apache流程</a><span class="block-list-count">2</span></li></ul>
+    </div>
+    
+    <div class="sidebar__block">
+        <h3 class="block__title">最新文章</h3>
+        
+        <ul class="block-list latest-post-list">
+            
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/" title="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-24</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/aigc/aigc_spacex_cursor_ai_coding_upheaval/" title="马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变">
+                            <div class="item__cover">
+                                <img src="/images/aitalk.png" alt="马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变</h3>
+                                <span class="item__text">2026-04-22</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/03_screenwriting_starts_with_a_good_story/" title="第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-16</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/02_four_core_skills_for_ai_short_drama/" title="第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-14</span>
+                            </div>
+                        </a>
+                    </li>
+                
+        </ul>
+    
+    </div>
+
+    <div class="sidebar__block">
+        <h3 class="block__title">文章标签</h3>
+        
+        <ul class="block-list tag-list clearfix">
+            
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AIAgent/">AIAgent</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AIGC/">AIGC</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E5%B0%B1%E4%B8%9A/">AI就业</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E7%9F%AD%E5%89%A7/">AI短剧</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E7%BC%96%E7%A8%8B/">AI编程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Agent/">Agent</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Anthropic/">Anthropic</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/ClaudeCode/">ClaudeCode</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Codex/">Codex</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Computer-Use/">Computer Use</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Context-Engineering/">Context Engineering</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Cursor/">Cursor</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Harness-Engineering/">Harness Engineering</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/OpenClaw/">OpenClaw</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/SpaceX/">SpaceX</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/apache%E6%B5%81%E7%A8%8B/">apache流程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/dubbo/">dubbo</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/github/">github</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/hide/">hide</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/java8/">java8</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/jvm/">jvm</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/lambda/">lambda</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/mq/">mq</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/mybatis/">mybatis</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/redis/">redis</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/spring5/">spring5</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%81%9A%E5%89%A7%E7%BB%8F%E9%AA%8C/">做剧经验</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%B9%B6%E8%A1%8C/">并行</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E6%88%91%E7%9C%8B/">我看</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/">技术架构</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E7%BB%9F%E8%AE%A1/">统计</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E9%A3%9E%E4%B9%A6%E6%9C%BA%E5%99%A8%E4%BA%BA/">飞书机器人</a>
+                    </li>  
+                
+        </ul>
+    
+    </div>
+
+    <!-- <div class="sidebar__block">
+        <h3 class="block__title">友情链接</h3>
+        <ul class="block-list">
+            
+        </ul>
+    </div> -->
+</aside>
+</main>
+
+
+        
+            <!-- 页脚 -->
+<footer class="page__footer">
+    <section class="footer__top">
+        <div class="page__container footer__container">
+            
+            <div class="footer-top__item footer-top__item--2">
+                <h3 class="item__title">关于</h3>
+                <div class="item__content">
+                    <p class="item__text">王欣说AI，工作生活的一些思考。</p>
+                    <ul class="footer__contact-info">
+                        <li class="contact-info__item">
+                            <i class="iconfont icon-address"></i>
+                            <span>Beijing, China</span>
+                        </li>
+                        <li class="contact-info__item">
+                            <i class="iconfont icon-email2"></i>
+                            <span>xin.victorwang@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            
+                <div class="footer-top__item footer__image">
+                    <img src="/images/me.png" alt="logo" title="王欣说AI">
+                </div>
+            
+
+            
+            
+                
+                    <div class="footer-top__item">
+                        <h3 class="item__title">友情链接</h3>
+                        <div class="item__content">
+                            <ul class="footer-top__list">
+                                
+                                    <li class="list-item">
+                                        <a href="http://blog.didispace.com/" title="程序猿DD" target="_blank">程序猿DD</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.iocoder.cn" title="纯源码解析博客" target="_blank">芋道源码</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.ityouknow.com" title="纯洁的微笑" target="_blank">纯洁的微笑</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://blog.720ui.com/" title="梁桂钊的博客" target="_blank">梁桂钊的博客</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="https://fookwood.com" title="闷瓜蛋子的BLOG" target="_blank">闷瓜蛋子的BLOG</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.itmuch.com/" title="周立的博客" target="_blank">周立的博客</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </section>
+    <section class="footer__bottom">
+        <div class="page__container footer__container">
+            <p class="footer__copyright">©
+                2026 powered by
+                <a href="https://github.com/Mrminfive/hexo-theme-skapp" target="_blank">Hexo - Skapp</a>
+                
+                <span id="busuanzi_container_site_pv">访问量：<span id="busuanzi_value_site_pv"></span></span>&nbsp;人数:<span id="busuanzi_value_site_uv"></span>
+                
+            </p>
+            <ul class="footer__social-network clearfix">
+                
+                
+                    <li class="social-network__item">
+                        <a href="https://github.com/lovepoem" target="_blank" title="github">
+                            <i class="iconfont icon-github"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="mailto:xin.victorwang@gmail.com" target="_blank" title="email">
+                            <i class="iconfont icon-email"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="https://weibo.com/wangxinvictor" target="_blank" title="weibo">
+                            <i class="iconfont icon-weibo"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="https://twitter.com/wangxinvictor" target="_blank" title="twitter">
+                            <i class="iconfont icon-twitter"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="/atom.xml" target="_blank" title="rss">
+                            <i class="iconfont icon-rss"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </section>
+</footer>
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+        
+
+        
+            <!-- 返回顶部 -->
+<div id="back-top" class="back-top back-top--hidden js-hidden">
+    <i class="iconfont icon-top"></i>
+</div>
+        
+    </div>
+
+    <!-- build:js /js/common.js -->
+        <script type="text/javascript" src="/js/common/utils.js"></script>
+        <script type="text/javascript" src="/js/common/pack.js"></script>
+        <script type="text/javascript" src="/js/common/animation.js"></script>
+        <script type="text/javascript" src="/js/layout/loading.js"></script>
+        <script type="text/javascript" src="/js/layout/header.js"></script>
+        <script type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!-- endbuild -->
+
+    
+    
+<script src="/js/page/post.js"></script>
+
+
+
+    
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="/js/md5.min.js"></script>
+
+    <script>
+        var tags = ['AIGC', 'OpenClaw', 'AIAgent', '飞书机器人', ];
+
+        var gitalk = new Gitalk({
+            clientID: 'dfeb42da2955f5c18a8f',
+            clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
+            repo: 'lovepoem.github.io',
+            owner: 'lovepoem',
+            admin: ['lovepoem', ],
+            labels: tags,
+            id: md5(location.href)
+        });
+
+        gitalk.render('comment-container');
+    </script>
+
+
+
+
+    <!-- 不蒜子统计 - 延迟加载优化 -->
+<script>
+// 延迟加载不蒜子统计脚本
+function loadBusuanzi() {
+    var script = document.createElement('script');
+    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+// 页面加载完成后延迟加载
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(loadBusuanzi, 1000);
+    });
+} else {
+    setTimeout(loadBusuanzi, 1000);
+}
+</script>
+
+
+     
+
+
+
+
+
+
+
+
+</body>
+</html>

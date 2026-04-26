@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wangxin.io/java/java_lambda_syntax/</loc>
+    <loc>https://wangxin.io/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/makeshortdrama/03_screenwriting_starts_with_a_good_story/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/makeshortdrama/02_four_core_skills_for_ai_short_drama/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/makeshortdrama/01_why_2026_is_the_best_timing/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/aigc_spacex_cursor_ai_coding_upheaval/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/aigc_openclaw_claude_code_codex_computer_use/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/aigc_harness_engineering_agent_winning_point/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/aigc_claude_code_architecture_analysis/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/aigc/openclaw_macos_feishu_storyboard_workflow/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/</loc>
-    <lastmod>2025-04-06</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/performance/how_to_location_outof_memory/</loc>
-    <lastmod>2024-10-10</lastmod>
+    <loc>https://wangxin.io/aigc/anthropic_ai_labor_market_impact_white_collar/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/java/java_lambda_syntax/</loc>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://wangxin.io/opensource/apache-roles/</loc>
@@ -21,7 +61,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/mq/rocketmq-dead-message/</loc>
+    <loc>https://wangxin.io/performance/how_to_location_outof_memory/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -29,11 +69,15 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/jvm/jvm_memory_change_history/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/jvm/jvm_memory_change_history/</loc>
+    <loc>https://wangxin.io/mq/rocketmq-dead-message/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -57,6 +101,10 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
+    <loc>https://wangxin.io/framework/mybatis-process/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/framework/spring5_new_features/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
@@ -77,11 +125,11 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/framework/mybatis-process/</loc>
+    <loc>https://wangxin.io/dubbo/dubbo_server_side_thread_pool/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/dubbo/dubbo_server_side_thread_pool/</loc>
+    <loc>https://wangxin.io/dubbo/speech-in-dubbo-meetup-beijing/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -93,10 +141,6 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/dubbo/speech-in-dubbo-meetup-beijing/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
     <loc>https://wangxin.io/framework/flow_engine_rule_engine/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
@@ -105,7 +149,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -113,7 +157,7 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
 </urlset> 

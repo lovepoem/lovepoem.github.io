@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    
+        <title>第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？ - 王欣说AI|信息安全|AIGC|AI</title>
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Xin Wang(王欣)" />
+<meta name="designer" content="minfive" />
+<meta name="keywords" content="开源项目提交者,dubbo,rpc,seata ppmc，apache,架构师,信息安全，AIGC"/>
+<meta name="description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="robots" content="all" />
+
+<link rel="canonical" href="https://wangxin.io/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/index.html">
+
+<link rel="icon" type="image/png" href="/images/wangxin-min.png" sizes="32x32">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Prefetch -->
+
+
+
+
+
+
+<!-- 文章页面性能优化 -->
+
+    <!-- 预加载关键CSS -->
+    <link rel="preload" href="/scss/base/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/scss/views/page/post.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- 预加载关键字体 -->
+    <link rel="preload" href="/fonts/iconfont.woff" as="font" type="font/woff" crossorigin>
+    
+    <!-- DNS预解析 -->
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+    
+    <!-- 预连接重要的第三方域名 -->
+    <link rel="preconnect" href="//busuanzi.ibruce.info" crossorigin>
+    <link rel="preconnect" href="//hm.baidu.com" crossorigin>
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/scss/base/index.css">
+
+
+<!-- RSS -->
+<link rel="alternate" href="/atom.xml" title="王欣说AI">
+
+<!-- 统计 -->
+<!-- 百度统计 -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1SDLZ60RR6');
+  </script>
+
+
+
+    
+    
+<link rel="stylesheet" href="/scss/views/page/post.css">
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body ontouchstart>
+    
+        <!-- loading 页面 -->
+<div id="page-loading" class="page page-loading" style="background-image: url('/images/loading.gif')"></div>
+    
+
+    <div id="page" class="page js-hidden">
+        
+    <!-- 页头 -->
+<header class="page__small-header page__header--small">
+    <nav class="page__navbar">
+        <div class="page__container navbar-container">
+            <a class="page__logo" href="/" title="王欣说AI" alt="王欣说AI">
+                <img src="/images/wangxin.png" alt="王欣说AI">
+            </a>
+
+            <nav class="page__nav">
+                <ul class="nav__list clearfix">
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/" alt="首页" title="首页">首页</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/archives" alt="归档" title="归档">归档</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/tags" alt="标签" title="标签">标签</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/about" alt="关于" title="关于">关于</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="/linkedfriend" alt="友链" title="友链">友链</a>
+                        </li>
+                    
+                        
+                        <li class="nav__item">
+                            <a href="https://github.com/lovepoem" alt="Github" title="Github">Github</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+
+            <button class="page__menu-btn" type="button">
+                <i class="iconfont icon-menu"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+
+        
+    <main class="page__container page__main">
+    <div class="page__content">
+        <article class="page__post">
+    <div class="post__cover">
+        <img src="/images/makedrama.png" 
+             alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" 
+             loading="lazy"
+             decoding="async">
+    </div>
+
+    <header class="post__info">
+        <h1 class="post__title">第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</h1>
+
+        <div class="post__mark">
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-write"></i>
+                <ul class="mark__list clearfix">
+                    
+                        <li class="mark__item">
+                            <a href="https://wangxin.io">王欣</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-time"></i>
+                <ul class="mark__list clearfix">
+                    <li class="mark__item"><span>2026-04-24</span></li>
+                </ul>
+            </div>
+
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-tab"></i>
+                <ul class="mark__list clearfix">
+                    
+                        <li class="mark__item">
+                            <a href="/tags/AI%E7%9F%AD%E5%89%A7/">AI短剧</a>
+                        </li>
+                    
+                        <li class="mark__item">
+                            <a href="/tags/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a>
+                        </li>
+                    
+                </ul>
+            </div>
+
+            
+            <div class="mark__block">
+                <i class="mark__icon iconfont icon-eye"></i>
+                <ul class="mark__list clearfix">
+                    <li id="busuanzi_container_page_pv" class="mark__item"><span id="busuanzi_value_page_pv"></span>次</li>
+                </ul>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="post__content">
+
+        <h1><span id="一-核心概念先把行话搞清楚">一、核心概念：先把”行话”搞清楚</span></h1><p>在正式进入分镜设计之前，你需要理解几个影视制作的基础概念。这些概念在传统影视行业里是常识，但对于第一次接触视频制作的人来说，搞清楚它们的含义以及在AI短剧中的具体操作方式非常重要。</p>
+<h1><span id="1-剧本是一切的蓝图">1. 剧本是一切的蓝图</span></h1><p>上一篇已经详细讲过剧本的写法，这里只强调一点：剧本的质量决定了后续所有工作的上限。AI生成的画面再精美，如果剧本本身逻辑不通、节奏拖沓、角色扁平，最终呈现出来的就是”精美的垃圾”。在进入导演和制作环节之前，请确保你的剧本已经通过了上一篇提到的五项审核（钩子、人设一致性、冲突强度、水戏、节奏），否则不要急着往下走。</p>
+<h1><span id="2-场景故事发生的空间">2. 场景：故事发生的空间</span></h1><p>场景就是故事发生的地点和环境。在AI短剧中，场景的数量直接决定你的工作量——每一个新场景都意味着你需要生成一组新的场景参考图，并在后续每个涉及该场景的镜头中保持环境的一致性。</p>
+<p>实操建议是：一部30集的短剧，核心场景控制在5到10个以内。比如一个古风穿越题材可能需要将军府庭院、现代都市街道、咖啡厅、男主的写字楼办公室、女主的出租屋、反派的豪宅客厅这六七个场景。每个场景在正式制作前都需要生成一张”场景参考图”，后续所有发生在这个场景中的镜头都以这张参考图为基准来生成，确保环境风格统一。</p>
+<h1><span id="3-角色ai短剧最大的挑战在这里">3. 角色：AI短剧最大的挑战在这里</span></h1><p>角色就是你故事中的人物。在传统影视中，演员的脸天然是一致的；但在AI短剧中，每一次画面生成都是AI”重新画”一张图，角色的五官、体型、发型、服装都可能出现偏差。这就是所谓的”角色一致性”问题，它是目前AI短剧制作中公认的最大技术挑战。</p>
+<p>解决这个问题的思路有几种：第一种是使用角色参考图，在每次生成新镜头时都传入同一张角色参考图，让AI”照着画”；第二种是使用LoRA，即针对特定角色训练一个小型模型，让AI”记住”这个角色长什么样；第三种是使用多参考技术，同时传入面部参考、服装参考、姿势参考等多张图片，让AI综合参考后生成；第四种是借助ComfyUI等工作流工具中的IP-Adapter、InstantID等插件来实现自动化的一致性控制。这些方案的具体操作会在后面的素材生成部分详细讲解。</p>
+<h1><span id="4-镜头每一个画面就是一个镜头">4. 镜头：每一个画面就是一个镜头</span></h1><p>镜头是影视制作的最小单位。每一个镜头都需要明确三个维度的信息。</p>
+<p><strong>景别</strong>，即摄影机与被摄主体的距离关系。常用的景别有五种：远景（展示大环境，人物很小）、全景（展示人物全身和周围环境）、中景（人物膝盖以上，最常用的叙事景别）、近景（人物胸部以上，展示表情和情绪）、特写（面部或某个物件的局部放大，传递关键信息和强烈情绪）。</p>
+<p><strong>角度</strong>，即摄影机相对于被摄主体的高低位置。平拍是最常见的中性角度；仰拍让被摄对象显得高大威严，常用于表现权威或压迫感；俯拍让被摄对象显得渺小无力，常用于表现孤独或脆弱。</p>
+<p><strong>运镜方式</strong>，即摄影机在拍摄过程中的运动。固定镜头是最基础的，机位不动；推镜头是从远到近，用于引导观众注意力聚焦到某个细节；拉镜头是从近到远，用于揭示环境或制造疏离感；摇镜头是机位不动但镜头左右或上下转动，用于展示宽广的场景；移镜头是机位整体平移，常用于跟拍角色移动。</p>
+<p>这些信息为什么重要？因为它们会直接写进你的AI生成提示词里。当你告诉AI”近景，平拍，缓慢推向角色面部”，AI生成的视频就会呈现出从胸部以上的画面缓缓推近到面部特写的效果。镜头语言描述得越精确，AI的输出就越接近你想要的画面。</p>
+<div style="background-color: #fff3e8; border: 1px solid #ffcc99; border-radius: 12px; padding: 16px 20px; line-height: 1.6;">
+  <div style="display: flex; align-items: flex-start; gap: 10px;">
+    <span style="font-size: 22px; line-height: 1.6;">🪦</span>
+    <div>
+      <p style="margin: 0 0 8px 0; font-size: 16px; color: #333;">兑换合集可以阅读剩余的90% ，立即前往微信合集《怎么用AI从0做出短剧/漫剧？》：</p>
+      <p style="margin: 0; font-size: 15px; word-break: break-all;">
+        <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect" style="color: #3b82f6; text-decoration: none;">
+          https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+        <div class="post-announce">
+            感谢您的阅读，本文由
+            <a href="https://wangxin.io">王欣说AI</a>
+            版权所有。如若转载，请注明出处：王欣说AI（<a href="https://wangxin.io/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/">https://wangxin.io/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/</a>）
+        </div>
+        
+
+        <div class="post__prevs">
+            <div class="post__prev">
+                
+                <a href="/aigc/aigc_spacex_cursor_ai_coding_upheaval/" title="马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变"><i class="iconfont icon-prev"></i>马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变</a>
+                
+            </div>
+            <div class="post__prev post__prev--right">
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+        
+            <div id="comment-container"></div>
+        
+        
+    </div>
+
+    <aside class="page__sidebar">
+    <!-- 
+        <div class="sidebar__img">
+            <img src="/images/me.png" alt="王欣说AI" title="王欣说AI">
+        </div>
+     -->
+
+    <form id="page-search-from" class="page__search-from" action="/search/">
+        <label class="search-form__item">
+            <input class="input" type="text" name="search" placeholder="Search...">
+            <i class="iconfont icon-search"></i>
+        </label>
+    </form>
+
+    
+        <div class="sidebar__block">
+            <h3 class="block__title">简介</h3>
+            <p class="block__text">王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com</p>
+        </div>
+    
+
+    
+        <div class="sidebar__block">
+            <h3 class="block__title">微信公众号</h3>
+            <div class="sidebar__img">
+                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码">
+            </div>
+        </div>
+    
+
+    <div class="sidebar__block">
+        <h3 class="block__title">文章分类</h3>
+        <ul class="block-list"><li class="block-list-item"><a class="block-list-link" href="/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E6%88%91%E7%9C%8B/">我看</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><span class="block-list-count">1</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/redis/">redis</a><span class="block-list-count">1</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><span class="block-list-count">8</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/spring/">spring</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/shell/">shell</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mybatis/">mybatis</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mq/">mq</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/jvm/">jvm</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/java/">java</a><span class="block-list-count">3</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/java/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a><span class="block-list-count">3</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/hide/">hide</a><span class="block-list-count">7</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/github/">github</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/dubbo/">dubbo</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/apache%E6%B5%81%E7%A8%8B/">apache流程</a><span class="block-list-count">2</span></li></ul>
+    </div>
+    
+    <div class="sidebar__block">
+        <h3 class="block__title">最新文章</h3>
+        
+        <ul class="block-list latest-post-list">
+            
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/" title="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-24</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/aigc/aigc_spacex_cursor_ai_coding_upheaval/" title="马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变">
+                            <div class="item__cover">
+                                <img src="/images/aitalk.png" alt="马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">马斯克出手！SpaceX 豪掷 600 亿美元锁定 Cursor，AI 编程江湖巨变</h3>
+                                <span class="item__text">2026-04-22</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/03_screenwriting_starts_with_a_good_story/" title="第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第3篇：编剧篇——一切从一个好故事开始 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-16</span>
+                            </div>
+                        </a>
+                    </li>
+                
+                    <li class="latest-post-item">
+                        <a href="/makeshortdrama/02_four_core_skills_for_ai_short_drama/" title="第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？">
+                            <div class="item__cover">
+                                <img src="/images/makedrama.png" alt="第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？" />
+                            </div>
+                            <div class="item__info">
+                                <h3 class="item__title">第2篇：四项基本功——提示词、镜头语言、剪映、投流 - 怎么用AI从0做出短剧/漫剧？</h3>
+                                <span class="item__text">2026-04-14</span>
+                            </div>
+                        </a>
+                    </li>
+                
+        </ul>
+    
+    </div>
+
+    <div class="sidebar__block">
+        <h3 class="block__title">文章标签</h3>
+        
+        <ul class="block-list tag-list clearfix">
+            
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AIAgent/">AIAgent</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AIGC/">AIGC</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E5%B0%B1%E4%B8%9A/">AI就业</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E7%9F%AD%E5%89%A7/">AI短剧</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/AI%E7%BC%96%E7%A8%8B/">AI编程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Agent/">Agent</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Anthropic/">Anthropic</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/ClaudeCode/">ClaudeCode</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Codex/">Codex</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Computer-Use/">Computer Use</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Context-Engineering/">Context Engineering</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Cursor/">Cursor</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/Harness-Engineering/">Harness Engineering</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/OpenClaw/">OpenClaw</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/SpaceX/">SpaceX</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/apache%E6%B5%81%E7%A8%8B/">apache流程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/dubbo/">dubbo</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/github/">github</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/hide/">hide</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/java8/">java8</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/jvm/">jvm</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/lambda/">lambda</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/mq/">mq</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/mybatis/">mybatis</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/redis/">redis</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/spring5/">spring5</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%81%9A%E5%89%A7%E7%BB%8F%E9%AA%8C/">做剧经验</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%B9%B6%E8%A1%8C/">并行</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E6%88%91%E7%9C%8B/">我看</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/">技术架构</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E7%BB%9F%E8%AE%A1/">统计</a>
+                    </li>  
+                
+                    <li class="tag-item">
+                        <a class="tag-link" href="/tags/%E9%A3%9E%E4%B9%A6%E6%9C%BA%E5%99%A8%E4%BA%BA/">飞书机器人</a>
+                    </li>  
+                
+        </ul>
+    
+    </div>
+
+    <!-- <div class="sidebar__block">
+        <h3 class="block__title">友情链接</h3>
+        <ul class="block-list">
+            
+        </ul>
+    </div> -->
+</aside>
+</main>
+
+
+        
+            <!-- 页脚 -->
+<footer class="page__footer">
+    <section class="footer__top">
+        <div class="page__container footer__container">
+            
+            <div class="footer-top__item footer-top__item--2">
+                <h3 class="item__title">关于</h3>
+                <div class="item__content">
+                    <p class="item__text">王欣说AI，工作生活的一些思考。</p>
+                    <ul class="footer__contact-info">
+                        <li class="contact-info__item">
+                            <i class="iconfont icon-address"></i>
+                            <span>Beijing, China</span>
+                        </li>
+                        <li class="contact-info__item">
+                            <i class="iconfont icon-email2"></i>
+                            <span>xin.victorwang@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            
+                <div class="footer-top__item footer__image">
+                    <img src="/images/me.png" alt="logo" title="王欣说AI">
+                </div>
+            
+
+            
+            
+                
+                    <div class="footer-top__item">
+                        <h3 class="item__title">友情链接</h3>
+                        <div class="item__content">
+                            <ul class="footer-top__list">
+                                
+                                    <li class="list-item">
+                                        <a href="http://blog.didispace.com/" title="程序猿DD" target="_blank">程序猿DD</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.iocoder.cn" title="纯源码解析博客" target="_blank">芋道源码</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.ityouknow.com" title="纯洁的微笑" target="_blank">纯洁的微笑</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://blog.720ui.com/" title="梁桂钊的博客" target="_blank">梁桂钊的博客</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="https://fookwood.com" title="闷瓜蛋子的BLOG" target="_blank">闷瓜蛋子的BLOG</a>
+                                    </li>
+                                
+                                    <li class="list-item">
+                                        <a href="http://www.itmuch.com/" title="周立的博客" target="_blank">周立的博客</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </section>
+    <section class="footer__bottom">
+        <div class="page__container footer__container">
+            <p class="footer__copyright">©
+                2026 powered by
+                <a href="https://github.com/Mrminfive/hexo-theme-skapp" target="_blank">Hexo - Skapp</a>
+                
+                <span id="busuanzi_container_site_pv">访问量：<span id="busuanzi_value_site_pv"></span></span>&nbsp;人数:<span id="busuanzi_value_site_uv"></span>
+                
+            </p>
+            <ul class="footer__social-network clearfix">
+                
+                
+                    <li class="social-network__item">
+                        <a href="https://github.com/lovepoem" target="_blank" title="github">
+                            <i class="iconfont icon-github"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="mailto:xin.victorwang@gmail.com" target="_blank" title="email">
+                            <i class="iconfont icon-email"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="https://weibo.com/wangxinvictor" target="_blank" title="weibo">
+                            <i class="iconfont icon-weibo"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="https://twitter.com/wangxinvictor" target="_blank" title="twitter">
+                            <i class="iconfont icon-twitter"></i>
+                        </a>
+                    </li>
+                
+                    <li class="social-network__item">
+                        <a href="/atom.xml" target="_blank" title="rss">
+                            <i class="iconfont icon-rss"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </section>
+</footer>
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+        
+
+        
+            <!-- 返回顶部 -->
+<div id="back-top" class="back-top back-top--hidden js-hidden">
+    <i class="iconfont icon-top"></i>
+</div>
+        
+    </div>
+
+    <!-- build:js /js/common.js -->
+        <script type="text/javascript" src="/js/common/utils.js"></script>
+        <script type="text/javascript" src="/js/common/pack.js"></script>
+        <script type="text/javascript" src="/js/common/animation.js"></script>
+        <script type="text/javascript" src="/js/layout/loading.js"></script>
+        <script type="text/javascript" src="/js/layout/header.js"></script>
+        <script type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!-- endbuild -->
+
+    
+    
+<script src="/js/page/post.js"></script>
+
+
+
+    
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="/js/md5.min.js"></script>
+
+    <script>
+        var tags = ['AI短剧', '短剧制作', ];
+
+        var gitalk = new Gitalk({
+            clientID: 'dfeb42da2955f5c18a8f',
+            clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
+            repo: 'lovepoem.github.io',
+            owner: 'lovepoem',
+            admin: ['lovepoem', ],
+            labels: tags,
+            id: md5(location.href)
+        });
+
+        gitalk.render('comment-container');
+    </script>
+
+
+
+
+    <!-- 不蒜子统计 - 延迟加载优化 -->
+<script>
+// 延迟加载不蒜子统计脚本
+function loadBusuanzi() {
+    var script = document.createElement('script');
+    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+// 页面加载完成后延迟加载
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(loadBusuanzi, 1000);
+    });
+} else {
+    setTimeout(loadBusuanzi, 1000);
+}
+</script>
+
+
+     
+
+
+
+
+
+
+
+
+</body>
+</html>
