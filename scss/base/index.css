@@ -337,7 +337,7 @@ body {
   margin: 0;
 }
 .page__header--small .page__nav .nav__item a:hover {
-  color: rgba(0, 0, 0, 0.12);
+  color: hsla(250.6666666667, 100%, -2.3529411765%, 0.12);
 }
 
 .page__small-header {
