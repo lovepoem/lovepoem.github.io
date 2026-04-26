@@ -1,5 +1,5 @@
-https://wangxin.io/linkedfriend/index.html
 https://wangxin.io/about/index.html
+https://wangxin.io/linkedfriend/index.html
 https://wangxin.io/java/java_lambda_syntax/
 https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/
 https://wangxin.io/ByteDanceVerify.html
