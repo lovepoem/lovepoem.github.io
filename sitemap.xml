@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/</loc>
+    
+    <lastmod>2026-04-27T14:23:37.774Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/aigc/aigc_spacex_cursor_ai_coding_upheaval/</loc>
     
     <lastmod>2026-04-26T23:44:13.270Z</lastmod>
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/performance/how_to_location_outof_memory/</loc>
+    <loc>https://wangxin.io/opensource/apache-roles/</loc>
     
     <lastmod>2024-10-10T01:18:36.450Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/opensource/apache-roles/</loc>
+    <loc>https://wangxin.io/performance/how_to_location_outof_memory/</loc>
     
     <lastmod>2024-10-10T01:18:36.450Z</lastmod>
     
@@ -198,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/opensource/apache-committer/</loc>
+    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/opensource/apache-committer/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
@@ -219,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/java/parallel_operation_by_completable_future/</loc>
+    <loc>https://wangxin.io/jvm/jvm_basic_structure/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/jvm/jvm_basic_structure/</loc>
+    <loc>https://wangxin.io/java/parallel_operation_by_completable_future/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
@@ -247,21 +254,14 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/git/some_github_config/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/framework/spring5_new_features/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/iread/read_subscribed/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/io/netty_data_transport/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -275,7 +275,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/git/some_github_config/</loc>
+    <loc>https://wangxin.io/io/netty_data_transport/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/iread/read_subscribed/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -283,13 +290,6 @@
   
   <url>
     <loc>https://wangxin.io/dubbo/dubbo_server_side_thread_pool/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/dubbo/dubbo-service-connection-count-control/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
     
@@ -310,6 +310,13 @@
   </url>
   
   <url>
+    <loc>https://wangxin.io/dubbo/dubbo-service-connection-count-control/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/framework/flow_engine_rule_engine/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
@@ -317,7 +324,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
+    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
@@ -331,7 +338,7 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <loc>https://wangxin.io/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     

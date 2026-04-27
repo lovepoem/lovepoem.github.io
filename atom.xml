@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangxin.io/"/>
-  <updated>2026-04-26T15:16:18.640Z</updated>
+  <updated>2026-04-27T14:23:37.774Z</updated>
   <id>https://wangxin.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第5章：工具篇——使用小云雀Agent生成短剧</title>
+    <link href="https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/"/>
+    <id>https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/</id>
+    <published>2026-04-27T14:00:00.000Z</published>
+    <updated>2026-04-27T14:23:37.774Z</updated>
+    
+    <content type="html"><![CDATA[<h1><span id="第5章工具篇使用小云雀agent生成短剧">第5章：工具篇——使用小云雀Agent生成短剧</span></h1><p>各种短视频的制作，一般图生视频（最省钱一致性也好）流程和工具都如下，有小说后，写故事剧本–&gt;设计角色和场景图片–&gt; 生成分镜头视频–&gt; 合并成剧集视频–&gt; 加声音（若不是音画同出）–&gt; 后期剪辑–&gt; 发布</p><p><img src="https://static.xiaobot.net/file/2026-04-27/1122533/1a73873665c65d90ff5ae4ad49cfdfc9.png!post" alt="img"></p><hr><h1><span id="这次为什么选小云雀"><strong>这次为什么选”小云雀”？</strong></span></h1><p>在制作《顶级温差》之前，我尝试过很多方案。传统AI视频工具普遍面临三大痛点：角色一致性差、分镜逻辑断裂、后期合成繁琐。</p><p>小云雀短剧Agent的定位不是一个单点工具，而是一个<strong>全流程导演助理</strong>。它能理解文字剧本，自动拆解分镜、生成角色库、保持场景连贯，并一键合成带音效的成品视频。换句话说，它把”编剧→分镜→美术→拍摄→剪辑”这条传统流水线，压缩进了一个界面里。在这个方法里，一切的基础模型用的都是字节系的，包括文字生成（剧本改编）、图片生成、视频生成，这个方法省事儿，不过有点小贵。</p><h1><span id="小云雀使用基本流程"><strong>小云雀使用基本流程</strong></span></h1><p>下面，我们将整个制作过程拆解为五个关键步骤。</p><div style="background-color: #fff3e8; border: 1px solid #ffcc99; border-radius: 12px; padding: 16px 20px; line-height: 1.6;">  <div style="display: flex; align-items: flex-start; gap: 10px;">    <span style="font-size: 22px; line-height: 1.6;">🪦</span>    <div>      <p style="margin: 0 0 8px 0; font-size: 16px; color: #333;">兑换合集可以阅读剩余的90% ，立即前往微信合集《怎么用AI从0做出短剧/漫剧？》：</p>      <p style="margin: 0; font-size: 15px; word-break: break-all;">        <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect" style="color: #3b82f6; text-decoration: none;">          https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect        </a>      </p>    </div>  </div></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1&gt;&lt;span id=&quot;第5章工具篇使用小云雀agent生成短剧&quot;&gt;第5章：工具篇——使用小云雀Agent生成短剧&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;各种短视频的制作，一般图生视频（最省钱一致性也好）流程和工具都如下，有小说后，写故事剧本–&amp;gt;设计角色和场景图片–&amp;gt; 生成
+      
+    
+    </summary>
+    
+      <category term="短剧制作" scheme="https://wangxin.io/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/"/>
+    
+    
+      <category term="AI短剧" scheme="https://wangxin.io/tags/AI%E7%9F%AD%E5%89%A7/"/>
+    
+      <category term="短剧制作" scheme="https://wangxin.io/tags/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</title>
@@ -275,11 +302,11 @@
     
       <category term="AIGC" scheme="https://wangxin.io/tags/AIGC/"/>
     
-      <category term="ClaudeCode" scheme="https://wangxin.io/tags/ClaudeCode/"/>
-    
       <category term="Computer Use" scheme="https://wangxin.io/tags/Computer-Use/"/>
     
       <category term="OpenClaw" scheme="https://wangxin.io/tags/OpenClaw/"/>
+    
+      <category term="ClaudeCode" scheme="https://wangxin.io/tags/ClaudeCode/"/>
     
       <category term="Codex" scheme="https://wangxin.io/tags/Codex/"/>
     
@@ -534,24 +561,6 @@
     
     
       <category term="jvm" scheme="https://wangxin.io/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎么定位线上的内存溢出？</title>
-    <link href="https://wangxin.io/performance/how_to_location_outof_memory/"/>
-    <id>https://wangxin.io/performance/how_to_location_outof_memory/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2024-10-10T01:18:36.450Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="hide" scheme="https://wangxin.io/categories/hide/"/>
-    
-    
-      <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
     
   </entry>
   
