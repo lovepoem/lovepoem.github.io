@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangxin.io/"/>
-  <updated>2026-04-27T14:23:37.774Z</updated>
+  <updated>2026-04-29T11:35:49.117Z</updated>
   <id>https://wangxin.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧</title>
+    <link href="https://wangxin.io/makeshortdrama/06_make_drama_by_runninghub_comfyui/"/>
+    <id>https://wangxin.io/makeshortdrama/06_make_drama_by_runninghub_comfyui/</id>
+    <published>2026-04-29T11:35:00.000Z</published>
+    <updated>2026-04-29T11:35:49.117Z</updated>
+    
+    <content type="html"><![CDATA[<h1><span id="第6章工具篇使用-runninghubcomfyui生成短剧">第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧</span></h1><p>上一章我们用小云雀Agent走通了”一键式”短剧生产流程。它的优势是门槛低、全流程封装，但相应地，你能控制的东西也有限——模型不能换、节点不能调、渲染参数不能改。</p><p>这一章，我们把引擎盖掀开。</p><p><strong>ComfyUI</strong>是目前AI视频创作领域最主流的开源工作流引擎，而<strong>RunningHub</strong>（runninghub.cn）是它的云端托管版本。你可以把它理解为：小云雀是”自动挡轿车”，RunningHub 上的 ComfyUI 就是”手动挡赛车”——更灵活、更强大，但需要你理解每一个零件怎么配合。</p><p>本章将从核心概念讲起，再通过两个实战案例（广告生成 + 短剧整集制作），带你掌握这套进阶工具链。</p><hr><h1><span id="一-核心概念先搞懂三个词"><strong>一、核心概念：先搞懂三个词</strong></span></h1><h2><span id="1-工作流workflow"><strong>1. 工作流（Workflow）</strong></span></h2><p>工作流是 ComfyUI 的核心概念。简单说，它是一张<strong>可视化的流程图</strong>：每个功能模块是一个”节点”，节点之间用线连接，数据从左到右流动，最终输出图片或视频。</p><p>你可以把它想象成一条<strong>可自由拼装的生产流水线</strong>——输入端放原材料（文字、图片、参考图），中间是各种加工站（大模型推理、风格迁移、超分辨率），输出端就是成品。</p><p>工作流的强大之处在于：<strong>每一个环节都可以替换、调参、插入新模块。</strong>这是它和封装式工具最本质的区别。</p><h2><span id="2-comfyui"><strong>2. ComfyUI</strong></span></h2><p>ComfyUI 是一个开源的AI图像/视频生成界面，通过”拖拽节点、连线组网”的方式构建工作流。它支持市面上几乎所有主流模型（Stable Diffusion、Flux、Seedance 等），社区生态极其活跃，工作流模板和自定义节点数量庞大。</p><p><strong>本地安装的门槛不低</strong>：</p><table><thead><tr><th><strong>条件</strong></th><th><strong>要求</strong></th></tr></thead><tbody><tr><td>操作系统</td><td>Windows（需NVIDIA显卡）或 macOS（M系列芯片）</td></tr><tr><td>硬件投入</td><td>中高端显卡起步，高阶玩家往往需要数万元配置</td></tr><tr><td>技术门槛</td><td>需要一定的环境配置和调试能力</td></tr></tbody></table><ul><li>官方下载：<a href="https://www.comfy.org/zh-cn/">https://www.comfy.org/zh-cn/</a></li><li>GitHub 仓库：<a href="https://github.com/Comfy-Org/ComfyUI">https://github.com/Comfy-Org/ComfyUI</a></li></ul><div style="background-color: #fff3e8; border: 1px solid #ffcc99; border-radius: 12px; padding: 16px 20px; line-height: 1.6;">  <div style="display: flex; align-items: flex-start; gap: 10px;">    <span style="font-size: 22px; line-height: 1.6;">🪦</span>    <div>      <p style="margin: 0 0 8px 0; font-size: 16px; color: #333;">兑换合集可以阅读剩余的1% ，立即前往微信合集《怎么用AI从0做出短剧/漫剧？》：</p>      <p style="margin: 0; font-size: 15px; word-break: break-all;">        <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect" style="color: #3b82f6; text-decoration: none;">          https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NzAzOTMxMQ==&action=getalbum&album_id=4470953841336942601&from_itemidx=1&from_msgid=2247483869#wechat_redirect        </a>      </p>    </div>  </div></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1&gt;&lt;span id=&quot;第6章工具篇使用-runninghubcomfyui生成短剧&quot;&gt;第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;上一章我们用小云雀Agent走通了”一键式”短剧生产流程。它的优势是门槛低、全流程封装，
+      
+    
+    </summary>
+    
+      <category term="短剧制作" scheme="https://wangxin.io/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/"/>
+    
+    
+      <category term="AI短剧" scheme="https://wangxin.io/tags/AI%E7%9F%AD%E5%89%A7/"/>
+    
+      <category term="短剧制作" scheme="https://wangxin.io/tags/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>第5章：工具篇——使用小云雀Agent生成短剧</title>
@@ -533,34 +560,6 @@
     
     
       <category term="hide" scheme="https://wangxin.io/tags/hide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM内存结构的历史 （从Jdk1.6、1.7、8）</title>
-    <link href="https://wangxin.io/jvm/jvm_memory_change_history/"/>
-    <id>https://wangxin.io/jvm/jvm_memory_change_history/</id>
-    <published>2019-10-31T01:01:02.000Z</published>
-    <updated>2024-10-10T01:18:36.449Z</updated>
-    
-    <content type="html"><![CDATA[<p>从JDK1.6到1.8, 运行时内存分配简图分别如下:</p><p><img src="/images/java1.6.png" alt="Mechanism"></p><p>在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。</p><p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img src="/images/java1.7.png" alt="Mechanism"></p><p>随着JDK8的到来:</p><pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img src="/images/java8.png" alt="Mechanism"></p><h3><span id="一-java7到java8的第一部分变化元空间"><strong>一、java7到java8的第一部分变化：元空间</strong></span></h3><p>下面来一张图看一下java7到8的内存模型吧（这个是在网上找的图，如有侵权问题请联系我删除。）</p><p><img src="https://pic1.zhimg.com/80/v2-d928d79855d4448af061752168967d04_hd.jpg" alt="img"></p><h3><span id="二-java7到java8的第二部分变化运行时常量池"><strong>二、java7到java8的第二部分变化：运行时常量池</strong></span></h3><p>运行时常量池（Runtime Constant Pool）的所处区域一直在不断的变化，在java6时它是方法区的一部分；1.7又把他放到了堆内存中；1.8之后出现了元空间，它又回到了方法区。</p><p>Metaspace 结构是怎么样的？</p><p><img src="/images/java8struct.jpg" alt="Mechanism"></p><p>参考：<a href="https://blog.csdn.net/weixin_42711325/article/details/86533192">https://blog.csdn.net/weixin_42711325/article/details/86533192</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;从JDK1.6到1.8, 运行时内存分配简图分别如下:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/java1.6.png&quot; alt=&quot;Mechanism&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。&lt;/p&gt;
-&lt;p&gt;　
-      
-    
-    </summary>
-    
-      <category term="jvm" scheme="https://wangxin.io/categories/jvm/"/>
-    
-    
-      <category term="jvm" scheme="https://wangxin.io/tags/jvm/"/>
     
   </entry>
   
