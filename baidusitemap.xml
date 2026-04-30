@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/</loc>
+    <lastmod>2026-04-30</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/</loc>
     <lastmod>2026-04-29</lastmod>
   </url>
@@ -30,10 +34,6 @@
   </url>
   <url>
     <loc>https://wangxin.io/aigc/aigc_openclaw_claude_code_codex_computer_use/</loc>
-    <lastmod>2026-04-26</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
   <url>

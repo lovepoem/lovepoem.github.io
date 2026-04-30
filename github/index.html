@@ -39,6 +39,9 @@
 
 
 <!-- Prefetch -->
+<link rel="preload" href="/images/banner-mobile.webp" as="image" media="(max-width: 767px)" fetchpriority="high" />
+<link rel="preload" href="/images/banner.webp" as="image" media="(min-width: 768px)" fetchpriority="high" />
+
 
 
 
@@ -92,13 +95,17 @@ var _hmt = _hmt || [];
 <body ontouchstart>
     
         <!-- loading 页面 -->
-<div id="page-loading" class="page page-loading" style="background-image: url('/images/loading.gif')"></div>
+<div id="page-loading" class="page page-loading" aria-label="loading">
+  <span class="page-loading__spinner"></span>
+</div>
+
     
 
     <div id="page" class="page js-hidden">
         
             <!-- 页头 -->
-<header id="page-header" class="page__header" style="background-image: url('/images/banner.png');">
+<header id="page-header" class="page__header"
+        style="--header-cover: url('/images/banner.webp'); --header-cover-mobile: url('/images/banner-mobile.webp'); background-image: var(--header-cover);">
     <nav class="page__navbar">
         <div class="page__container navbar-container">
             <a class="page__logo" href="/" title="王欣说AI" alt="王欣说AI">
