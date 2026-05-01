@@ -1,8 +1,8 @@
 https://wangxin.io/git/some_github_config/
+https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/
 https://wangxin.io/framework/workflow/
 https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/
 https://wangxin.io/aigc/openclaw_macos_feishu_storyboard_workflow/
-https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/
 https://wangxin.io/aigc/aigc_spacex_cursor_ai_coding_upheaval/
 https://wangxin.io/aigc/aigc_openclaw_claude_code_codex_computer_use/
 https://wangxin.io/aigc/aigc_harness_engineering_agent_winning_point/
