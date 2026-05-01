@@ -55,7 +55,7 @@
     <link rel="preload" href="/scss/views/page/post.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- 首屏文章封面优先加载 -->
-    <link rel="preload" href="/images/aitalk.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="/images/aitalk.webp" as="image" fetchpriority="high" />
 
     <!-- DNS预解析 -->
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
@@ -175,7 +175,7 @@ var _hmt = _hmt || [];
     <div class="page__content">
         <article class="page__post">
     <div class="post__cover">
-        <img src="/images/aitalk.png"
+        <img src="/images/aitalk.webp"
              alt="通过Claude Code的源码分析其技术架构"
              loading="eager"
              decoding="async"
@@ -385,7 +385,7 @@ var _hmt = _hmt || [];
 <p>值得一提的是<strong>Bun</strong>的使用——Claude Code 选择它作为包管理器，很大程度上是为了优化启动速度。对于 CLI 工具来说，冷启动时间直接决定用户体验。</p>
 <hr>
 <h1><span id="五-一次请求的完整生命周期">五、一次请求的完整生命周期</span></h1><p>让我们追踪一个真实请求的完整旅程：</p>
-<p><img src="../../images/claude-code-architecture-04.png" alt="图片"></p>
+<p><img src="../../images/claude-code-architecture-04.webp" alt="图片"></p>
 <p>用户输入: “帮我给 utils.ts 中的 parseDate 函数添加单元测试”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">用户输入: &quot;帮我给 utils.ts 中的 parseDate 函数添加单元测试&quot;</span><br><span class="line">  │</span><br><span class="line">  ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❶ CLI 层接收输入                                    【图 ①】 │</span><br><span class="line">│   终端捕获输入 -&gt; 传递给应用层 -&gt; token 计数启动             │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❷ 上下文组装                                        【图 ②】 │</span><br><span class="line">│   System Prompt + CLAUDE.md（三级合并）+ 对话历史            │</span><br><span class="line">│   + 可用工具列表 + Prompt Caching 断点设置                   │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❸ Agent Loop 自主循环                            【图 ③~⑬】 │</span><br><span class="line">│                                                              │</span><br><span class="line">│   循环 1: FileReadTool -&gt; 读取 utils.ts                      │</span><br><span class="line">│   循环 2: GlobTool -&gt; 发现测试文件命名规范                   │</span><br><span class="line">│   循环 3: FileWriteTool -&gt; 创建 utils.test.ts                │</span><br><span class="line">│   循环 4: BashTool -&gt; npx vitest run                         │</span><br><span class="line">│   循环 5: FileEditTool -&gt; 修复失败的测试用例                 │</span><br><span class="line">│   循环 6: BashTool -&gt; npx vitest run -&gt; 3 passed             │</span><br><span class="line">│                                                              │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❹ 流式渲染 &amp; 状态持久化                            【图 ⑭】 │</span><br><span class="line">│   全过程通过 Ink&#x2F;React 实时渲染到终端                        │</span><br><span class="line">│   Token 用量和费用实时更新                                  │</span><br><span class="line">│   对话历史持久化到会话存储                                   │</span><br><span class="line">└──────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
 
@@ -497,7 +497,7 @@ var _hmt = _hmt || [];
     <aside class="page__sidebar">
     <!-- 
         <div class="sidebar__img">
-            <img src="/images/me.png" alt="王欣说AI" title="王欣说AI">
+            <img src="/images/me.webp" alt="王欣说AI" title="王欣说AI">
         </div>
      -->
 
@@ -537,7 +537,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/06_make_drama_by_runninghub_comfyui/" title="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧">
                             <div class="item__cover">
-                                <img src="/images/makedrama.png" alt="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧" />
+                                <img src="/images/makedrama.webp" alt="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧</h3>
@@ -549,7 +549,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/05_make_drama_by_xiaoyunque_agent/" title="第5章：工具篇——使用小云雀Agent生成短剧">
                             <div class="item__cover">
-                                <img src="/images/makedrama.png" alt="第5章：工具篇——使用小云雀Agent生成短剧" />
+                                <img src="/images/makedrama.webp" alt="第5章：工具篇——使用小云雀Agent生成短剧" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第5章：工具篇——使用小云雀Agent生成短剧</h3>
@@ -573,7 +573,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/" title="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？">
                             <div class="item__cover">
-                                <img src="/images/makedrama.png" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" />
+                                <img src="/images/makedrama.webp" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</h3>
@@ -779,7 +779,7 @@ var _hmt = _hmt || [];
             
             
                 <div class="footer-top__item footer__image">
-                    <img src="/images/me.png" alt="logo" title="王欣说AI">
+                    <img src="/images/me.webp" alt="logo" title="王欣说AI">
                 </div>
             
 
