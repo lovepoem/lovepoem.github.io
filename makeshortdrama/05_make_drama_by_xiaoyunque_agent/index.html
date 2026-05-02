@@ -242,7 +242,7 @@ var _hmt = _hmt || [];
     <div class="post__content">
 
         <p>各种短视频的制作，一般图生视频（最省钱一致性也好）流程和工具都如下，有小说后，写故事剧本–&gt;设计角色和场景图片–&gt; 生成分镜头视频–&gt; 合并成剧集视频–&gt; 加声音（若不是音画同出）–&gt; 后期剪辑–&gt; 发布</p>
-<p><img src="https://static.xiaobot.net/file/2026-04-27/1122533/1a73873665c65d90ff5ae4ad49cfdfc9.png!post" alt="img"></p>
+<p><img src="/images/xiaoyunque-agent-flow-01.webp" alt="img"></p>
 <hr>
 <h1><span id="这次为什么选小云雀"><strong>这次为什么选”小云雀”？</strong></span></h1><p>在制作《顶级温差》之前，我尝试过很多方案。传统AI视频工具普遍面临三大痛点：角色一致性差、分镜逻辑断裂、后期合成繁琐。</p>
 <p>小云雀短剧Agent的定位不是一个单点工具，而是一个<strong>全流程导演助理</strong>。它能理解文字剧本，自动拆解分镜、生成角色库、保持场景连贯，并一键合成带音效的成品视频。换句话说，它把”编剧→分镜→美术→拍摄→剪辑”这条传统流水线，压缩进了一个界面里。在这个方法里，一切的基础模型用的都是字节系的，包括文字生成（剧本改编）、图片生成、视频生成，这个方法省事儿，不过有点小贵。</p>
@@ -315,7 +315,7 @@ var _hmt = _hmt || [];
         <div class="sidebar__block">
             <h3 class="block__title">微信公众号</h3>
             <div class="sidebar__img">
-                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码">
+                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码" loading="lazy" decoding="async">
             </div>
         </div>
     
@@ -575,7 +575,7 @@ var _hmt = _hmt || [];
             
             
                 <div class="footer-top__item footer__image">
-                    <img src="/images/me.webp" alt="logo" title="王欣说AI">
+                    <img src="/images/me.webp" alt="logo" title="王欣说AI" loading="lazy" decoding="async">
                 </div>
             
 
@@ -666,13 +666,6 @@ var _hmt = _hmt || [];
     </section>
 </footer>
 
-  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
-
 
         
 
@@ -692,15 +685,6 @@ var _hmt = _hmt || [];
         <script type="text/javascript" src="/js/layout/header.js"></script>
         <script type="text/javascript" src="/js/layout/back-top.js"></script>
         <script type="text/javascript" src="/js/layout/post.js"></script>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
     <!-- endbuild -->
 
     
@@ -711,24 +695,84 @@ var _hmt = _hmt || [];
 
     
     
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script src="/js/md5.min.js"></script>
-
     <script>
-        var tags = ['AI短剧', '短剧制作', ];
+        (function () {
+            var container = document.getElementById('comment-container');
 
-        var gitalk = new Gitalk({
-            clientID: 'dfeb42da2955f5c18a8f',
-            clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
-            repo: 'lovepoem.github.io',
-            owner: 'lovepoem',
-            admin: ['lovepoem', ],
-            labels: tags,
-            id: md5(location.href)
-        });
+            if (!container || container.dataset.loaded === 'true') {
+                return;
+            }
 
-        gitalk.render('comment-container');
+            var tags = ['AI短剧', '短剧制作', ];
+
+            function loadScript(src) {
+                return new Promise(function (resolve, reject) {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.body.appendChild(script);
+                });
+            }
+
+            function loadStyle(href) {
+                if (document.querySelector('link[data-gitalk-style="true"]')) {
+                    return;
+                }
+
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.dataset.gitalkStyle = 'true';
+                document.head.appendChild(link);
+            }
+
+            function bootGitalk() {
+                if (container.dataset.loaded === 'true') {
+                    return;
+                }
+
+                container.dataset.loaded = 'true';
+                loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
+
+                Promise.all([
+                    loadScript('/js/md5.min.js'),
+                    loadScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+                ]).then(function () {
+                    var gitalk = new Gitalk({
+                        clientID: 'dfeb42da2955f5c18a8f',
+                        clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
+                        repo: 'lovepoem.github.io',
+                        owner: 'lovepoem',
+                        admin: ['lovepoem', ],
+                        labels: tags,
+                        id: md5(location.href)
+                    });
+
+                    gitalk.render('comment-container');
+                }).catch(function () {
+                    container.dataset.loaded = 'false';
+                });
+            }
+
+            if (!('IntersectionObserver' in window)) {
+                bootGitalk();
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        observer.disconnect();
+                        bootGitalk();
+                    }
+                });
+            }, {
+                rootMargin: '300px 0px'
+            });
+
+            observer.observe(container);
+        })();
     </script>
 
 

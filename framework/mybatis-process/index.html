@@ -257,13 +257,13 @@ var _hmt = _hmt || [];
 <p>1)       API接口层：提供给外部使用的接口API，开发人员通过这些本地API来操纵数据库。接口层一接收到调用请求就会调用数据处理层来完成具体的数据处理。</p>
 <p>2)       数据处理层：负责具体的SQL查找、SQL解析、SQL执行和执行结果映射处理等。它主要的目的是根据调用的请求完成一次数据库操作。</p>
 <p>3)      基础支撑层：负责最基础的功能支撑，包括连接管理、事务管理、配置加载和缓存处理，这些都是共用的东西，将他们抽取出来作为最基础的组件。为上层的数据处理层提供最基础的支撑。</p>
-<h4><span id="2-整体流程图">2、整体流程图</span></h4><p><img src="http://img.my.csdn.net/uploads/201306/09/1370783456_4126.JPG" alt="img"></p>
+<h4><span id="2-整体流程图">2、整体流程图</span></h4><p><img src="/images/mybatis-process-01.webp" alt="img"></p>
 <p>​     初始化Mybatis，所有的配置都在Configuration对象中 使用Mybatis，从SqlSessionFactory工厂中获取SqlSession，从Configuration对象中获取mapper对象，并返回结果 Mybatis在加载mapper的时候对mapper接口的注解进行解析 重要的几个包：io、session、builder、mapper（annotations、binding）、executor</p>
 <p>​    源代码主要在org.apache.ibatis目录下，18个包，其中在应用中主要的包有：builder、session、cache、type、transaction、datasource、jdbc、mapping，提供支撑服务的包有annotation、binding、io、logging、plugin、reflection、scripting、exception、executor、parsing</p>
 <h4><span id="3-代码堆栈跟踪">3、代码堆栈跟踪</span></h4><p>我们最终调用的是sqlSession对象上的方法，所以我们先跟踪sqlSession的创建方法：sqlSessionFactory.openSession()，最终这个方法会调用到DefaultSqlSessionFactory的以下方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> SqlSession <span class="title">openSessionFromDataSource</span><span class="params">(ExecutorType execType, TransactionIsolationLevel level,booleanautoCommit)</span> </span>&#123;</span><br><span class="line">    Transaction tx =<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      finalEnvironment environment = configuration.getEnvironment();</span><br><span class="line">      finalTransactionFactory transactionFactory = getTransactionFactoryFromEnvironment(environment);</span><br><span class="line">      tx = transactionFactory.newTransaction(environment.getDataSource(), level, autoCommit);</span><br><span class="line">      finalExecutor executor = configuration.newExecutor(tx, execType);</span><br><span class="line">      returnnewDefaultSqlSession(configuration, executor, autoCommit);</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">      closeTransaction(tx);<span class="comment">// may have fetched a connection so lets call close()</span></span><br><span class="line">      throwExceptionFactory.wrapException(<span class="string">"Error opening session.  Cause: "</span>+ e, e);</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">      ErrorContext.instance().reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>　　最终返回的对象是一个DefaultSqlSession对象，在调试模式下，我们看到autoCommit为false，executor为CachingExecutor类型，在CachingExecutor里面有属性delegate，其类型为simpleExecutor：</p>
-<p><img src="http://images.cnitblog.com/blog/677938/201412/131414173377016.png" alt="img"></p>
+<p><img src="/images/mybatis-process-02.webp" alt="img"></p>
 <p>​      现在，我们跟进DefaultSqlSession的selectOne()方法，查看该方法的调用流程，selectOne()方法又会调用selectList()方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">selectList</span><span class="params">(String statement, Object parameter, RowBounds rowBounds)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    MappedStatement ms = configuration.getMappedStatement(statement);</span><br><span class="line">    List&lt;E&gt; result = executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);</span><br><span class="line">    returnresult;</span><br><span class="line">  &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">    throwExceptionFactory.wrapException(<span class="string">"Error querying database.  Cause: "</span>+ e, e);</span><br><span class="line">  &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    ErrorContext.instance().reset();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　可以看到要得到查询结果，最终还是要调用executor上的query方法，这里的executor是CachingExecutor实例，跟进程序得到如下代码：</p>
@@ -279,7 +279,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocalContainer.setRequestString(paramString);</span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)</span>throwsSQLException </span>&#123;</span><br><span class="line">  Statement stmt =<span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    Configuration configuration = ms.getConfiguration();</span><br><span class="line">    StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);</span><br><span class="line">    stmt = prepareStatement(handler, ms.getStatementLog());</span><br><span class="line">    returnhandler.&lt;E&gt;query(stmt, resultHandler);</span><br><span class="line">  &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    closeStatement(stmt);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>　　调用了prepareStatement方法，该方法如下：</p>
 <p>　　终于，我们看到熟悉的代码了，首先得到Connection，然后从Connection中得到Statement，同时在调试模式下我们看到，我们的sql语句已经被设置到stmt中了：</p>
-<p><img src="http://images.cnitblog.com/blog/677938/201412/131511151502445.png" alt="img"></p>
+<p><img src="/images/mybatis-process-03.webp" alt="img"></p>
 <p>　　现在Statement对象有了，sql也设置进去了，就只差执行以及对象映射了，继续跟进代码，我们会跟踪到org.apache.ibatis.executor.statement.</p>
 <p>PreparedStatementHandler类的executor方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">query</span><span class="params">(Statement statement, ResultHandler resultHandler)</span> throwsSQLException </span>&#123;</span><br><span class="line">  PreparedStatement ps = (PreparedStatement) statement;</span><br><span class="line">  ps.execute();</span><br><span class="line">  <span class="keyword">return</span> resultSetHandler.&lt;E&gt; handleResultSets(ps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -343,7 +343,7 @@ var _hmt = _hmt || [];
         <div class="sidebar__block">
             <h3 class="block__title">微信公众号</h3>
             <div class="sidebar__img">
-                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码">
+                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码" loading="lazy" decoding="async">
             </div>
         </div>
     
@@ -603,7 +603,7 @@ var _hmt = _hmt || [];
             
             
                 <div class="footer-top__item footer__image">
-                    <img src="/images/me.webp" alt="logo" title="王欣说AI">
+                    <img src="/images/me.webp" alt="logo" title="王欣说AI" loading="lazy" decoding="async">
                 </div>
             
 
@@ -694,13 +694,6 @@ var _hmt = _hmt || [];
     </section>
 </footer>
 
-  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
-
 
         
 
@@ -720,15 +713,6 @@ var _hmt = _hmt || [];
         <script type="text/javascript" src="/js/layout/header.js"></script>
         <script type="text/javascript" src="/js/layout/back-top.js"></script>
         <script type="text/javascript" src="/js/layout/post.js"></script>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
     <!-- endbuild -->
 
     
@@ -739,24 +723,84 @@ var _hmt = _hmt || [];
 
     
     
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script src="/js/md5.min.js"></script>
-
     <script>
-        var tags = ['mybatis', ];
+        (function () {
+            var container = document.getElementById('comment-container');
 
-        var gitalk = new Gitalk({
-            clientID: 'dfeb42da2955f5c18a8f',
-            clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
-            repo: 'lovepoem.github.io',
-            owner: 'lovepoem',
-            admin: ['lovepoem', ],
-            labels: tags,
-            id: md5(location.href)
-        });
+            if (!container || container.dataset.loaded === 'true') {
+                return;
+            }
 
-        gitalk.render('comment-container');
+            var tags = ['mybatis', ];
+
+            function loadScript(src) {
+                return new Promise(function (resolve, reject) {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.body.appendChild(script);
+                });
+            }
+
+            function loadStyle(href) {
+                if (document.querySelector('link[data-gitalk-style="true"]')) {
+                    return;
+                }
+
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.dataset.gitalkStyle = 'true';
+                document.head.appendChild(link);
+            }
+
+            function bootGitalk() {
+                if (container.dataset.loaded === 'true') {
+                    return;
+                }
+
+                container.dataset.loaded = 'true';
+                loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
+
+                Promise.all([
+                    loadScript('/js/md5.min.js'),
+                    loadScript('https://unpkg.com/gitalk/dist/gitalk.min.js')
+                ]).then(function () {
+                    var gitalk = new Gitalk({
+                        clientID: 'dfeb42da2955f5c18a8f',
+                        clientSecret: 'ec47674c973490128eda38c44beef41d08fe7ce5',
+                        repo: 'lovepoem.github.io',
+                        owner: 'lovepoem',
+                        admin: ['lovepoem', ],
+                        labels: tags,
+                        id: md5(location.href)
+                    });
+
+                    gitalk.render('comment-container');
+                }).catch(function () {
+                    container.dataset.loaded = 'false';
+                });
+            }
+
+            if (!('IntersectionObserver' in window)) {
+                bootGitalk();
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        observer.disconnect();
+                        bootGitalk();
+                    }
+                });
+            }, {
+                rootMargin: '300px 0px'
+            });
+
+            observer.observe(container);
+        })();
     </script>
 
 

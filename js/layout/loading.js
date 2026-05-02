@@ -1,24 +1,23 @@
 // loading
-document.onreadystatechange = function(){
-    var page = document.getElementById('page');
-    if (document.readyState == 'interactive') {
-        window.setTimeout(function(){
-            disableLoad();
-        },4000)
-    }
+(function () {
+    function disableLoad() {
+        var page = document.getElementById('page');
+        var loading = document.getElementById('page-loading');
 
-    if (document.readyState == 'complete') {        
-        if (page.classList.contains('js-hidden')) {
-            disableLoad();
+        if (loading) {
+            loading.classList.add('js-hidden');
+        }
+
+        if (page && page.classList.contains('js-hidden')) {
+            page.classList.remove('js-hidden');
         }
     }
-}
 
-function disableLoad(){
-    var
-    page = document.getElementById('page'),
-    loading = document.getElementById('page-loading');
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', disableLoad, { once: true });
+    } else {
+        disableLoad();
+    }
 
-    loading.classList.add('js-hidden');
-    page.classList.remove('js-hidden');
-}
+    window.addEventListener('load', disableLoad, { once: true });
+})();

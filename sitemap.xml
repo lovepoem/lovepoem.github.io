@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangxin.io/framework/workflow/</loc>
+    
+    <lastmod>2026-05-02T01:51:16.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/framework/mybatis-process/</loc>
+    
+    <lastmod>2026-05-02T01:51:15.905Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/</loc>
+    
+    <lastmod>2026-05-02T01:46:05.964Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/makeshortdrama/01_why_2026_is_the_best_timing/</loc>
+    
+    <lastmod>2026-05-02T01:46:05.644Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/jvm/jvm_memory_change_history/</loc>
+    
+    <lastmod>2026-05-02T01:46:02.378Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/git/some_github_config/</loc>
     
     <lastmod>2026-05-01T12:28:35.051Z</lastmod>
@@ -12,13 +47,6 @@
     <loc>https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/</loc>
     
     <lastmod>2026-05-01T12:28:15.719Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/framework/workflow/</loc>
-    
-    <lastmod>2026-04-30T23:58:47.633Z</lastmod>
     
   </url>
   
@@ -79,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/</loc>
-    
-    <lastmod>2026-04-30T23:57:37.898Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/</loc>
     
     <lastmod>2026-04-30T23:57:32.179Z</lastmod>
@@ -103,13 +124,6 @@
     <loc>https://wangxin.io/makeshortdrama/02_four_core_skills_for_ai_short_drama/</loc>
     
     <lastmod>2026-04-30T23:57:17.538Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/makeshortdrama/01_why_2026_is_the_best_timing/</loc>
-    
-    <lastmod>2026-04-30T23:57:12.182Z</lastmod>
     
   </url>
   
@@ -205,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/jvm/jvm_memory_change_history/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.449Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/linux/some_shell_script/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
@@ -264,13 +271,6 @@
     <loc>https://wangxin.io/java/collection/hashmap_and_concurrenthashmap/</loc>
     
     <lastmod>2024-10-10T01:18:36.448Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/framework/mybatis-process/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
   </url>
   
