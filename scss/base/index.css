@@ -270,6 +270,9 @@ body {
 }
 
 @media screen and (max-width: 736px) {
+  body .page__header {
+    background-image: var(--header-cover-mobile, var(--header-cover));
+  }
   body .page__header--small .nav__list {
     background: #19abd6;
     background: linear-gradient(to right, #19abd6 35%, rgb(58.0125523013, 192.4058577406, 231.9874476987) 100%);
@@ -865,6 +868,26 @@ body {
 }
 
 .page-loading {
-  background: center no-repeat;
-  background-size: auto;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.page-loading__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e6e6e6;
+  border-top-color: #409eff;
+  border-radius: 50%;
+  animation: page-loading-spin 0.9s linear infinite;
+}
+
+@keyframes page-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

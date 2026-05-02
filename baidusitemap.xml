@@ -109,19 +109,15 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/jvm/jvm_basic_structure/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
     <loc>https://wangxin.io/java/parallel_operation_by_completable_future/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/java/collection/hashmap_and_concurrenthashmap/</loc>
+    <loc>https://wangxin.io/jvm/jvm_basic_structure/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/framework/spring5_new_features/</loc>
+    <loc>https://wangxin.io/java/collection/hashmap_and_concurrenthashmap/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -133,15 +129,11 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
+    <loc>https://wangxin.io/framework/spring5_new_features/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://wangxin.io/dubbo/dubbo_server_side_thread_pool/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/dubbo/speech-in-dubbo-meetup-beijing/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/dubbo/dubbo_timeout_design_and_principle/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -149,15 +141,11 @@
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/framework/flow_engine_rule_engine/</loc>
+    <loc>https://wangxin.io/dubbo/dubbo_timeout_design_and_principle/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
-    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
-    <lastmod>2024-10-10</lastmod>
-  </url>
-  <url>
-    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <loc>https://wangxin.io/dubbo/speech-in-dubbo-meetup-beijing/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
   <url>
@@ -166,6 +154,14 @@
   </url>
   <url>
     <loc>https://wangxin.io/distributed/distributed_transaction_seata/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <lastmod>2024-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
     <lastmod>2024-10-10</lastmod>
   </url>
 </urlset> 
