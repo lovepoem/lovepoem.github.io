@@ -1,5 +1,5 @@
-https://wangxin.io/framework/workflow/
 https://wangxin.io/framework/mybatis-process/
+https://wangxin.io/framework/workflow/
 https://wangxin.io/makeshortdrama/05_make_drama_by_xiaoyunque_agent/
 https://wangxin.io/makeshortdrama/01_why_2026_is_the_best_timing/
 https://wangxin.io/jvm/jvm_memory_change_history/
@@ -33,7 +33,6 @@ https://wangxin.io/linux/some_shell_script/
 https://wangxin.io/mq/rocketmq-dead-message/
 https://wangxin.io/mq/different_among_some_mqs/
 https://wangxin.io/opensource/apache-committer/
-https://wangxin.io/java/java_lambda_implement/
 https://wangxin.io/java/parallel_operation_by_completable_future/
 https://wangxin.io/jvm/jvm_basic_structure/
 https://wangxin.io/java/collection/hashmap_and_concurrenthashmap/

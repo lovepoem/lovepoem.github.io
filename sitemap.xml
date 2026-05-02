@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wangxin.io/framework/workflow/</loc>
+    <loc>https://wangxin.io/framework/mybatis-process/</loc>
     
-    <lastmod>2026-05-02T02:18:39.507Z</lastmod>
+    <lastmod>2026-05-02T02:50:16.814Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/framework/mybatis-process/</loc>
+    <loc>https://wangxin.io/framework/workflow/</loc>
     
-    <lastmod>2026-05-02T01:51:15.905Z</lastmod>
+    <lastmod>2026-05-02T02:18:39.507Z</lastmod>
     
   </url>
   
@@ -243,13 +243,6 @@
     <loc>https://wangxin.io/opensource/apache-committer/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/java/java_lambda_implement/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.448Z</lastmod>
     
   </url>
   
