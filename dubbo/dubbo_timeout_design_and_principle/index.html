@@ -10,10 +10,20 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <meta name="format-detection" content="telephone=no">
+
 <meta name="author" content="Xin Wang(王欣)" />
 <meta name="designer" content="minfive" />
 <meta name="keywords" content="开源项目提交者,dubbo,rpc,seata ppmc，apache,架构师,信息安全，AIGC"/>
-<meta name="description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
+<meta name="description" content="讲解dubbo这个rpc框架的timeout机制，以及重试机制的代码实现原理" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Dubbo代码分析—超时和重试设计 - 王欣说AI|信息安全|AIGC|AI" />
+<meta property="og:description" content="讲解dubbo这个rpc框架的timeout机制，以及重试机制的代码实现原理" />
+<meta property="og:url" content="https://wangxin.io/dubbo/dubbo_timeout_design_and_principle/index.html" />
+<meta property="og:image" content="/images/dubbo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dubbo代码分析—超时和重试设计 - 王欣说AI|信息安全|AIGC|AI" />
+<meta name="twitter:description" content="讲解dubbo这个rpc框架的timeout机制，以及重试机制的代码实现原理" />
+<meta name="twitter:image" content="/images/dubbo.png" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -39,8 +49,7 @@
 
 
 <!-- Prefetch -->
-<link rel="preload" href="/images/banner-mobile.webp" as="image" media="(max-width: 767px)" fetchpriority="high" />
-<link rel="preload" href="/images/banner.webp" as="image" media="(min-width: 768px)" fetchpriority="high" />
+
 
 
 
@@ -193,6 +202,9 @@ var _hmt = _hmt || [];
 
     <header class="post__info">
         <h1 class="post__title">Dubbo代码分析—超时和重试设计</h1>
+        
+        <p class="post__subtitle">讲解dubbo这个rpc框架的timeout机制，以及重试机制的代码实现原理</p>
+        
 
         <div class="post__mark">
             <div class="mark__block">

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/</loc>
+    
+    <lastmod>2026-05-04T10:56:56.984Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangxin.io/framework/mybatis-process/</loc>
     
     <lastmod>2026-05-02T03:06:52.572Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://wangxin.io/aigc/docker_chatgrp_claude_apen_api_macos_config/</loc>
     
     <lastmod>2026-05-01T12:28:15.719Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/</loc>
-    
-    <lastmod>2026-04-30T23:58:42.367Z</lastmod>
     
   </url>
   
@@ -156,14 +156,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/tags/index.html</loc>
+    <loc>https://wangxin.io/search/index.html</loc>
     
     <lastmod>2024-10-10T01:18:36.466Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/search/index.html</loc>
+    <loc>https://wangxin.io/tags/index.html</loc>
     
     <lastmod>2024-10-10T01:18:36.466Z</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/mq/rocketmq-dead-message/</loc>
+    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/mq/different_among_some_mqs/</loc>
+    <loc>https://wangxin.io/mq/rocketmq-dead-message/</loc>
     
     <lastmod>2024-10-10T01:18:36.449Z</lastmod>
     
@@ -275,14 +275,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/iread/read_subscribed/</loc>
+    <loc>https://wangxin.io/framework/spring5_new_features/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/framework/spring5_new_features/</loc>
+    <loc>https://wangxin.io/iread/read_subscribed/</loc>
     
     <lastmod>2024-10-10T01:18:36.447Z</lastmod>
     
@@ -303,13 +303,6 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/dubbo/dubbo_timeout_design_and_principle/</loc>
-    
-    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangxin.io/dubbo/speech-in-dubbo-meetup-beijing/</loc>
     
     <lastmod>2024-10-10T01:18:36.446Z</lastmod>
@@ -317,7 +310,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
+    <loc>https://wangxin.io/dubbo/dubbo_timeout_design_and_principle/</loc>
+    
+    <lastmod>2024-10-10T01:18:36.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
@@ -331,14 +331,14 @@
   </url>
   
   <url>
-    <loc>https://wangxin.io/distributed/distributed_system_consistency_algorithm_paxos_raft_zab/</loc>
+    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wangxin.io/concurrent/analysis_of_thread_pool_error_usage/</loc>
+    <loc>https://wangxin.io/concurrent/talk_about_concurrent_tools_in_jdk/</loc>
     
     <lastmod>2024-10-10T01:18:36.445Z</lastmod>
     

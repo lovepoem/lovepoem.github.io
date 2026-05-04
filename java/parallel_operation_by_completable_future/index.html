@@ -10,10 +10,20 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <meta name="format-detection" content="telephone=no">
+
 <meta name="author" content="Xin Wang(王欣)" />
 <meta name="designer" content="minfive" />
 <meta name="keywords" content="开源项目提交者,dubbo,rpc,seata ppmc，apache,架构师,信息安全，AIGC"/>
-<meta name="description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
+<meta name="description" content="业务上常常有这样一个需求：一个服务常常会从多个数据源取得数据，然后并成一个结果。现在java8提供了一个很好的CompletableFuture工具。 一般的异步异步设计方案为：起一个业务的线程池，并发执行业务，然后一个守护的线程等各个业务结束(时间为业务执行最长的时间)，获取所有数据，这样明显执行时间会小于3个业务时间之和（例如下面的getAllInfoByProductId）。而是用了执行最长的业务时间，加上守护线程的消耗。" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Java lambda表达式(二)——利用java8的CompletableFuture异步并行操作 - 王欣说AI|信息安全|AIGC|AI" />
+<meta property="og:description" content="业务上常常有这样一个需求：一个服务常常会从多个数据源取得数据，然后并成一个结果。现在java8提供了一个很好的CompletableFuture工具。 一般的异步异步设计方案为：起一个业务的线程池，并发执行业务，然后一个守护的线程等各个业务结束(时间为业务执行最长的时间)，获取所有数据，这样明显执行时间会小于3个业务时间之和（例如下面的getAllInfoByProductId）。而是用了执行最长的业务时间，加上守护线程的消耗。" />
+<meta property="og:url" content="https://wangxin.io/java/parallel_operation_by_completable_future/index.html" />
+<meta property="og:image" content="/images/java.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Java lambda表达式(二)——利用java8的CompletableFuture异步并行操作 - 王欣说AI|信息安全|AIGC|AI" />
+<meta name="twitter:description" content="业务上常常有这样一个需求：一个服务常常会从多个数据源取得数据，然后并成一个结果。现在java8提供了一个很好的CompletableFuture工具。 一般的异步异步设计方案为：起一个业务的线程池，并发执行业务，然后一个守护的线程等各个业务结束(时间为业务执行最长的时间)，获取所有数据，这样明显执行时间会小于3个业务时间之和（例如下面的getAllInfoByProductId）。而是用了执行最长的业务时间，加上守护线程的消耗。" />
+<meta name="twitter:image" content="/images/java.png" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -39,8 +49,7 @@
 
 
 <!-- Prefetch -->
-<link rel="preload" href="/images/banner-mobile.webp" as="image" media="(max-width: 767px)" fetchpriority="high" />
-<link rel="preload" href="/images/banner.webp" as="image" media="(min-width: 768px)" fetchpriority="high" />
+
 
 
 
@@ -193,6 +202,9 @@ var _hmt = _hmt || [];
 
     <header class="post__info">
         <h1 class="post__title">Java lambda表达式(二)——利用java8的CompletableFuture异步并行操作</h1>
+        
+        <p class="post__subtitle">业务上常常有这样一个需求：一个服务常常会从多个数据源取得数据，然后并成一个结果。现在java8提供了一个很好的CompletableFuture工具。 一般的异步异步设计方案为：起一个业务的线程池，并发执行业务，然后一个守护的线程等各个业务结束(时间为业务执行最长的时间)，获取所有数据，这样明显执行时间会小于3个业务时间之和（例如下面的getAllInfoByProductId）。而是用了执行最长的业务时间，加上守护线程的消耗。</p>
+        
 
         <div class="post__mark">
             <div class="mark__block">

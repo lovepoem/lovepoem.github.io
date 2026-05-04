@@ -10,10 +10,20 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <meta name="format-detection" content="telephone=no">
+
 <meta name="author" content="Xin Wang(王欣)" />
 <meta name="designer" content="minfive" />
 <meta name="keywords" content="开源项目提交者,dubbo,rpc,seata ppmc，apache,架构师,信息安全，AIGC"/>
-<meta name="description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
+<meta name="description" content="从争议话题出发到AI独立完成短剧制作，一个程序员零基础实战记录" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》 - 王欣说AI|信息安全|AIGC|AI" />
+<meta property="og:description" content="从争议话题出发到AI独立完成短剧制作，一个程序员零基础实战记录" />
+<meta property="og:url" content="https://wangxin.io/aigc/aigc_dingjiwencha_short_drama/index.html" />
+<meta property="og:image" content="/images/temdiff.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》 - 王欣说AI|信息安全|AIGC|AI" />
+<meta name="twitter:description" content="从争议话题出发到AI独立完成短剧制作，一个程序员零基础实战记录" />
+<meta name="twitter:image" content="/images/temdiff.webp" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -39,8 +49,7 @@
 
 
 <!-- Prefetch -->
-<link rel="preload" href="/images/banner-mobile.webp" as="image" media="(max-width: 767px)" fetchpriority="high" />
-<link rel="preload" href="/images/banner.webp" as="image" media="(min-width: 768px)" fetchpriority="high" />
+
 
 
 
@@ -193,6 +202,9 @@ var _hmt = _hmt || [];
 
     <header class="post__info">
         <h1 class="post__title">没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》</h1>
+        
+        <p class="post__subtitle">从争议话题出发到AI独立完成短剧制作，一个程序员零基础实战记录</p>
+        
 
         <div class="post__mark">
             <div class="mark__block">
@@ -246,16 +258,16 @@ var _hmt = _hmt || [];
     <div class="post__content">
 
         <blockquote>
-<p>*”你能不能别光写，直接拍个短剧？”*</p>
+<p><em>“你能不能别光写，直接拍个短剧？”</em></p>
 <p><em>半年前同学群里的一句起哄，让一个写代码的跑去拍短剧了——纯属玩票，但还真玩出来了。</em></p>
 </blockquote>
 <hr>
 <h1><span id="一切的起点一份全网争议的pdf">一切的起点：一份全网争议的PDF</span></h1><p>2025年11月，一份名为《人妻约会指南》的PDF在网络上疯传。</p>
-<p>作者李新野，清华姚班出身，在近百页的文档里，讲述自己与已婚女性婚外关系的经历，还试图搬出进化心理学、博弈论来为自己”正名”。</p>
+<p>作者李新野，清华姚班出身，在近百页的文档里，讲述自己与已婚女性婚外关系的经历，还试图搬出进化心理学、博弈论来为自己“正名”。</p>
 <p>一时间全网哗然。</p>
 <p>当时我在一个同学微信群里，大家都在讨论这件事。我说了一句：</p>
 <blockquote>
-<p>“AI这么强了，我来写一个《男小三上位指南》——用镜像他的逻辑结构，反过来揭示这套理论有多荒谬。<strong>讽刺，不要模仿。</strong>“</p>
+<p>“AI这么强了，我来写一个《男小三上位指南》——用镜像他的逻辑结构，反过来揭示这套理论有多荒谬。<strong>讽刺，不要模仿。</strong>”</p>
 </blockquote>
 <p>说干就干。我先让大模型生成了一版<strong>学术版</strong>的《男小三上位指南》，结构严谨，引经据典，逻辑自洽。</p>
 <p>群里的女同学看完后：</p>
@@ -267,12 +279,12 @@ var _hmt = _hmt || [];
 <p>《顶级温差》。</p>
 <p>群里炸了。同学们看完后纷纷表示：</p>
 <blockquote>
-<p>“欣哥太会玩了！””但是……你能不能直接出个短剧？”</p>
+<p>“欣哥太会玩了！但是……你能不能直接出个短剧？”</p>
 </blockquote>
 <hr>
 <h1><span id="从小说到短剧一个执念的兑现">从小说到短剧：一个执念的兑现</span></h1><p>当时因为工具和时间的原因，这件事搁置了。</p>
 <p>但这个念头一直在我心里。</p>
-<p>我先把小说发布到了<strong>番茄免费小说APP</strong>（搜索”顶级温差”即可阅读），又用<strong>喜马拉雅APP</strong>的TTS功能发布了音频版《温差》。</p>
+<p>我先把小说发布到了<strong>番茄免费小说APP</strong>（搜索“顶级温差”即可阅读），又用<strong>喜马拉雅APP</strong>的TTS功能发布了音频版《温差》。</p>
 <p>小说有了，音频有了，就差一个短剧。</p>
 <p>最近终于有了时间，也找到了合适的AI工具——</p>
 <p>我决定把当初那个承诺兑现了。</p>
@@ -292,12 +304,14 @@ var _hmt = _hmt || [];
 <h1><span id="顶级温差讲了什么">《顶级温差》讲了什么？</span></h1><blockquote>
 <p><strong>一句话：他掌控了所有人的温度，却把自己活成了零度。</strong></p>
 </blockquote>
-<p><img src="../../images/dingjiwencha-story-01.png" alt="图片"></p>
+<img src="/images/dingjiwencha-story-01.webp" alt="《顶级温差》剧情海报：上海创投峰会上，江驰递出45度温水" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>故事从<strong>上海创投峰会</strong>开始。</p>
 <p>江驰，一个穿着不合身廉价西装的底层打工人，注意到了台上那位估值百亿的苏晚——不是因为她的演讲多精彩，而是因为<strong>她左手一直在偷偷按胃部</strong>。</p>
 <p>一杯<strong>45度温水</strong>，成了他敲开命运之门的钥匙。</p>
 <hr>
-<p><img src="../../images/dingjiwencha-story-02.png" alt="图片"></p>
+<img src="/images/dingjiwencha-story-02.webp" alt="《顶级温差》剧情海报：雷雨夜机场VVIP休息室里的皮蛋瘦肉粥与职位邀约" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>三天后的雷雨夜，江驰带着一碗<strong>高汤熬的皮蛋瘦肉粥</strong>出现在机场VVIP休息室。</p>
 <p>苏晚开出了职位邀请：首席战略官。</p>
 <p>江驰拒绝了。</p>
@@ -306,7 +320,8 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>他不要头衔，他要的是<strong>做她的武器</strong>。</p>
 <hr>
-<p><img src="../../images/dingjiwencha-story-03.png" alt="图片"></p>
+<img src="/images/dingjiwencha-story-03.webp" alt="《顶级温差》剧情海报：私人马场派对上，江驰正面回应许靖的羞辱与收买" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>在私人马场的上流派对上，苏晚的丈夫许靖出场了。</p>
 <p>面对五百万的收买和赤裸裸的羞辱，江驰不卑不亢：</p>
 <blockquote>
@@ -314,34 +329,37 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>这不是贪婪，是<strong>用对方听得懂的语言，告诉他别小看人</strong>。</p>
 <hr>
-<p><img src="../../images/dingjiwencha-story-04.webp" alt="图片"></p>
+<img src="/images/dingjiwencha-story-04.webp" alt="《顶级温差》剧情海报：黑暗中，江驰对苏晚说自己不是男宠而是武器" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>当苏晚质问他为何擅自去见许靖时，江驰说出了那句关键的话：</p>
 <blockquote>
 <p>“我不是你的男宠，我是你的武器。”</p>
 </blockquote>
 <p>两人在黑暗中达成了<strong>最危险的共谋</strong>。</p>
 <hr>
-<p><img src="../../images/dingjiwencha-story-05.png" alt="图片"></p>
+<img src="/images/dingjiwencha-story-05.webp" alt="《顶级温差》剧情海报：五年后的伦敦露台，江驰看到新的递水者" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>五年后，伦敦。</p>
 <p>江驰功成名就，站在宴会厅露台上。隔着玻璃门，他看到苏晚身边站着一个新的年轻人——那个人恭敬地递上一杯水。</p>
 <p>45度。</p>
 <p>苏晚露出了那个卸下防备的笑容。那个笑容，江驰花了三年才见过一次。</p>
 <blockquote>
-<p>*”在这场游戏里，没有赢家。”*</p>
+<p><em>“在这场游戏里，没有赢家。”</em></p>
 </blockquote>
 <p>他转身走进伦敦的寒夜，才终于明白——</p>
 <p>他以为自己掌控了温差，最后发现自己变成了那个永远无法被焐热的零度。</p>
 <hr>
-<h1><span id="这部短剧的意义">这部短剧的意义</span></h1><p>《顶级温差》的起点，是对一份荒谬”指南”的讽刺。</p>
+<h1><span id="这部短剧的意义">这部短剧的意义</span></h1><p>《顶级温差》的起点，是对一份荒谬“指南”的讽刺。</p>
 <p>但写着写着，它变成了一个更深的故事：</p>
 <blockquote>
-<p><strong>刻意保持清醒和独立，可以避免成为”可替代品”——但也可能让人变得情感麻木，赢了游戏，输了人生。</strong></p>
+<p><strong>刻意保持清醒和独立，可以避免成为“可替代品”——但也可能让人变得情感麻木，赢了游戏，输了人生。</strong></p>
 </blockquote>
-<p>它不是教你怎么”上位”。</p>
+<p>它不是教你怎么“上位”。</p>
 <p>它是让你看完后，重新想一想：在亲密关系里，掌控一切，真的是最优解吗？</p>
 <hr>
 <h1><span id="即将上线">即将上线</span></h1><p>🎬 <strong>短剧《顶级温差》</strong></p>
-<p><img src="../../images/dingjiwencha-story-06.png" alt="图片"></p>
+<img src="/images/dingjiwencha-story-06.webp" alt="《顶级温差》短剧上线预告海报：共5集，每集约2分钟" loading="lazy" decoding="async" width="1080" height="603">
+
 <p>共<strong>5集</strong>，每集约<strong>2分钟</strong></p>
 <p>风格：<strong>真人写实 · 电视质感 · 高清画质</strong></p>
 <p>即将在<strong>微信视频号</strong>首发第一集 🔥</p>
@@ -351,7 +369,7 @@ var _hmt = _hmt || [];
 <p>🍅 番茄短剧</p>
 <p>敬请期待。</p>
 <hr>
-<h1><span id="你也可以">你也可以</span></h1><p>如果你看完这篇文章，最大的感受不是”这个故事好牛”，而是——</p>
+<h1><span id="你也可以">你也可以</span></h1><p>如果你看完这篇文章，最大的感受不是“这个故事好牛”，而是——</p>
 <blockquote>
 <p><strong>“等一下，这事我是不是也能干？”</strong></p>
 </blockquote>
@@ -368,7 +386,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <hr>
 <p>如果你觉得这件事有点意思，欢迎转发给那个也想搞点创作的朋友。</p>
-<p>也许他只差一个”我真拍了”的勇气。</p>
+<p>也许他只差一个“我真拍了”的勇气。</p>
 
 
         
