@@ -866,28 +866,3 @@ body {
 .back-top--hidden {
   opacity: 0;
 }
-
-.page-loading {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
-.page-loading__spinner {
-  width: 36px;
-  height: 36px;
-  border: 3px solid #e6e6e6;
-  border-top-color: #409eff;
-  border-radius: 50%;
-  animation: page-loading-spin 0.9s linear infinite;
-}
-
-@keyframes page-loading-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}

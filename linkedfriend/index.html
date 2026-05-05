@@ -19,11 +19,11 @@
 <meta property="og:title" content="友链 - 王欣说AI|信息安全|AIGC|AI" />
 <meta property="og:description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
 <meta property="og:url" content="https://wangxin.io/linkedfriend/index.html" />
-<meta property="og:image" content="/images/java.png" />
+<meta property="og:image" content="/images/java.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="友链 - 王欣说AI|信息安全|AIGC|AI" />
 <meta name="twitter:description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
-<meta name="twitter:image" content="/images/java.png" />
+<meta name="twitter:image" content="/images/java.webp" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -72,37 +72,78 @@
 <link rel="alternate" href="/atom.xml" title="王欣说AI">
 
 <!-- 统计 -->
-<!-- 百度统计 -->
 
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
+(function () {
+    var initialized = false;
+
+    function onIdle(callback) {
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(callback, { timeout: 2500 });
+            return;
+        }
+
+        window.setTimeout(callback, 1500);
+    }
+
+    function appendScript(src, options) {
+        if (!src || document.querySelector('script[src="' + src + '"]')) {
+            return;
+        }
+
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+
+        if (options && options.defer) {
+            script.defer = true;
+        }
+
+        document.head.appendChild(script);
+    }
+
+    function boot() {
+        if (initialized) {
+            return;
+        }
+
+        initialized = true;
+
+        
+        window._hmt = window._hmt || [];
+        appendScript('https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886');
+        
+
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-1SDLZ60RR6');
+        appendScript('https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6');
+        
+
+        
+        if (!(navigator.connection && navigator.connection.saveData)) {
+            var speedInsights = document.createElement('script');
+            speedInsights.type = 'module';
+            speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
+            document.head.appendChild(speedInsights);
+        }
+        
+    }
+
+    function scheduleBoot() {
+        onIdle(boot);
+    }
+
+    if (document.readyState === 'complete') {
+        scheduleBoot();
+        return;
+    }
+
+    window.addEventListener('load', scheduleBoot, { once: true });
 })();
 </script>
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1SDLZ60RR6');
-  </script>
-
-
-<!-- Vercel Speed Insights -->
-
-  <script type="module">
-    import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm";
-    injectSpeedInsights();
-  </script>
 
 
 
@@ -114,15 +155,7 @@ var _hmt = _hmt || [];
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body ontouchstart>
-    
-        <!-- loading 页面 -->
-<div id="page-loading" class="page page-loading" aria-label="loading">
-  <span class="page-loading__spinner"></span>
-</div>
-
-    
-
-    <div id="page" class="page js-hidden">
+    <div id="page" class="page">
         
             <!-- 页头 -->
 <header id="page-header" class="page__header"
@@ -130,7 +163,7 @@ var _hmt = _hmt || [];
     <nav class="page__navbar">
         <div class="page__container navbar-container">
             <a class="page__logo" href="/" title="王欣说AI" alt="王欣说AI">
-               <img src="/images/wangxin.png" alt="王欣说AI">
+               <img src="/images/wangxin.png" alt="王欣说AI" decoding="async" width="180" height="60">
             </a>
 
             <nav class="page__nav">
@@ -336,7 +369,6 @@ var _hmt = _hmt || [];
         <script type="text/javascript" src="/js/common/utils.js"></script>
         <script type="text/javascript" src="/js/common/pack.js"></script>
         <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/loading.js"></script>
         <script type="text/javascript" src="/js/layout/header.js"></script>
         <script type="text/javascript" src="/js/layout/back-top.js"></script>
         <script type="text/javascript" src="/js/layout/post.js"></script>

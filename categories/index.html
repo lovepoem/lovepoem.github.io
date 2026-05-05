@@ -19,11 +19,11 @@
 <meta property="og:title" content="category - 王欣说AI|信息安全|AIGC|AI" />
 <meta property="og:description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
 <meta property="og:url" content="https://wangxin.io/categories/index.html" />
-<meta property="og:image" content="/images/java.png" />
+<meta property="og:image" content="/images/java.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="category - 王欣说AI|信息安全|AIGC|AI" />
 <meta name="twitter:description" content="王欣，AI 技术和产品研究者、创业者。分享大家听得懂、用得上、能赚钱的AI技术。开源项目提交者和推广者： Apache Dubbo项目/PMC、Apache Seata项目PPMC。github：https://github.com/lovepoem email：xin.victorwang@gmail.com" />
-<meta name="twitter:image" content="/images/java.png" />
+<meta name="twitter:image" content="/images/java.webp" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -72,37 +72,78 @@
 <link rel="alternate" href="/atom.xml" title="王欣说AI">
 
 <!-- 统计 -->
-<!-- 百度统计 -->
 
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
+(function () {
+    var initialized = false;
+
+    function onIdle(callback) {
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(callback, { timeout: 2500 });
+            return;
+        }
+
+        window.setTimeout(callback, 1500);
+    }
+
+    function appendScript(src, options) {
+        if (!src || document.querySelector('script[src="' + src + '"]')) {
+            return;
+        }
+
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+
+        if (options && options.defer) {
+            script.defer = true;
+        }
+
+        document.head.appendChild(script);
+    }
+
+    function boot() {
+        if (initialized) {
+            return;
+        }
+
+        initialized = true;
+
+        
+        window._hmt = window._hmt || [];
+        appendScript('https://hm.baidu.com/hm.js?8dd700474b9448fa0d7db1f5e2236886');
+        
+
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-1SDLZ60RR6');
+        appendScript('https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6');
+        
+
+        
+        if (!(navigator.connection && navigator.connection.saveData)) {
+            var speedInsights = document.createElement('script');
+            speedInsights.type = 'module';
+            speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
+            document.head.appendChild(speedInsights);
+        }
+        
+    }
+
+    function scheduleBoot() {
+        onIdle(boot);
+    }
+
+    if (document.readyState === 'complete') {
+        scheduleBoot();
+        return;
+    }
+
+    window.addEventListener('load', scheduleBoot, { once: true });
 })();
 </script>
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SDLZ60RR6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-1SDLZ60RR6');
-  </script>
-
-
-<!-- Vercel Speed Insights -->
-
-  <script type="module">
-    import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm";
-    injectSpeedInsights();
-  </script>
 
 
 
@@ -114,22 +155,14 @@ var _hmt = _hmt || [];
 
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body ontouchstart>
-    
-        <!-- loading 页面 -->
-<div id="page-loading" class="page page-loading" aria-label="loading">
-  <span class="page-loading__spinner"></span>
-</div>
-
-    
-
-    <div id="page" class="page js-hidden">
+    <div id="page" class="page">
         
     <!-- 页头 -->
 <header class="page__small-header page__header--small">
     <nav class="page__navbar">
         <div class="page__container navbar-container">
             <a class="page__logo" href="/" title="王欣说AI" alt="王欣说AI">
-                <img src="/images/wangxin.png" alt="王欣说AI">
+                <img src="/images/wangxin.png" alt="王欣说AI" decoding="async" width="180" height="60">
             </a>
 
             <nav class="page__nav">
@@ -221,14 +254,14 @@ var _hmt = _hmt || [];
         <div class="sidebar__block">
             <h3 class="block__title">微信公众号</h3>
             <div class="sidebar__img">
-                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码" loading="lazy" decoding="async">
+                <img src="/images/wechat-qrcode.png" alt="微信公众号二维码" title="微信公众号二维码" loading="lazy" decoding="async" fetchpriority="low" width="430" height="430">
             </div>
         </div>
     
 
     <div class="sidebar__block">
         <h3 class="block__title">文章分类</h3>
-        <ul class="block-list"><li class="block-list-item"><a class="block-list-link" href="/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a><span class="block-list-count">6</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E6%88%91%E7%9C%8B/">我看</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><span class="block-list-count">1</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/redis/">redis</a><span class="block-list-count">1</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/spring/">spring</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/shell/">shell</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mybatis/">mybatis</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mq/">mq</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/jvm/">jvm</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/java/">java</a><span class="block-list-count">2</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/java/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a><span class="block-list-count">2</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/hide/">hide</a><span class="block-list-count">6</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/github/">github</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/dubbo/">dubbo</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/apache%E6%B5%81%E7%A8%8B/">apache流程</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/AIGC/">AIGC</a><span class="block-list-count">7</span></li></ul>
+        <ul class="block-list"><li class="block-list-item"><a class="block-list-link" href="/categories/%E7%9F%AD%E5%89%A7%E5%88%B6%E4%BD%9C/">短剧制作</a><span class="block-list-count">6</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E6%88%91%E7%9C%8B/">我看</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/">存储</a><span class="block-list-count">1</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%AD%98%E5%82%A8/redis/">redis</a><span class="block-list-count">1</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/spring/">spring</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/shell/">shell</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mybatis/">mybatis</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/mq/">mq</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/jvm/">jvm</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/java/">java</a><span class="block-list-count">2</span><ul class="block-list-child"><li class="block-list-item"><a class="block-list-link" href="/categories/java/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a><span class="block-list-count">2</span></li></ul></li><li class="block-list-item"><a class="block-list-link" href="/categories/hide/">hide</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/github/">github</a><span class="block-list-count">1</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/dubbo/">dubbo</a><span class="block-list-count">4</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/apache%E6%B5%81%E7%A8%8B/">apache流程</a><span class="block-list-count">2</span></li><li class="block-list-item"><a class="block-list-link" href="/categories/AIGC/">AIGC</a><span class="block-list-count">7</span></li></ul>
     </div>
     
     <div class="sidebar__block">
@@ -239,7 +272,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/06_make_drama_by_runninghub_comfyui/" title="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧">
                             <div class="item__cover">
-                                <img src="/images/makedrama.webp" alt="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧" />
+                                <img src="/images/makedrama.webp" alt="第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧" loading="lazy" decoding="async" fetchpriority="low" width="80" height="60" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第6章：工具篇——使用 RunningHub（ComfyUI）生成短剧</h3>
@@ -251,7 +284,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/05_make_drama_by_xiaoyunque_agent/" title="第5章：工具篇——使用小云雀Agent生成短剧">
                             <div class="item__cover">
-                                <img src="/images/makedrama.webp" alt="第5章：工具篇——使用小云雀Agent生成短剧" />
+                                <img src="/images/makedrama.webp" alt="第5章：工具篇——使用小云雀Agent生成短剧" loading="lazy" decoding="async" fetchpriority="low" width="80" height="60" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第5章：工具篇——使用小云雀Agent生成短剧</h3>
@@ -263,7 +296,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/aigc/aigc_dingjiwencha_short_drama/" title="没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》">
                             <div class="item__cover">
-                                <img src="/images/temdiff.webp" alt="没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》" />
+                                <img src="/images/temdiff.webp" alt="没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》" loading="lazy" decoding="async" fetchpriority="low" width="80" height="60" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">没团队、没演员、没经验——我一个写代码的，用AI独自做完了短剧《顶级温差》</h3>
@@ -275,7 +308,7 @@ var _hmt = _hmt || [];
                     <li class="latest-post-item">
                         <a href="/makeshortdrama/04_director_thinking_and_ai_asset_generation_workflow/" title="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？">
                             <div class="item__cover">
-                                <img src="/images/makedrama.webp" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" />
+                                <img src="/images/makedrama.webp" alt="第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？" loading="lazy" decoding="async" fetchpriority="low" width="80" height="60" />
                             </div>
                             <div class="item__info">
                                 <h3 class="item__title">第4篇：导演思维 + AI素材生成全流程 - 怎么用AI从0做出短剧/漫剧？</h3>
@@ -607,7 +640,6 @@ if (document.readyState === 'loading') {
         <script type="text/javascript" src="/js/common/utils.js"></script>
         <script type="text/javascript" src="/js/common/pack.js"></script>
         <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/loading.js"></script>
         <script type="text/javascript" src="/js/layout/header.js"></script>
         <script type="text/javascript" src="/js/layout/back-top.js"></script>
         <script type="text/javascript" src="/js/layout/post.js"></script>
