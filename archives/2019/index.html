@@ -73,6 +73,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -120,7 +125,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -130,6 +135,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -988,22 +1012,72 @@
 </aside>
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 </main>
 
@@ -1138,12 +1212,12 @@ if (document.readyState === 'loading') {
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     

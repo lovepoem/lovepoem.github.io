@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -276,7 +300,7 @@
 <p>​      在xml配置方式中<code>xml accepts=&quot;10&quot;</code> 和 <code>connections=&quot;10&quot;</code> 分别在服务端和客户端进行了相应的连接控制。下面我们看一下源码，追一下连接控制的原理。</p>
 <p>​      我们看一下<code>DubboProtocol.java</code>的创建客户端tcp连接的方法，int connectNum正是每个客户端对服务端的tcp连接数，默认是<code>1</code>,当然可以修改成更大。默认是1，这样一个客户端的调用<code>service</code>数最多也不会超过1000吧。这样就不会出现单机创建TCP连接数过多的问题。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Bulk build client</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> connectNum</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> List&lt;ReferenceCountExchangeClient&gt; <span class="title">buildReferenceCountExchangeClientList</span><span class="params">(URL url, <span class="keyword">int</span> connectNum)</span> </span>&#123;</span><br><span class="line">    List&lt;ReferenceCountExchangeClient&gt; clients = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; connectNum; i++) &#123;</span><br><span class="line">        clients.add(buildReferenceCountExchangeClient(url));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clients;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端和服务端是一对一的，建立长连接，那么如果客户端并发访问，他们是怎么和服务端交互的呢？<br>  经过看代码：<br><img src="/images/dubbo-customer-con.png"></p>
+<p>客户端和服务端是一对一的，建立长连接，那么如果客户端并发访问，他们是怎么和服务端交互的呢？<br>  经过看代码：<br><img fetchpriority="low" decoding="async" loading="lazy" src="/images/dubbo-customer-con.png"></p>
 <p>下面咱们试图从代码中找到痕迹。一路追踪，我们来到这个类：<code>com.alibaba.dubbo.remoting.exchange.support.header.HeaderExchangeChannel.java</code>，先来看看其中的<code>request</code>方法，大概在第101行左右：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> ResponseFuture <span class="title">request</span><span class="params">(Object request, <span class="keyword">int</span> timeout)</span> <span class="keyword">throws</span> RemotingException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (closed) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RemotingException(<span class="keyword">this</span>.getLocalAddress(), <span class="keyword">null</span>, <span class="string">"Failed to send request "</span> + request + <span class="string">", cause: The channel "</span> + <span class="keyword">this</span> + <span class="string">" is closed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// create request.</span></span><br><span class="line">    Request req = <span class="keyword">new</span> Request();</span><br><span class="line">    req.setVersion(<span class="string">"2.0.0"</span>);</span><br><span class="line">    req.setTwoWay(<span class="keyword">true</span>);</span><br><span class="line">    req.setData(request);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//这个future就是前面我们提到的：客户端并发请求线程阻塞的对象</span></span><br><span class="line">    DefaultFuture future = <span class="keyword">new</span> DefaultFuture(channel, req, timeout);</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        channel.send(req);  <span class="comment">//非阻塞调用</span></span><br><span class="line">    &#125;<span class="keyword">catch</span> (RemotingException e) &#123;</span><br><span class="line">        future.cancel();</span><br><span class="line">        <span class="keyword">throw</span> e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> future;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -722,18 +746,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -741,6 +763,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -776,6 +803,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -792,10 +820,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -823,22 +883,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

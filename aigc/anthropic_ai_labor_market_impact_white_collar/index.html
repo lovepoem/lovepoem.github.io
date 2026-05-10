@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -299,7 +323,7 @@
 <p>这个区别，非常关键。</p>
 <hr>
 <h1><span id="02一张图让你看清残酷现实">02｜一张图，让你看清残酷现实</span></h1><p>报告里最核心的一张图，就是这张雷达图👇</p>
-<p><img src="../../images/ai-workshift-radar-gap.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-radar-gap.png" alt="图片"></p>
 <blockquote>
 <p>🔵 <strong>蓝色 = 理论上AI能覆盖的任务范围</strong>（AI的”理论天花板”）</p>
 <p>🔴 <strong>红色 = 实际上人们已经在用AI做的事</strong>（AI的”当前水位”）</p>
@@ -313,13 +337,13 @@
 <p>但别急着放松，因为真正让人后背发凉的是——</p>
 <p>红色正在逼近蓝色。而且在某些领域，红色已经填了很大一块。</p>
 <p>具体来看几个关键行业：</p>
-<p><img src="../../images/ai-workshift-industry-coverage.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-industry-coverage.png" alt="图片"></p>
 <p>翻译成人话：</p>
 <p>如果你是程序员、文案、设计师、客服、金融分析师、市场营销——<strong>蓝色的”理论天花板”就像悬在头顶的巨石</strong>，红色的”实际水位”正在一点点逼近。</p>
 <p>如果你是水电工、建筑工人、护理人员、农民——<strong>目前这块石头还没有挂到你头上。</strong></p>
 <hr>
 <h1><span id="03最扎心的数据ai暴露度最高的十大职业">03｜最扎心的数据：AI暴露度最高的十大职业</span></h1><p>报告直接列出了<strong>目前AI实际覆盖率最高的十大职业</strong>：</p>
-<p><img src="../../images/ai-workshift-top10-exposure.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-top10-exposure.png" alt="图片"></p>
 <p>程序员，74.5%。</p>
 <p>这意味着一个程序员日常工作中，<strong>有四分之三的任务，已经有人在用AI完成了。</strong></p>
 <p>不是”理论上能做”，是”实际上已经有人在这么做了”。</p>
@@ -327,7 +351,7 @@
 <p>营销专家64.8%——生成报告、分析数据、写文案，这些都是AI的舒适区。</p>
 <p><strong>而在另一端，30%的劳动者AI覆盖率为零。</strong>他们是谁？厨师、摩托车修理工、救生员、调酒师、洗碗工。</p>
 <p>讽刺吗？当年被认为”没出息”的体力劳动，现在反而成了AI的安全区。</p>
-<p><img src="../../images/ai-workshift-safe-zone-jobs.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-safe-zone-jobs.png" alt="图片"></p>
 <blockquote>
 <p><em>注：这是趋势观察，并非绝对结论，核心是提醒我们要提升不可被 AI 替代的核心能力。</em></p>
 </blockquote>
@@ -349,7 +373,7 @@
 <p>如果你是正在找工作的应届生，如果你的孩子正在选专业——<strong>这个数据比任何裁员新闻都更值得警惕。</strong></p>
 <hr>
 <h1><span id="05最反直觉的发现ai冲击的是高学历高薪群体">05｜最反直觉的发现：AI冲击的是”高学历高薪”群体</span></h1><p>报告还做了一个残酷的对比：</p>
-<p><img src="../../images/ai-workshift-white-collar-impact.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-white-collar-impact.png" alt="图片"></p>
 <p>看到了吗？</p>
 <p>被AI冲击最大的群体，不是蓝领，不是低学历工人，而是——</p>
 <blockquote>
@@ -391,7 +415,7 @@
 </blockquote>
 <p>我们还有时间。但窗口正在收窄。</p>
 <p>AI的影响不是海啸，而是涨潮。不会一下把你淹没，但如果你一直站在原地——<strong>等你发现水到脚踝的时候，退路已经不多了。</strong></p>
-<p><img src="../../images/ai-workshift-rising-tide-warning.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/ai-workshift-rising-tide-warning.png" alt="图片"></p>
 
 
         
@@ -811,18 +835,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -830,6 +852,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -865,6 +892,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -881,10 +909,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -912,22 +972,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

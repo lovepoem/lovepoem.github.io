@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -271,16 +295,16 @@
     <div class="post__content">
 
         <p>从JDK1.6到1.8, 运行时内存分配简图分别如下:</p>
-<p><img src="/images/java1.6.png" alt="Mechanism"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/java1.6.png" alt="Mechanism"></p>
 <p>在JDK1.7中的HotSpot中，已经把原本放在方法区的字符串常量池移出。</p>
-<p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img src="/images/java1.7.png" alt="Mechanism"></p>
+<p>　　从JDK7开始永久代的移除工作，贮存在永久代的一部分数据已经转移到了Java Heap或者是Native Heap。但永久代仍然存在于JDK7，并没有完全的移除：符号引用(Symbols)转移到了native heap;字面量(interned strings)转移到了java heap;类的静态变量(class statics)转移到了java heap。<br><img fetchpriority="low" decoding="async" loading="lazy" src="/images/java1.7.png" alt="Mechanism"></p>
 <p>随着JDK8的到来:</p>
-<pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img src="/images/java8.png" alt="Mechanism"></p>
+<pre><code>JVM不再有PermGen。但类的元数据信息（metadata）还在，只不过不再是存储在连续的堆空间上，而是移动到叫做“Metaspace”的本地内存（Native memory）中。</code></pre><p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/java8.png" alt="Mechanism"></p>
 <h3><span id="一-java7到java8的第一部分变化元空间"><strong>一、java7到java8的第一部分变化：元空间</strong></span></h3><p>下面来一张图看一下java7到8的内存模型吧（这个是在网上找的图，如有侵权问题请联系我删除。）</p>
-<p><img src="/images/jvm-memory-change-history-01.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/jvm-memory-change-history-01.webp" alt="img"></p>
 <h3><span id="二-java7到java8的第二部分变化运行时常量池"><strong>二、java7到java8的第二部分变化：运行时常量池</strong></span></h3><p>运行时常量池（Runtime Constant Pool）的所处区域一直在不断的变化，在java6时它是方法区的一部分；1.7又把他放到了堆内存中；1.8之后出现了元空间，它又回到了方法区。</p>
 <p>Metaspace 结构是怎么样的？</p>
-<p><img src="/images/java8struct.jpg" alt="Mechanism"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/java8struct.jpg" alt="Mechanism"></p>
 <p>参考：<a href="https://blog.csdn.net/weixin_42711325/article/details/86533192">https://blog.csdn.net/weixin_42711325/article/details/86533192</a></p>
 
 
@@ -701,18 +725,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -720,6 +742,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -755,6 +782,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -771,10 +799,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -802,22 +862,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

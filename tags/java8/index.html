@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -250,15 +274,15 @@
             <ul class="tags__list clearfix">
                 
                     <li class="tags__item">
+                        <a href="/tags/java8/">java8</a>
+                    </li>
+                
+                    <li class="tags__item">
                         <a href="/tags/%E5%B9%B6%E8%A1%8C/">并行</a>
                     </li>
                 
                     <li class="tags__item">
                         <a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>
-                    </li>
-                
-                    <li class="tags__item">
-                        <a href="/tags/java8/">java8</a>
                     </li>
                 
             </ul>
@@ -721,12 +745,12 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     

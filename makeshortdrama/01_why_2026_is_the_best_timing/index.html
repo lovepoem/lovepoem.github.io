@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -288,14 +312,14 @@
 <p>本教程将手把手教你，从零开始，一个人用AI做出一部完整的短剧或漫剧。你不需要会画画，不需要会演戏，不需要有剧组，你只需要有想法、有审美、有耐心，以及——会跟AI“说话”。</p>
 <hr>
 <p>🎨 全文知识地图</p>
-<p><img src="/images/makeshortdrama-01-map.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-map.webp" alt="img"></p>
 <h1><span id="第一章认知篇ai能帮你做什么">第一章：认知篇——AI能帮你做什么？</span></h1><h2><span id="11-传统短剧制作一个剧组的完整角色链">1.1 传统短剧制作：一个剧组的完整角色链</span></h2><p><strong>写作建议：</strong>用一张表格 + 一段生动的描述，让读者感知传统制作的复杂度。</p>
-<p><img src="/images/makeshortdrama-01-roles.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-roles.webp" alt="img"></p>
 <blockquote>
 <p>一部最低配的短剧，也需要至少5-10个人协作，花费5-20万，周期1-3个月。</p>
 </blockquote>
 <h2><span id="12-ai时代的能力替代地图">1.2 AI时代的能力替代地图</span></h2><p><strong>核心论点：</strong>AI不是替代了某一个角色，而是替代了“大部分角色的大部分执行工作”。你作为“一人剧组”，承担的是<strong>导演+制片人</strong>的角色——做决策、定方向、把控质量。AI是你的整个团队。</p>
-<p><img src="/images/makeshortdrama-01-ai-replacement.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-ai-replacement.webp" alt="img"></p>
 <blockquote>
 <p>2026年版本的 Nano Banana 2 在角色一致性与多图融合方面有显著提升。原生视频模型（如 Veo）已支持长镜头稳定生成与音频同步，减少拼接痕迹。</p>
 </blockquote>
@@ -315,7 +339,7 @@
 <p>生成式AI已经从“辅助工具”，升级为“创作基础设施”。</p>
 </blockquote>
 <p>AI发展三阶段</p>
-<p><img src="/images/makeshortdrama-01-ai-stages.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-ai-stages.webp" alt="img"></p>
 <h2><span id="14-大模型能做什么">1.4 大模型能做什么？</span></h2><p>写作内容：</p>
 <p>“大模型”是当前AI的核心技术。一个大模型就像一个被互联网知识“喂养”长大的超级大脑。不同类型的大模型擅长处理不同的信息：</p>
 <p><strong>文字（LLM，大语言模型）：</strong>ChatGPT、Claude、豆包、通义千问等。它们能写小说、写剧本、翻译、分析数据、编写代码。在短剧制作中，文字模型是你的“编剧团队”。</p>
@@ -325,7 +349,7 @@
 <p><strong>代码（编程辅助）：</strong>帮你搭建自动化工作流，比如用ComfyUI实现批量生成。</p>
 <p>大模型能力全景图</p>
 <hr>
-<p><img src="/images/makeshortdrama-01-model-landscape.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-model-landscape.webp" alt="img"></p>
 <h2><span id="15-什么是agent为什么它是关键">1.5 什么是Agent？为什么它是关键？</span></h2><p>写作内容：</p>
 <p>理解了大模型之后，你还需要理解一个关键概念——<strong>Agent（智能体）</strong>。</p>
 <p>大模型本身就像一个“超级大脑”，但它只能被动回答问题。而Agent是给这个大脑装上了“手脚和工具”——它不仅能思考，还能自己规划步骤、调用各种工具、执行多步任务。</p>
@@ -343,7 +367,7 @@
 </ul>
 <p>这就是自动化生产线的雏形。</p>
 <p>Agent工作原理</p>
-<p><img src="/images/makeshortdrama-01-agent-principle.webp" alt="img"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/makeshortdrama-01-agent-principle.webp" alt="img"></p>
 <p>2026年的关键变化：多模态统一</p>
 <p>2026年最重要的技术进展，是大模型从“单一模态”走向“多模态统一”。</p>
 <p>早期的模型各管各的——文字模型只管文字，图片模型只管图片，互相不通。现在的大模型可以同时理解文字、图片、视频和音频，并在不同模态之间保持一致性。</p>
@@ -790,18 +814,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -809,6 +831,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -844,6 +871,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -860,10 +888,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -891,22 +951,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

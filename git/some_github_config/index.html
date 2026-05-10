@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -276,9 +300,9 @@
 <h3><span id="3-更新其他人的分支代码">3、更新其他人的分支代码：</span></h3><p><strong>功能：</strong>在合作开发中，一些分支的提交者好久没有活动了，远程分支已经修改了很多东西。 committer或者pr的提交可以在github界面手动同步主分支的最新代码.<br>类似于指令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote update -p</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 <p>配置方法如下：</p>
-<p><img src="/images/enforce-update.webp" alt></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/enforce-update.webp" alt></p>
 <p>效果： </p>
-<p><img src="/images/update-branch.webp" alt></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="/images/update-branch.webp" alt></p>
 <p><strong>配置：</strong> <a href="https://help.github.com/cn/articles/enabling-required-status-checks">https://help.github.com/cn/articles/enabling-required-status-checks</a></p>
 <h3><span id="4-添加测试覆盖率travis-ci-和codecov">4、添加测试覆盖率travis-ci 和codecov</span></h3><p><strong>功能：</strong> 用junit、travis-ci 和codecov等采集项目的测试覆盖率，从而进行持续集成<br><strong>配置：</strong> </p>
 <ul>
@@ -707,18 +731,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -726,6 +748,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -761,6 +788,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -777,10 +805,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -808,22 +868,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

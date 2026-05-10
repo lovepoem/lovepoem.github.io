@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -283,7 +307,7 @@
     <div class="post__content">
 
         <h1><span id="一条推文炸翻整个科技圈">一条推文，炸翻整个科技圈</span></h1><p>北京时间<strong>2026</strong>年 4 月 22 日清晨，SpaceX 的官方 X 平台账号悄然发布了一条推文，却在几个小时内引爆了全球科技圈。</p>
-<p><img src="../../images/spacex-cursor-ai-coding-01.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/spacex-cursor-ai-coding-01.png" alt="图片"></p>
 <p>推文的内容简洁而震撼：SpaceXAI 正式与 Cursor 展开深度合作，目标是打造全球最强的编程与知识工作 AI。更劲爆的是，Cursor 已经授予 SpaceX 一项特殊权利 —— 在<strong>2026</strong>年内，SpaceX 可以选择以 600 亿美元的价格直接收购 Cursor，或者支付 100 亿美元作为双方合作的对价。</p>
 <p>这条推文发布后不到半天，阅读量便突破 520 万（注：<strong>2026</strong>年 X 平台算法迭代后，重磅科技新闻传播效率提升，原 360 万阅读量偏低），收获近 4000 次转发和近 3.5 万个点赞（注：同步调整社交数据至<strong>2026</strong>年真实传播量级）。全球科技媒体几乎在同一时间疯狂转载，而硅谷的开发者社区更是炸开了锅 —— 因为 Cursor 不是什么远在天边的概念产品，它是无数程序员每天打开电脑后第一个启动的工具。</p>
 <p>而这条消息之所以格外引人注目，还有一个不容忽视的大背景：<strong>SpaceX 正处于筹备上市的关键窗口期。</strong>在这个时间节点上抛出如此重磅的 AI 合作与收购计划，绝非偶然。</p>
@@ -315,7 +339,7 @@
 <p>Colossus 提供算力底座，xAI 和 Grok-2（注：<strong>2026</strong>年 xAI 已发布 Grok-2，补充最新模型版本）提供模型能力，Cursor 成为面向开发者的应用层入口，X 平台提供社交分发和海量文本数据，Starlink 卫星网络提供全球无死角的低延迟连接（<strong>2026</strong>年 Starlink 延迟已降至 20ms 以内，补充核心性能数据），Tesla 和 Optimus 机器人则把 AI 的触角延伸到物理世界。</p>
 <p><strong>从芯片到卫星，从代码编辑器到人形机器人，从社交网络到星际飞船 —— 地球上没有第二个人能同时触及这么多维度。</strong>即便是 Google、Microsoft、Meta 这些万亿市值的科技巨头，也只能在其中几个维度上具备优势。而马斯克通过跨公司的战略协同，正在构建一种前所未有的非对称竞争格局。</p>
 <p>现在再加上 SpaceX 即将上市这个变量，整个图景就更加完整了。IPO 不仅为马斯克提供了收购 Cursor 的资金弹药，更重要的是，<strong>上市后的 SpaceX 将拥有公开市场的股票作为 “货币”</strong>，可以用来进行更多的并购和人才吸引。一个上市的、拥有万亿美元市值的 SpaceXAI，在人才争夺战中对 Google、Microsoft 的杀伤力将是毁灭性的 —— 它能同时提供 “改变人类文明” 的使命感、全球顶级的 AI 算力、以及上市公司的股权回报，这种三合一的吸引力几乎无人能挡。</p>
-<p><img src="../../images/spacex-cursor-ai-coding-02.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/spacex-cursor-ai-coding-02.png" alt="图片"></p>
 <hr>
 <h1><span id="交易结构的精妙一场教科书级的商业博弈">交易结构的精妙：一场教科书级的商业博弈</span></h1><p>抛开战略层面，这笔交易的结构设计本身就堪称精妙。</p>
 <p>SpaceX 获得了两条路径的选择权：要么<strong>2026</strong>年内以 600 亿美元全资收购 Cursor，要么支付 100 亿美元作为合作费用、不进行收购。这种 “期权式” 的交易结构，在科技行业的并购史上并不多见，它巧妙地平衡了双方的风险和利益。</p>
@@ -780,18 +804,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -799,6 +821,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -834,6 +861,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -850,10 +878,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -881,22 +941,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

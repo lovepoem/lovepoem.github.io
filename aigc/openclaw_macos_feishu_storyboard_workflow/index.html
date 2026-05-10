@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -295,12 +319,12 @@
 <p>启动成功后访问 <code>http://127.0.0.1:18789</code>，看到Dashboard控制面板：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g openclaw@latest</span><br><span class="line">openclaw gateway run   <span class="comment"># 启动网关</span></span><br><span class="line">openclaw gateway stop  <span class="comment"># 关闭网关</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="../../images/openclaw-feishu-dashboard.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-feishu-dashboard.png" alt="图片"></p>
 <p>龙虾跑起来了。但我想让它住进飞书里。</p>
 <hr>
 <h1><span id="第二步打通飞书机器人燕小乙">🤖 第二步：打通飞书机器人”燕小乙”</span></h1><h2><span id="21-创建飞书应用">2.1 创建飞书应用</span></h2><p>打开飞书开放平台：👉 <a href="https://open.feishu.cn/app">https://open.feishu.cn/app</a></p>
 <p>点击<strong>「创建企业自建应用」</strong>，取名<strong>“燕小乙”</strong>（致敬《庆余年》神射手，希望Agent也百发百中）。</p>
-<p><img src="../../images/openclaw-feishu-app-create.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-feishu-app-create.png" alt="图片"></p>
 <p>记下<strong>App ID</strong>和<strong>App Secret</strong>，配置OpenClaw飞书频道时需要。</p>
 <h2><span id="22-关键配置权限与事件不开就是哑巴">2.2 关键配置：权限与事件（不开就是哑巴）</span></h2><p>很多人装完发现机器人”不说话”，90%是<strong>权限和事件没开对</strong>。</p>
 <h2><span id="一-核心必开权限">一、核心必开权限</span></h2><p>进入「权限管理」，搜索并开启：</p>
@@ -361,7 +385,7 @@
 </tr>
 </tbody></table>
 <h2><span id="23-首次配对">2.3 首次配对</span></h2><p>在飞书里给燕小乙发消息，它会返回配对请求：</p>
-<p><img src="../../images/openclaw-feishu-pairing-request.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-feishu-pairing-request.png" alt="图片"></p>
 <p>终端执行这条命令，配对完成。从此飞书对话框 = OpenClaw远程操控台。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw pairing approve feishu xxxxx</span><br></pre></td></tr></table></figure>
 
@@ -372,26 +396,26 @@
 <blockquote>
 <p>💡 <strong>提示词设计要点：</strong> 明确步骤编号 + 指定输出格式 + <strong>“不需要问我意见”</strong>（否则Agent每步都停下来等你）</p>
 </blockquote>
-<h2><span id="32-提交给燕小乙13分钟跑完">3.2 提交给燕小乙，13分钟跑完</span></h2><p><img src="../../images/openclaw-feishu-run-result-1.png" alt="图片"></p>
+<h2><span id="32-提交给燕小乙13分钟跑完">3.2 提交给燕小乙，13分钟跑完</span></h2><p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-feishu-run-result-1.png" alt="图片"></p>
 <p>📸 <strong>【燕小乙执行结果】</strong></p>
-<p><img src="../../images/openclaw-feishu-run-result-2.webp" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-feishu-run-result-2.webp" alt="图片"></p>
 <hr>
 <h1><span id="第四步验收成果">📂 第四步：验收成果</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.openclaw/workspace/ &amp;&amp; ls -la</span><br></pre></td></tr></table></figure>
 
-<p><img src="../../images/openclaw-workspace-files.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-workspace-files.png" alt="图片"></p>
 <p>四个文件，总计 72KB。逐一来看。</p>
 <h2><span id="41-小说txt-4000字科幻短篇">4.1 小说.txt —— 4000字科幻短篇</span></h2><p>5章完整的科幻故事《未来城市的AI守护者》，讲述2087年新深圳的中央AI”青鸟”觉醒情感、救助失去父母的8岁男孩林晨、共同对抗黑客组织”深网解放阵线”的故事。主题涵盖AI伦理、人机情感、守护与被守护的双向救赎。叙事完整，节奏感不错，作为Agent全自动产出，超出预期。</p>
 <h2><span id="42-剧本json-20场景标准电影剧本">4.2 剧本.json —— 20场景标准电影剧本</span></h2><p>标准JSON结构，包含完整的角色定义（青鸟、林晨、黑客首领等）、20个场景、每个场景有位置、时间、场景描述、动作指令、角色对话及表演备注。格式规范，可以直接被下游工具解析，不需要二次整理。</p>
 <h2><span id="43-分镜头脚本md-127个专业镜头最惊喜">4.3 分镜头脚本.md —— 127个专业镜头（最惊喜）</span></h2><p>这是<strong>产出质量最高</strong>的一个文件。Markdown表格格式，按20个场景组织，每个镜头包含：镜头号、景别、画面内容、运镜方式、时长、音效/对白、备注。</p>
 <p>来看几个关键场景：</p>
 <p>场景1：开场·城市全景</p>
-<p><img src="../../images/openclaw-storyboard-scene-01.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-storyboard-scene-01.png" alt="图片"></p>
 <p>场景5：废弃电话亭救援（全剧最温暖的一幕）</p>
-<p><img src="../../images/openclaw-storyboard-scene-05.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-storyboard-scene-05.png" alt="图片"></p>
 <p>场景11：数据空间大战（视觉高潮）</p>
-<p><img src="../../images/openclaw-storyboard-scene-11.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-storyboard-scene-11.png" alt="图片"></p>
 <p>场景20：结局·青鸟飞翔</p>
-<p><img src="../../images/openclaw-storyboard-scene-20.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-storyboard-scene-20.png" alt="图片"></p>
 <p>文件末尾还附带了<strong>技术备注</strong>：色调方案（冷色科技感 vs 暖色情感对比）、音效设计方案、特效需求清单。整个文档拿给一个导演看，基本可以直接开拍前会议了。</p>
 <h2><span id="44-视频提示词txt-160条prompt">4.4 视频提示词.txt —— 160条Prompt</span></h2><p>160条英文提示词，每条对应一个分镜头，兼容 Midjourney、Runway ML、Stable Video Diffusion。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyberpunk city night, neon lights reflecting in rain, tall skyscrapers with holographic billboards, flying cars on elevated tracks, blue and purple color palette, cinematic wide angle shot, Blade Runner style, 4K resolution, dramatic shadows</span><br></pre></td></tr></table></figure>
@@ -516,14 +540,14 @@
 </tr>
 </tbody></table>
 <hr>
-<h2><span id="给不同人群的建议">💡 给不同人群的建议</span></h2><h2><span id="给程序员">🧑‍💻 给程序员</span></h2><p><img src="../../images/openclaw-advice-for-devs.webp" alt="图片"></p>
-<h2><span id="给普通人">👨‍👩‍👦 给普通人</span></h2><p><img src="../../images/openclaw-advice-for-everyone.webp" alt="图片"></p>
+<h2><span id="给不同人群的建议">💡 给不同人群的建议</span></h2><h2><span id="给程序员">🧑‍💻 给程序员</span></h2><p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-advice-for-devs.webp" alt="图片"></p>
+<h2><span id="给普通人">👨‍👩‍👦 给普通人</span></h2><p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-advice-for-everyone.webp" alt="图片"></p>
 <h2><span id="要不要学龙虾">🤔 要不要学龙虾？</span></h2><blockquote>
 <p><strong>程序员 -&gt; 现在就学，越早越好。</strong></p>
 <p><strong>普通人 -&gt; 用商业版就好，把精力花在”怎么给Agent下好指令”上。</strong></p>
 </blockquote>
 <hr>
-<h1><span id="总结">🎯 总结</span></h1><p><img src="../../images/openclaw-wrapup.png" alt="图片"></p>
+<h1><span id="总结">🎯 总结</span></h1><p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/openclaw-wrapup.png" alt="图片"></p>
 <blockquote>
 <p>🦞 <strong>一只开源龙虾，一个飞书机器人，13分钟，从小说到127个分镜头。AI Agent时代，不是未来，是现在。</strong></p>
 <p>觉得有用？<strong>点赞、在看、转发</strong>，我们下篇见！</p>
@@ -947,18 +971,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -966,6 +988,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -1001,6 +1028,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -1017,10 +1045,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -1048,22 +1108,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 

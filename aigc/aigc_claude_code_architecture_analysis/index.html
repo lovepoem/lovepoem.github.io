@@ -76,6 +76,11 @@
 <script>
 (function () {
     var initialized = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayNonCriticalBoot = isConstrainedConnection || isMobileViewport;
 
     function onIdle(callback) {
         if ('requestIdleCallback' in window) {
@@ -123,7 +128,7 @@
         
 
         
-        if (!(navigator.connection && navigator.connection.saveData)) {
+        if (!delayNonCriticalBoot && !(connection && connection.saveData)) {
             var speedInsights = document.createElement('script');
             speedInsights.type = 'module';
             speedInsights.textContent = 'import { injectSpeedInsights } from "https://cdn.jsdelivr.net/npm/@vercel/speed-insights/+esm"; injectSpeedInsights();';
@@ -133,6 +138,25 @@
     }
 
     function scheduleBoot() {
+        if (delayNonCriticalBoot) {
+            var booted = false;
+
+            function bootWhenPossible() {
+                if (booted) {
+                    return;
+                }
+
+                booted = true;
+                onIdle(boot);
+            }
+
+            window.addEventListener('pointerdown', bootWhenPossible, { once: true, passive: true });
+            window.addEventListener('keydown', bootWhenPossible, { once: true });
+            window.addEventListener('touchstart', bootWhenPossible, { once: true, passive: true });
+            window.setTimeout(bootWhenPossible, 5000);
+            return;
+        }
+
         onIdle(boot);
     }
 
@@ -344,7 +368,7 @@
 <h2><span id="31-agent-loop从问答到自主执行的范式跃迁">3.1 Agent Loop：从”问答”到”自主执行”的范式跃迁</span></h2><p>这是 Claude Code 区别于所有代码补全工具的<strong>根本架构差异</strong>。它的核心不是”用户提问 -&gt; AI 回答”的单轮模式，而是一个<strong>自主循环的 Agent Loop</strong>：</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">agentLoop</span>(<span class="params">userMessage: <span class="built_in">string</span>, context: ConversationContext</span>) </span>&#123;</span><br><span class="line">  context.messages.push(&#123; role: <span class="string">"user"</span>, content: userMessage &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> callClaudeAPI(&#123;</span><br><span class="line">      messages: context.messages,</span><br><span class="line">      tools: getAvailableTools(),</span><br><span class="line">      system: buildSystemPrompt(context),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 纯文本回复 -&gt; 任务完成，退出循环</span></span><br><span class="line">    <span class="keyword">if</span> (response.stopReason === <span class="string">"end_turn"</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> response.content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AI 请求调用工具 -&gt; 执行后继续循环</span></span><br><span class="line">    <span class="keyword">if</span> (response.stopReason === <span class="string">"tool_use"</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> toolCall of response.toolCalls) &#123;</span><br><span class="line">        <span class="keyword">const</span> result = <span class="keyword">await</span> executeToolWithPermissionCheck(toolCall);</span><br><span class="line">        context.messages.push(&#123; role: <span class="string">"tool"</span>, toolUseId: toolCall.id, content: result &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">continue</span>; <span class="comment">// 关键：不 return，让 AI 基于工具结果继续推理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="../../images/claude-code-architecture-01.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/claude-code-architecture-01.png" alt="图片"></p>
 <p><strong>这为什么如此重要？</strong>当你说「修复所有 TypeScript 编译错误」，Agent Loop 会驱动 Claude Code 自动循环：运行tsc获取错误 -&gt; 读取文件 -&gt; 修复 -&gt; 再次运行tsc验证 -&gt; 发现还有错误 -&gt; 继续修复……直到编译通过。整个过程完全由 AI 自主驱动，循环深度没有硬编码上限，AI 自己判断何时结束。</p>
 <p>这种”自愈式”执行在实际使用中的效果是：你给出一个高层意图，Claude Code 像一个独立工作的工程师一样，端到端地完成任务——包括处理中途出现的意外情况。</p>
 <p><strong>AgentTool 更进一步</strong>——它允许主智能体创建子智能体来处理子任务，每个子智能体有独立的上下文窗口。这本质上是<strong>MapReduce 思想在 AI Agent 中的应用</strong>：面对”把项目从 Webpack 迁移到 Vite”这样的复杂任务，主智能体可以并行委派多个子智能体分别分析配置、搜索依赖、生成新配置，最后汇总结果。子智能体之间互不干扰，也不会撑爆主对话的 token 限制。</p>
@@ -354,13 +378,13 @@
 <p><strong>项目根级</strong> <code>{projectRoot}/CLAUDE.md</code>：项目规范，团队共享——比如「使用 Zustand 管理状态，测试用 Vitest」</p>
 <p><strong>当前目录级</strong> <code>{cwd}/CLAUDE.md</code>：子模块特定规范——比如「这个目录下是数据库迁移脚本，请格外谨慎」</p>
 <p>三层规则<strong>自动合并、逐级细化</strong>，让同一个 AI 在不同项目、不同目录下表现出不同的行为模式。再加上 <code>.claude/settings.json</code> 中的用户记忆条目，Claude Code 实际上构建了一套<strong>分层的 AI 工作手册</strong>，远比任何竞品的”自定义 prompt”机制更精细。</p>
-<p><img src="../../images/claude-code-architecture-02.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/claude-code-architecture-02.png" alt="图片"></p>
 <h2><span id="33-三层纵深安全体系在危险中起舞">3.3 三层纵深安全体系：在危险中起舞</span></h2><p>AI 直接操作文件系统和执行 Shell 命令——这在安全上极其敏感。Claude Code 用<strong>三层纵深防御</strong>解决这个问题：</p>
 <p><strong>第一层：静态规则过滤。</strong>工具注册时就预定义了危险模式黑名单。BashTool 会在执行前用正则匹配拦截 <code>rm -rf /</code>、<code>curl | bash</code>、Fork 炸弹、直接写磁盘设备等明确的破坏性命令。这些规则硬编码在工具内部，无法被 AI 绕过。</p>
 <p><strong>第二层：运行时权限决策。</strong>每次工具调用前，PermissionManager 实时判断三种处理路径——只读操作自动放行、用户已授权的模式匹配通过后自动放行、其余弹出交互式确认。关键是这里引入了<strong>信任递进模型</strong>：系统会记住你的授权决策，当你多次允许同类操作后，会提示”是否始终允许此类操作”，写入 settings 后续自动放行。这让新用户得到充分保护，而熟练用户不被反复打断。</p>
 <p><strong>第三层：执行沙箱。</strong>即使命令通过了前两层，BashTool 在实际执行时仍施加约束——工作目录限制（不能逃逸出项目根目录）、执行超时（默认 120 秒）、输出截断（防止超大输出撑爆内存，采用首尾保留策略保留最有价值的信息）、进程隔离（子进程异常不影响主进程）。</p>
 <p>这三层的叠加效果是：<strong>安全不是对能力的限制，而是一个功能特性</strong>。用户可以放心地让 AI 执行命令，因为每一步都有兜底。</p>
-<p><img src="../../images/claude-code-architecture-03.png" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/claude-code-architecture-03.png" alt="图片"></p>
 <h2><span id="34-智能上下文管理在有限窗口中做无限的事">3.4 智能上下文管理：在有限窗口中做无限的事</span></h2><p>LLM 的上下文窗口是有限资源。当长对话逼近 200K token 上限时，如何保留最有价值的信息？Claude Code 的 <code>/compact</code> 命令背后是一套<strong>AI 驱动的摘要压缩算法</strong>，而不是简单的”删除旧消息”：</p>
 <p>System Prompt 永远保留（不可压缩），最近 N 轮对话完整保留（近期记忆），而更早的历史对话则<strong>交给 Claude 自己做摘要</strong>——提炼关键决策、文件修改状态、未完成任务等。用户还可以通过 <code>/compact</code> 指定摘要关注点。这就像一个优秀的会议记录员：不逐字记录，而是提炼行动项。</p>
 <p>与此配合的是<strong>Prompt Caching 的深度利用</strong>。源码显示，Claude Code 在 System Prompt 末尾和对话历史的关键断点处设置了 <code>cache_control</code> 标记。由于 System Prompt + CLAUDE.md 在整个会话中几乎不变，每次 API 调用都能缓存命中，加上对话历史前半部分也基本稳定。实际效果是，长对话中的整体成本可降低<strong>50-70%</strong>，同时响应延迟也因缓存命中而显著降低。</p>
@@ -427,7 +451,7 @@
 <p>值得一提的是<strong>Bun</strong>的使用——Claude Code 选择它作为包管理器，很大程度上是为了优化启动速度。对于 CLI 工具来说，冷启动时间直接决定用户体验。</p>
 <hr>
 <h1><span id="五-一次请求的完整生命周期">五、一次请求的完整生命周期</span></h1><p>让我们追踪一个真实请求的完整旅程：</p>
-<p><img src="../../images/claude-code-architecture-04.webp" alt="图片"></p>
+<p><img fetchpriority="low" decoding="async" loading="lazy" src="../../images/claude-code-architecture-04.webp" alt="图片"></p>
 <p>用户输入: “帮我给 utils.ts 中的 parseDate 函数添加单元测试”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">用户输入: &quot;帮我给 utils.ts 中的 parseDate 函数添加单元测试&quot;</span><br><span class="line">  │</span><br><span class="line">  ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❶ CLI 层接收输入                                    【图 ①】 │</span><br><span class="line">│   终端捕获输入 -&gt; 传递给应用层 -&gt; token 计数启动             │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❷ 上下文组装                                        【图 ②】 │</span><br><span class="line">│   System Prompt + CLAUDE.md（三级合并）+ 对话历史            │</span><br><span class="line">│   + 可用工具列表 + Prompt Caching 断点设置                   │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❸ Agent Loop 自主循环                            【图 ③~⑬】 │</span><br><span class="line">│                                                              │</span><br><span class="line">│   循环 1: FileReadTool -&gt; 读取 utils.ts                      │</span><br><span class="line">│   循环 2: GlobTool -&gt; 发现测试文件命名规范                   │</span><br><span class="line">│   循环 3: FileWriteTool -&gt; 创建 utils.test.ts                │</span><br><span class="line">│   循环 4: BashTool -&gt; npx vitest run                         │</span><br><span class="line">│   循环 5: FileEditTool -&gt; 修复失败的测试用例                 │</span><br><span class="line">│   循环 6: BashTool -&gt; npx vitest run -&gt; 3 passed             │</span><br><span class="line">│                                                              │</span><br><span class="line">└─────────────────────────────┬────────────────────────────────┘</span><br><span class="line">                              ▼</span><br><span class="line">┌──────────────────────────────────────────────────────────────┐</span><br><span class="line">│ ❹ 流式渲染 &amp; 状态持久化                            【图 ⑭】 │</span><br><span class="line">│   全过程通过 Ink&#x2F;React 实时渲染到终端                        │</span><br><span class="line">│   Token 用量和费用实时更新                                  │</span><br><span class="line">│   对话历史持久化到会话存储                                   │</span><br><span class="line">└──────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
 
@@ -924,18 +948,16 @@
     </div>
 
     <!-- build:js /js/common.js -->
-        <script type="text/javascript" src="/js/common/utils.js"></script>
-        <script type="text/javascript" src="/js/common/pack.js"></script>
-        <script type="text/javascript" src="/js/common/animation.js"></script>
-        <script type="text/javascript" src="/js/layout/header.js"></script>
-        <script type="text/javascript" src="/js/layout/back-top.js"></script>
-        <script type="text/javascript" src="/js/layout/post.js"></script>
+        <script defer type="text/javascript" src="/js/common/utils.js"></script>
+        <script defer type="text/javascript" src="/js/common/pack.js"></script>
+        <script defer type="text/javascript" src="/js/common/animation.js"></script>
+        <script defer type="text/javascript" src="/js/layout/header.js"></script>
+        <script defer type="text/javascript" src="/js/layout/back-top.js"></script>
+        <script defer type="text/javascript" src="/js/layout/post.js"></script>
     <!-- endbuild -->
 
     
-    
-<script src="/js/page/post.js"></script>
-
+    <script defer src="/js/page/post.js"></script>
 
 
     
@@ -943,6 +965,11 @@
     <script>
         (function () {
             var container = document.getElementById('comment-container');
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+            var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+            var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+            var shouldUseManualLoad = isConstrainedConnection || isMobileViewport;
 
             if (!container || container.dataset.loaded === 'true') {
                 return;
@@ -978,6 +1005,7 @@
                 }
 
                 container.dataset.loaded = 'true';
+                container.classList.add('comment-container--loading');
                 loadStyle('https://unpkg.com/gitalk/dist/gitalk.css');
 
                 Promise.all([
@@ -994,10 +1022,42 @@
                         id: md5(location.href)
                     });
 
+                    container.classList.remove('comment-container--loading');
                     gitalk.render('comment-container');
                 }).catch(function () {
                     container.dataset.loaded = 'false';
+                    container.classList.remove('comment-container--loading');
+
+                    if (container.querySelector('[data-comment-load-btn="true"]')) {
+                        return;
+                    }
+
+                    renderManualLoader('评论加载失败，点击重试');
                 });
+            }
+
+            function renderManualLoader(title) {
+                container.innerHTML = '' +
+                    '<div class="comment-container__placeholder">' +
+                        '<p class="comment-container__title">' + (title || '评论按需加载，点击后再请求 Gitalk 资源') + '</p>' +
+                        '<button class="comment-container__button" type="button" data-comment-load-btn="true">加载评论</button>' +
+                    '</div>';
+
+                var button = container.querySelector('[data-comment-load-btn="true"]');
+
+                if (!button) {
+                    return;
+                }
+
+                button.addEventListener('click', function () {
+                    container.innerHTML = '';
+                    bootGitalk();
+                }, { once: true });
+            }
+
+            if (shouldUseManualLoad) {
+                renderManualLoader();
+                return;
             }
 
             if (!('IntersectionObserver' in window)) {
@@ -1025,22 +1085,72 @@
 
     <!-- 不蒜子统计 - 延迟加载优化 -->
 <script>
-// 延迟加载不蒜子统计脚本
-function loadBusuanzi() {
-    var script = document.createElement('script');
-    script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-    script.async = true;
-    document.head.appendChild(script);
-}
+(function () {
+    var loaded = false;
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var effectiveType = connection && connection.effectiveType ? String(connection.effectiveType) : '';
+    var isConstrainedConnection = !!(connection && (connection.saveData || /(slow-2g|2g|3g)/i.test(effectiveType)));
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var delayLoad = isConstrainedConnection || isMobileViewport;
+    var targets = [
+        document.getElementById('busuanzi_container_page_pv'),
+        document.getElementById('busuanzi_container_site_pv')
+    ].filter(Boolean);
 
-// 页面加载完成后延迟加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(loadBusuanzi, 1000);
-    });
-} else {
-    setTimeout(loadBusuanzi, 1000);
-}
+    function loadBusuanzi() {
+        if (loaded) {
+            return;
+        }
+
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+        script.async = true;
+        document.head.appendChild(script);
+    }
+
+    function scheduleLoad() {
+        if (!targets.length) {
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            window.setTimeout(loadBusuanzi, delayLoad ? 4500 : 1500);
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                observer.disconnect();
+
+                if (delayLoad) {
+                    window.setTimeout(loadBusuanzi, 2500);
+                    return;
+                }
+
+                window.setTimeout(loadBusuanzi, 800);
+            });
+        }, {
+            rootMargin: '160px 0px'
+        });
+
+        targets.forEach(function (target) {
+            observer.observe(target);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleLoad, { once: true });
+        return;
+    }
+
+    scheduleLoad();
+})();
 </script>
 
 
